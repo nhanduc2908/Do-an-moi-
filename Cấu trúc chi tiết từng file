@@ -1,0 +1,5436 @@
+backend_laravel/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 artisan
+├── 📄 composer.json
+├── 📄 composer.lock
+├── 📄 package.json
+├── 📄 phpunit.xml
+├── 📄 README.md
+├── 📄 server.php
+│
+├── 📁 app/
+│   ├── 📄 Kernel.php
+│   │
+│   ├── 📁 Console/
+│   │   ├── 📄 Kernel.php
+│   │   └── 📁 Commands/
+│   │       ├── 📄 InstallSecuritySystem.php
+│   │       ├── 📄 Create10RolesCommand.php
+│   │       ├── 📄 Create25DomainsCommand.php
+│   │       ├── 📄 Create600CriteriaCommand.php
+│   │       ├── 📄 GenerateMasterKeysCommand.php
+│   │       ├── 📄 SyncFlutterDataCommand.php
+│   │       ├── 📄 AIGenerateCriteriaCommand.php
+│   │       ├── 📄 SendDailySecurityReport.php
+│   │       ├── 📄 CleanExpiredSessionsCommand.php
+│   │       ├── 📄 BackupDatabaseCommand.php
+│   │       ├── 📄 RotateEncryptionKeysCommand.php
+│   │       ├── 📄 RunVulnerabilityScanCommand.php
+│   │       └── 📄 TestKeyVerificationCommand.php
+│   │
+│   ├── 📁 Events/
+│   │   ├── 📄 KeyVerifiedEvent.php
+│   │   ├── 📄 AssessmentSubmittedEvent.php
+│   │   ├── 📄 VersionUnlockedEvent.php
+│   │   ├── 📄 NewCriteriaSuggestedEvent.php
+│   │   ├── 📄 DataSyncedEvent.php
+│   │   ├── 📄 SecurityIncidentEvent.php
+│   │   ├── 📄 UserLoggedInEvent.php
+│   │   ├── 📄 UserLoggedOutEvent.php
+│   │   ├── 📄 MfaEnabledEvent.php
+│   │   ├── 📄 RoleChangedEvent.php
+│   │   ├── 📄 ReportGeneratedEvent.php
+│   │   ├── 📄 VulnerabilityDetectedEvent.php
+│   │   ├── 📄 ComplianceCheckFailedEvent.php
+│   │   └── 📄 AIDetectionEvent.php
+│   │
+│   ├── 📁 Exceptions/
+│   │   ├── 📄 Handler.php
+│   │   ├── 📄 InvalidKeyException.php
+│   │   ├── 📄 VersionAccessDeniedException.php
+│   │   ├── 📄 RolePermissionException.php
+│   │   ├── 📄 AssessmentLockedException.php
+│   │   ├── 📄 KeyExpiredException.php
+│   │   ├── 📄 MfaRequiredException.php
+│   │   ├── 📄 SessionExpiredException.php
+│   │   ├── 📄 IpBlockedException.php
+│   │   ├── 📄 RateLimitExceededException.php
+│   │   ├── 📄 EncryptionException.php
+│   │   └── 📄 AIServiceException.php
+│   │
+│   ├── 📁 Http/
+│   │   ├── 📄 Kernel.php
+│   │   │
+│   │   ├── 📁 Controllers/
+│   │   │   ├── 📁 Api/
+│   │   │   │   └── 📁 V1/
+│   │   │   │       ├── 📁 Module01_IAM/
+│   │   │   │       │   ├── 📄 AuthController.php
+│   │   │   │       │   ├── 📄 MfaController.php
+│   │   │   │       │   ├── 📄 RoleController.php
+│   │   │   │       │   ├── 📄 PermissionController.php
+│   │   │   │       │   ├── 📄 SessionController.php
+│   │   │   │       │   ├── 📄 DeviceController.php
+│   │   │   │       │   ├── 📄 LoginHistoryController.php
+│   │   │   │       │   └── 📄 TokenController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module02_Encryption/
+│   │   │   │       │   ├── 📄 EncryptionController.php
+│   │   │   │       │   ├── 📄 KeyManagementController.php
+│   │   │   │       │   ├── 📄 VaultController.php
+│   │   │   │       │   ├── 📄 FileEncryptionController.php
+│   │   │   │       │   └── 📄 DigitalSignatureController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module03_WebSecurity/
+│   │   │   │       │   ├── 📄 WebScanController.php
+│   │   │   │       │   ├── 📄 SqlInjectionController.php
+│   │   │   │       │   ├── 📄 XssController.php
+│   │   │   │       │   ├── 📄 CsrfController.php
+│   │   │   │       │   ├── 📄 SsrfController.php
+│   │   │   │       │   ├── 📄 RceController.php
+│   │   │   │       │   └── 📄 SecureHeadersController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module04_PasswordSecurity/
+│   │   │   │       │   ├── 📄 PasswordPolicyController.php
+│   │   │   │       │   ├── 📄 PasswordStrengthController.php
+│   │   │   │       │   ├── 📄 PasswordLeakController.php
+│   │   │   │       │   ├── 📄 BruteForceController.php
+│   │   │   │       │   └── 📄 OTPController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module05_UrlSecurity/
+│   │   │   │       │   ├── 📄 UrlScanController.php
+│   │   │   │       │   ├── 📄 PhishingDetectionController.php
+│   │   │   │       │   ├── 📄 DomainBlacklistController.php
+│   │   │   │       │   └── 📄 LinkSandboxController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module06_ApiSecurity/
+│   │   │   │       │   ├── 📄 ApiAuthController.php
+│   │   │   │       │   ├── 📄 ApiGatewayController.php
+│   │   │   │       │   ├── 📄 RateLimitController.php
+│   │   │   │       │   ├── 📄 ApiLogController.php
+│   │   │   │       │   └── 📄 TokenRevocationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module07_SourceCode/
+│   │   │   │       │   ├── 📄 SastScanController.php
+│   │   │   │       │   ├── 📄 DependencyScanController.php
+│   │   │   │       │   ├── 📄 SecretDetectionController.php
+│   │   │   │       │   ├── 📄 GitSecurityController.php
+│   │   │   │       │   └── 📄 LicenseScanController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module08_DatabaseSecurity/
+│   │   │   │       │   ├── 📄 DbEncryptionController.php
+│   │   │   │       │   ├── 📄 DbAuditController.php
+│   │   │   │       │   ├── 📄 SqlMonitorController.php
+│   │   │   │       │   ├── 📄 DataMaskingController.php
+│   │   │   │       │   └── 📄 PrivilegeController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module09_NetworkSecurity/
+│   │   │   │       │   ├── 📄 FirewallController.php
+│   │   │   │       │   ├── 📄 IdsIpsController.php
+│   │   │   │       │   ├── 📄 NetworkScanController.php
+│   │   │   │       │   ├── 📄 TrafficMonitorController.php
+│   │   │   │       │   ├── 📄 VpnController.php
+│   │   │   │       │   └── 📄 DdosProtectionController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module10_EndpointSecurity/
+│   │   │   │       │   ├── 📄 AntivirusController.php
+│   │   │   │       │   ├── 📄 EdrController.php
+│   │   │   │       │   ├── 📄 PatchManagementController.php
+│   │   │   │       │   ├── 📄 UsbControlController.php
+│   │   │   │       │   ├── 📄 DeviceHardeningController.php
+│   │   │   │       │   └── 📄 DeviceInventoryController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module11_CloudSecurity/
+│   │   │   │       │   ├── 📄 AwsSecurityController.php
+│   │   │   │       │   ├── 📄 AzureSecurityController.php
+│   │   │   │       │   ├── 📄 GcpSecurityController.php
+│   │   │   │       │   ├── 📄 CloudIamController.php
+│   │   │   │       │   ├── 📄 CloudStorageScanController.php
+│   │   │   │       │   └── 📄 MisconfigurationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module12_ContainerSecurity/
+│   │   │   │       │   ├── 📄 DockerScanController.php
+│   │   │   │       │   ├── 📄 KubernetesScanController.php
+│   │   │   │       │   ├── 📄 RegistrySecurityController.php
+│   │   │   │       │   ├── 📄 ContainerRuntimeController.php
+│   │   │   │       │   └── 📄 SecretManagementController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module13_LoggingMonitoring/
+│   │   │   │       │   ├── 📄 SiemController.php
+│   │   │   │       │   ├── 📄 AlertController.php
+│   │   │   │       │   ├── 📄 ThreatDetectionController.php
+│   │   │   │       │   ├── 📄 LogAggregationController.php
+│   │   │   │       │   ├── 📄 SyslogController.php
+│   │   │   │       │   └── 📄 EventCorrelationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module14_IncidentResponse/
+│   │   │   │       │   ├── 📄 IncidentController.php
+│   │   │   │       │   ├── 📄 ForensicController.php
+│   │   │   │       │   ├── 📄 RecoveryController.php
+│   │   │   │       │   ├── 📄 RootCauseController.php
+│   │   │   │       │   └── 📄 NotificationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module15_RiskAssessment/
+│   │   │   │       │   ├── 📄 RiskScoreController.php
+│   │   │   │       │   ├── 📄 RiskMatrixController.php
+│   │   │   │       │   ├── 📄 ThreatAnalysisController.php
+│   │   │   │       │   ├── 📄 AssetValuationController.php
+│   │   │   │       │   └── 📄 RiskTreatmentController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module16_Compliance/
+│   │   │   │       │   ├── 📄 Iso27001Controller.php
+│   │   │   │       │   ├── 📄 GdprController.php
+│   │   │   │       │   ├── 📄 PciDssController.php
+│   │   │   │       │   ├── 📄 HipaaController.php
+│   │   │   │       │   ├── 📄 NistController.php
+│   │   │   │       │   └── 📄 ComplianceChecklistController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module17_PhysicalSecurity/
+│   │   │   │       │   ├── 📄 AccessControlController.php
+│   │   │   │       │   ├── 📄 SmartLockController.php
+│   │   │   │       │   ├── 📄 CctvController.php
+│   │   │   │       │   ├── 📄 VisitorTrackingController.php
+│   │   │   │       │   └── 📄 BiometricController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module18_SecurityAwareness/
+│   │   │   │       │   ├── 📄 TrainingController.php
+│   │   │   │       │   ├── 📄 PhishingSimulationController.php
+│   │   │   │       │   ├── 📄 QuizController.php
+│   │   │   │       │   └── 📄 AwarenessReportController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module19_MobileSecurity/
+│   │   │   │       │   ├── 📄 MdmController.php
+│   │   │   │       │   ├── 📄 DevicePolicyController.php
+│   │   │   │       │   ├── 📄 AppControlController.php
+│   │   │   │       │   ├── 📄 RemoteWipeController.php
+│   │   │   │       │   └── 📄 SecureContainerController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module20_IotSecurity/
+│   │   │   │       │   ├── 📄 FirmwareScanController.php
+│   │   │   │       │   ├── 📄 IotAuthController.php
+│   │   │   │       │   ├── 📄 IotTrafficController.php
+│   │   │   │       │   ├── 📄 DeviceIsolationController.php
+│   │   │   │       │   └── 📄 SensorMonitoringController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module21_VulnerabilityManagement/
+│   │   │   │       │   ├── 📄 CveScanController.php
+│   │   │   │       │   ├── 📄 VulnerabilityScoringController.php
+│   │   │   │       │   ├── 📄 PatchTrackingController.php
+│   │   │   │       │   ├── 📄 RiskPrioritizationController.php
+│   │   │   │       │   └── 📄 RemediationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module22_EmailSecurity/
+│   │   │   │       │   ├── 📄 SpfController.php
+│   │   │   │       │   ├── 📄 DkimController.php
+│   │   │   │       │   ├── 📄 DmarcController.php
+│   │   │   │       │   ├── 📄 SpamFilterController.php
+│   │   │   │       │   ├── 📄 EmailSandboxController.php
+│   │   │   │       │   └── 📄 PhishingEmailController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module23_BackupRecovery/
+│   │   │   │       │   ├── 📄 BackupSchedulerController.php
+│   │   │   │       │   ├── 📄 DisasterRecoveryController.php
+│   │   │   │       │   ├── 📄 RestoreController.php
+│   │   │   │       │   ├── 📄 BackupEncryptionController.php
+│   │   │   │       │   └── 📄 CloudBackupController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module24_DevSecOps/
+│   │   │   │       │   ├── 📄 CicdScanController.php
+│   │   │   │       │   ├── 📄 IacSecurityController.php
+│   │   │   │       │   ├── 📄 TerraformScanController.php
+│   │   │   │       │   ├── 📄 SecretScanController.php
+│   │   │   │       │   └── 📄 SbomController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module25_PenetrationTesting/
+│   │   │   │       │   ├── 📄 InternalPentestController.php
+│   │   │   │       │   ├── 📄 ExternalPentestController.php
+│   │   │   │       │   ├── 📄 WirelessPentestController.php
+│   │   │   │       │   ├── 📄 SocialEngineeringController.php
+│   │   │   │       │   ├── 📄 WebPentestController.php
+│   │   │   │       │   ├── 📄 ApiPentestController.php
+│   │   │   │       │   └── 📄 PentestReportController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module26_AIEngine/
+│   │   │   │       │   ├── 📄 ThreatDetectionController.php
+│   │   │   │       │   ├── 📄 AnomalyDetectionController.php
+│   │   │   │       │   ├── 📄 PhishingAIController.php
+│   │   │   │       │   ├── 📄 MalwareAnalysisController.php
+│   │   │   │       │   ├── 📄 RiskPredictionController.php
+│   │   │   │       │   ├── 📄 AIChatbotController.php
+│   │   │   │       │   ├── 📄 CriteriaSuggestionController.php
+│   │   │   │       │   └── 📄 AutoEvaluationController.php
+│   │   │   │       │
+│   │   │   │       ├── 📁 Module27_ReportAnalytics/
+│   │   │   │       │   ├── 📄 SecurityScoreController.php
+│   │   │   │       │   ├── 📄 RiskDashboardController.php
+│   │   │   │       │   ├── 📄 ComplianceDashboardController.php
+│   │   │   │       │   ├── 📄 SocDashboardController.php
+│   │   │   │       │   ├── 📄 ThreatMapController.php
+│   │   │   │       │   ├── 📄 ExecutiveReportController.php
+│   │   │   │       │   └── 📄 ExportController.php
+│   │   │   │       │
+│   │   │   │       └── 📁 Module28_SystemAdmin/
+│   │   │   │           ├── 📄 UserManagementController.php
+│   │   │   │           ├── 📄 RoleManagementController.php
+│   │   │   │           ├── 📄 SystemSettingsController.php
+│   │   │   │           ├── 📄 NotificationSettingsController.php
+│   │   │   │           ├── 📄 ApiSettingsController.php
+│   │   │   │           ├── 📄 BackupSettingsController.php
+│   │   │   │           ├── 📄 AuditConfigController.php
+│   │   │   │           └── 📄 LanguageController.php
+│   │   │   │
+│   │   │   └── 📁 Web/
+│   │   │       ├── 📄 AdminDashboardController.php
+│   │   │       ├── 📄 AdminAuthController.php
+│   │   │       ├── 📄 AdminRoleController.php
+│   │   │       ├── 📄 AdminUserController.php
+│   │   │       ├── 📄 AdminCriteriaController.php
+│   │   │       ├── 📄 AdminKeyController.php
+│   │   │       ├── 📄 AdminReportController.php
+│   │   │       ├── 📄 AdminLogController.php
+│   │   │       ├── 📄 AdminSyncController.php
+│   │   │       └── 📄 AdminAIController.php
+│   │   │
+│   │   ├── 📁 Middleware/
+│   │   │   ├── 📄 Authenticate.php
+│   │   │   ├── 📄 RoleMiddleware.php
+│   │   │   ├── 📄 VersionAccessMiddleware.php
+│   │   │   ├── 📄 KeyVerificationMiddleware.php
+│   │   │   ├── 📄 MfaMiddleware.php
+│   │   │   ├── 📄 IpWhitelistMiddleware.php
+│   │   │   ├── 📄 RateLimitMiddleware.php
+│   │   │   ├── 📄 SessionTimeoutMiddleware.php
+│   │   │   ├── 📄 LogUserActivityMiddleware.php
+│   │   │   ├── 📄 CorsMiddleware.php
+│   │   │   ├── 📄 EncryptResponseMiddleware.php
+│   │   │   ├── 📄 ForceJsonResponseMiddleware.php
+│   │   │   ├── 📄 SecurityHeadersMiddleware.php
+│   │   │   └── 📄 AuditLogMiddleware.php
+│   │   │
+│   │   ├── 📁 Requests/
+│   │   │   ├── 📁 Auth/
+│   │   │   │   ├── 📄 LoginRequest.php
+│   │   │   │   ├── 📄 RegisterRequest.php
+│   │   │   │   ├── 📄 MfaVerifyRequest.php
+│   │   │   │   ├── 📄 TwoFactorRequest.php
+│   │   │   │   └── 📄 LogoutRequest.php
+│   │   │   ├── 📁 Key/
+│   │   │   │   ├── 📄 VerifyKeyRequest.php
+│   │   │   │   ├── 📄 GenerateKeyRequest.php
+│   │   │   │   ├── 📄 RevokeKeyRequest.php
+│   │   │   │   └── 📄 ListKeysRequest.php
+│   │   │   ├── 📁 Assessment/
+│   │   │   │   ├── 📄 StartAssessmentRequest.php
+│   │   │   │   ├── 📄 SubmitAssessmentRequest.php
+│   │   │   │   ├── 📄 ReviewAssessmentRequest.php
+│   │   │   │   ├── 📄 GetAssessmentProgressRequest.php
+│   │   │   │   └── 📄 ExportAssessmentRequest.php
+│   │   │   ├── 📁 Report/
+│   │   │   │   ├── 📄 GenerateReportRequest.php
+│   │   │   │   ├── 📄 ExportReportRequest.php
+│   │   │   │   ├── 📄 ShareReportRequest.php
+│   │   │   │   └── 📄 ScheduleReportRequest.php
+│   │   │   ├── 📁 Admin/
+│   │   │   │   ├── 📄 ManageUserRequest.php
+│   │   │   │   ├── 📄 ManageRoleRequest.php
+│   │   │   │   └── 📄 SystemConfigRequest.php
+│   │   │   ├── 📁 Encryption/
+│   │   │   │   ├── 📄 EncryptFileRequest.php
+│   │   │   │   ├── 📄 DecryptFileRequest.php
+│   │   │   │   └── 📄 RotateKeyRequest.php
+│   │   │   ├── 📁 Scan/
+│   │   │   │   ├── 📄 WebScanRequest.php
+│   │   │   │   ├── 📄 NetworkScanRequest.php
+│   │   │   │   └── 📄 VulnerabilityScanRequest.php
+│   │   │   └── 📁 AI/
+│   │   │       ├── 📄 AIPredictRequest.php
+│   │   │       ├── 📄 AIChatRequest.php
+│   │   │       └── 📄 AIGenerateCriteriaRequest.php
+│   │   │
+│   │   └── 📁 Resources/
+│   │       ├── 📄 UserResource.php
+│   │       ├── 📄 RoleResource.php
+│   │       ├── 📄 DomainResource.php
+│   │       ├── 📄 CriteriaResource.php
+│   │       ├── 📄 AssessmentResource.php
+│   │       ├── 📄 AssessmentDetailResource.php
+│   │       ├── 📄 KeyResource.php
+│   │       ├── 📄 ReportResource.php
+│   │       ├── 📄 DashboardResource.php
+│   │       ├── 📄 NotificationResource.php
+│   │       ├── 📄 LogResource.php
+│   │       ├── 📄 VulnerabilityResource.php
+│   │       ├── 📄 IncidentResource.php
+│   │       ├── 📄 ComplianceResource.php
+│   │       └── 📄 AIPredictionResource.php
+│   │
+│   ├── 📁 Models/
+│   │   ├── 📁 Module01_IAM/
+│   │   │   ├── 📄 User.php
+│   │   │   ├── 📄 Role.php
+│   │   │   ├── 📄 Permission.php
+│   │   │   ├── 📄 UserSession.php
+│   │   │   ├── 📄 MfaToken.php
+│   │   │   ├── 📄 LoginHistory.php
+│   │   │   ├── 📄 Device.php
+│   │   │   ├── 📄 ApiToken.php
+│   │   │   └── 📄 IpWhitelist.php
+│   │   ├── 📁 Module02_Encryption/
+│   │   │   ├── 📄 EncryptionKey.php
+│   │   │   ├── 📄 EncryptedFile.php
+│   │   │   ├── 📄 KeyLog.php
+│   │   │   ├── 📄 VaultItem.php
+│   │   │   └── 📄 DigitalCertificate.php
+│   │   ├── 📁 Module03_WebSecurity/
+│   │   │   ├── 📄 WebScanResult.php
+│   │   │   ├── 📄 SqlInjectionLog.php
+│   │   │   ├── 📄 XssLog.php
+│   │   │   ├── 📄 CsrfToken.php
+│   │   │   └── 📄 SecureHeader.php
+│   │   ├── 📁 Module04_PasswordSecurity/
+│   │   │   ├── 📄 PasswordPolicy.php
+│   │   │   ├── 📄 PasswordHistory.php
+│   │   │   ├── 📄 PasswordLeak.php
+│   │   │   ├── 📄 BruteForceAttempt.php
+│   │   │   └── 📄 OtpCode.php
+│   │   ├── 📁 Module05_UrlSecurity/
+│   │   │   ├── 📄 UrlScanResult.php
+│   │   │   ├── 📄 PhishingUrl.php
+│   │   │   ├── 📄 DomainBlacklist.php
+│   │   │   └── 📄 SafeUrl.php
+│   │   ├── 📁 Module06_ApiSecurity/
+│   │   │   ├── 📄 ApiLog.php
+│   │   │   ├── 📄 ApiKey.php
+│   │   │   ├── 📄 RateLimitLog.php
+│   │   │   └── 📄 ApiEndpoint.php
+│   │   ├── 📁 Module07_SourceCode/
+│   │   │   ├── 📄 CodeScanResult.php
+│   │   │   ├── 📄 DependencyVulnerability.php
+│   │   │   ├── 📄 SecretDetected.php
+│   │   │   └── 📄 GitCommit.php
+│   │   ├── 📁 Module08_DatabaseSecurity/
+│   │   │   ├── 📄 DatabaseAudit.php
+│   │   │   ├── 📄 SqlQueryLog.php
+│   │   │   ├── 📄 SensitiveData.php
+│   │   │   └── 📄 DbUserPrivilege.php
+│   │   ├── 📁 Module09_NetworkSecurity/
+│   │   │   ├── 📄 FirewallRule.php
+│   │   │   ├── 📄 NetworkLog.php
+│   │   │   ├── 📄 PortScan.php
+│   │   │   ├── 📄 TrafficLog.php
+│   │   │   ├── 📄 VpnConnection.php
+│   │   │   └── 📄 DdosEvent.php
+│   │   ├── 📁 Module10_EndpointSecurity/
+│   │   │   ├── 📄 Endpoint.php
+│   │   │   ├── 📄 AntivirusLog.php
+│   │   │   ├── 📄 PatchStatus.php
+│   │   │   ├── 📄 UsbDevice.php
+│   │   │   └── 📄 EndpointHardening.php
+│   │   ├── 📁 Module11_CloudSecurity/
+│   │   │   ├── 📄 CloudResource.php
+│   │   │   ├── 📄 CloudScanResult.php
+│   │   │   ├── 📄 CloudConfigIssue.php
+│   │   │   └── 📄 CloudIamPolicy.php
+│   │   ├── 📁 Module12_ContainerSecurity/
+│   │   │   ├── 📄 ContainerImage.php
+│   │   │   ├── 📄 ContainerScanResult.php
+│   │   │   ├── 📄 KubernetesCluster.php
+│   │   │   └── 📄 RegistryImage.php
+│   │   ├── 📁 Module13_LoggingMonitoring/
+│   │   │   ├── 📄 SecurityLog.php
+│   │   │   ├── 📄 Alert.php
+│   │   │   ├── 📄 ThreatEvent.php
+│   │   │   ├── 📄 LogSource.php
+│   │   │   └── 📄 CorrelationRule.php
+│   │   ├── 📁 Module14_IncidentResponse/
+│   │   │   ├── 📄 Incident.php
+│   │   │   ├── 📄 IncidentComment.php
+│   │   │   ├── 📄 ForensicEvidence.php
+│   │   │   ├── 📄 RecoveryLog.php
+│   │   │   └── 📄 RootCause.php
+│   │   ├── 📁 Module15_RiskAssessment/
+│   │   │   ├── 📄 RiskAssessment.php
+│   │   │   ├── 📄 RiskScore.php
+│   │   │   ├── 📄 Asset.php
+│   │   │   ├── 📄 Threat.php
+│   │   │   └── 📄 RiskTreatment.php
+│   │   ├── 📁 Module16_Compliance/
+│   │   │   ├── 📄 ComplianceCheck.php
+│   │   │   ├── 📄 ComplianceStandard.php
+│   │   │   ├── 📄 ComplianceControl.php
+│   │   │   ├── 📄 Evidence.php
+│   │   │   └── 📄 AuditLog.php
+│   │   ├── 📁 Module17_PhysicalSecurity/
+│   │   │   ├── 📄 AccessLog.php
+│   │   │   ├── 📄 SmartLock.php
+│   │   │   ├── 📄 CctvFootage.php
+│   │   │   ├── 📄 Visitor.php
+│   │   │   └── 📄 BiometricRecord.php
+│   │   ├── 📁 Module18_SecurityAwareness/
+│   │   │   ├── 📄 Training.php
+│   │   │   ├── 📄 TrainingResult.php
+│   │   │   ├── 📄 PhishingSimulation.php
+│   │   │   ├── 📄 QuizAttempt.php
+│   │   │   └── 📄 AwarenessScore.php
+│   │   ├── 📁 Module19_MobileSecurity/
+│   │   │   ├── 📄 MobileDevice.php
+│   │   │   ├── 📄 MobilePolicy.php
+│   │   │   ├── 📄 MobileApp.php
+│   │   │   └── 📄 RemoteWipeLog.php
+│   │   ├── 📁 Module20_IotSecurity/
+│   │   │   ├── 📄 IotDevice.php
+│   │   │   ├── 📄 IotFirmware.php
+│   │   │   ├── 📄 IotTraffic.php
+│   │   │   └── 📄 IotAlert.php
+│   │   ├── 📁 Module21_VulnerabilityManagement/
+│   │   │   ├── 📄 Vulnerability.php
+│   │   │   ├── 📄 CveDetail.php
+│   │   │   ├── 📄 Patch.php
+│   │   │   └── 📄 RemediationTask.php
+│   │   ├── 📁 Module22_EmailSecurity/
+│   │   │   ├── 📄 EmailScan.php
+│   │   │   ├── 📄 SpfRecord.php
+│   │   │   ├── 📄 DkimRecord.php
+│   │   │   ├── 📄 DmarcRecord.php
+│   │   │   └── 📄 PhishingEmail.php
+│   │   ├── 📁 Module23_BackupRecovery/
+│   │   │   ├── 📄 BackupJob.php
+│   │   │   ├── 📄 BackupFile.php
+│   │   │   ├── 📄 DisasterRecoveryPlan.php
+│   │   │   └── 📄 RestoreLog.php
+│   │   ├── 📁 Module24_DevSecOps/
+│   │   │   ├── 📄 CicdScan.php
+│   │   │   ├── 📄 IacTemplate.php
+│   │   │   ├── 📄 SecretScanResult.php
+│   │   │   └── 📄 Sbom.php
+│   │   ├── 📁 Module25_PenetrationTesting/
+│   │   │   ├── 📄 PentestReport.php
+│   │   │   ├── 📄 PentestFinding.php
+│   │   │   ├── 📄 PentestTask.php
+│   │   │   └── 📄 SocialEngineeringLog.php
+│   │   ├── 📁 Module26_AIEngine/
+│   │   │   ├── 📄 AIDetection.php
+│   │   │   ├── 📄 AIAnomaly.php
+│   │   │   ├── 📄 AIChatLog.php
+│   │   │   ├── 📄 AIPrediction.php
+│   │   │   └── 📄 AICriteriaSuggestion.php
+│   │   ├── 📁 Module27_ReportAnalytics/
+│   │   │   ├── 📄 SecurityScore.php
+│   │   │   ├── 📄 DashboardWidget.php
+│   │   │   ├── 📄 Report.php
+│   │   │   ├── 📄 ReportSchedule.php
+│   │   │   └── 📄 Dashboard.php
+│   │   └── 📁 Module28_SystemAdmin/
+│   │       ├── 📄 SystemSetting.php
+│   │       ├── 📄 AuditConfig.php
+│   │       ├── 📄 NotificationSetting.php
+│   │       ├── 📄 ApiSetting.php
+│   │       ├── 📄 BackupSetting.php
+│   │       └── 📄 LanguageSetting.php
+│   │
+│   ├── 📁 Services/
+│   │   ├── 📁 Module01_IAM/
+│   │   │   ├── 📄 AuthService.php
+│   │   │   ├── 📄 MfaService.php
+│   │   │   ├── 📄 RbacService.php
+│   │   │   ├── 📄 JwtService.php
+│   │   │   ├── 📄 SessionService.php
+│   │   │   └── 📄 DeviceFingerprintService.php
+│   │   ├── 📁 Module02_Encryption/
+│   │   │   ├── 📄 AesService.php
+│   │   │   ├── 📄 RsaService.php
+│   │   │   ├── 📄 KeyVaultService.php
+│   │   │   ├── 📄 FileEncryptionService.php
+│   │   │   └── 📄 DigitalSignatureService.php
+│   │   ├── 📁 Module03_WebSecurity/
+│   │   │   ├── 📄 SqlInjectionDetector.php
+│   │   │   ├── 📄 XssDetector.php
+│   │   │   ├── 📄 CsrfProtector.php
+│   │   │   ├── 📄 SsrfDetector.php
+│   │   │   ├── 📄 RceDetector.php
+│   │   │   └── 📄 SecureHeaderService.php
+│   │   ├── 📁 Module04_PasswordSecurity/
+│   │   │   ├── 📄 PasswordStrengthService.php
+│   │   │   ├── 📄 PasswordLeakService.php
+│   │   │   ├── 📄 BruteForceProtectionService.php
+│   │   │   └── 📄 OtpService.php
+│   │   ├── 📁 Module05_UrlSecurity/
+│   │   │   ├── 📄 UrlReputationService.php
+│   │   │   ├── 📄 PhishingDetectionService.php
+│   │   │   ├── 📄 DomainBlacklistService.php
+│   │   │   └── 📄 LinkSandboxService.php
+│   │   ├── 📁 Module06_ApiSecurity/
+│   │   │   ├── 📄 ApiAuthService.php
+│   │   │   ├── 📄 RateLimitService.php
+│   │   │   ├── 📄 ApiGatewayService.php
+│   │   │   └── 📄 TokenRevocationService.php
+│   │   ├── 📁 Module07_SourceCode/
+│   │   │   ├── 📄 SastScannerService.php
+│   │   │   ├── 📄 DependencyScannerService.php
+│   │   │   ├── 📄 SecretDetectionService.php
+│   │   │   └── 📄 GitSecurityService.php
+│   │   ├── 📁 Module08_DatabaseSecurity/
+│   │   │   ├── 📄 DatabaseEncryptionService.php
+│   │   │   ├── 📄 DatabaseAuditService.php
+│   │   │   ├── 📄 SqlMonitorService.php
+│   │   │   └── 📄 DataMaskingService.php
+│   │   ├── 📁 Module09_NetworkSecurity/
+│   │   │   ├── 📄 FirewallService.php
+│   │   │   ├── 📄 IdsIpsService.php
+│   │   │   ├── 📄 NetworkScanService.php
+│   │   │   ├── 📄 TrafficAnalysisService.php
+│   │   │   └── 📄 DdosProtectionService.php
+│   │   ├── 📁 Module10_EndpointSecurity/
+│   │   │   ├── 📄 AntivirusService.php
+│   │   │   ├── 📄 EdrService.php
+│   │   │   ├── 📄 PatchManagementService.php
+│   │   │   └── 📄 DeviceHardeningService.php
+│   │   ├── 📁 Module11_CloudSecurity/
+│   │   │   ├── 📄 AwsSecurityService.php
+│   │   │   ├── 📄 AzureSecurityService.php
+│   │   │   ├── 📄 GcpSecurityService.php
+│   │   │   └── 📄 CloudMisconfigurationService.php
+│   │   ├── 📁 Module12_ContainerSecurity/
+│   │   │   ├── 📄 DockerScanService.php
+│   │   │   ├── 📄 KubernetesScanService.php
+│   │   │   ├── 📄 RegistrySecurityService.php
+│   │   │   └── 📄 ContainerRuntimeService.php
+│   │   ├── 📁 Module13_LoggingMonitoring/
+│   │   │   ├── 📄 SiemService.php
+│   │   │   ├── 📄 AlertService.php
+│   │   │   ├── 📄 ThreatDetectionService.php
+│   │   │   ├── 📄 LogAggregationService.php
+│   │   │   └── 📄 EventCorrelationService.php
+│   │   ├── 📁 Module14_IncidentResponse/
+│   │   │   ├── 📄 IncidentService.php
+│   │   │   ├── 📄 ForensicService.php
+│   │   │   ├── 📄 RecoveryService.php
+│   │   │   ├── 📄 NotificationService.php
+│   │   │   └── 📄 RootCauseAnalysisService.php
+│   │   ├── 📁 Module15_RiskAssessment/
+│   │   │   ├── 📄 RiskScoringService.php
+│   │   │   ├── 📄 RiskMatrixService.php
+│   │   │   ├── 📄 ThreatAnalysisService.php
+│   │   │   └── 📄 AssetValuationService.php
+│   │   ├── 📁 Module16_Compliance/
+│   │   │   ├── 📄 Iso27001Service.php
+│   │   │   ├── 📄 GdprService.php
+│   │   │   ├── 📄 PciDssService.php
+│   │   │   ├── 📄 HipaaService.php
+│   │   │   └── 📄 NistService.php
+│   │   ├── 📁 Module17_PhysicalSecurity/
+│   │   │   ├── 📄 AccessControlService.php
+│   │   │   ├── 📄 SmartLockService.php
+│   │   │   ├── 📄 CctvService.php
+│   │   │   └── 📄 BiometricService.php
+│   │   ├── 📁 Module18_SecurityAwareness/
+│   │   │   ├── 📄 TrainingService.php
+│   │   │   ├── 📄 PhishingSimulationService.php
+│   │   │   ├── 📄 QuizService.php
+│   │   │   └── 📄 AwarenessReportService.php
+│   │   ├── 📁 Module19_MobileSecurity/
+│   │   │   ├── 📄 MdmService.php
+│   │   │   ├── 📄 DevicePolicyService.php
+│   │   │   ├── 📄 RemoteWipeService.php
+│   │   │   └── 📄 SecureContainerService.php
+│   │   ├── 📁 Module20_IotSecurity/
+│   │   │   ├── 📄 FirmwareScanService.php
+│   │   │   ├── 📄 IotAuthService.php
+│   │   │   ├── 📄 IotTrafficService.php
+│   │   │   └── 📄 DeviceIsolationService.php
+│   │   ├── 📁 Module21_VulnerabilityManagement/
+│   │   │   ├── 📄 CveScanService.php
+│   │   │   ├── 📄 VulnerabilityScoringService.php
+│   │   │   ├── 📄 PatchTrackingService.php
+│   │   │   └── 📄 RemediationService.php
+│   │   ├── 📁 Module22_EmailSecurity/
+│   │   │   ├── 📄 SpfDkimDmarcService.php
+│   │   │   ├── 📄 SpamFilterService.php
+│   │   │   ├── 📄 EmailSandboxService.php
+│   │   │   └── 📄 PhishingEmailService.php
+│   │   ├── 📁 Module23_BackupRecovery/
+│   │   │   ├── 📄 BackupService.php
+│   │   │   ├── 📄 DisasterRecoveryService.php
+│   │   │   ├── 📄 RestoreService.php
+│   │   │   └── 📄 BackupEncryptionService.php
+│   │   ├── 📁 Module24_DevSecOps/
+│   │   │   ├── 📄 CicdScanService.php
+│   │   │   ├── 📄 IacSecurityService.php
+│   │   │   ├── 📄 SecretScanService.php
+│   │   │   └── 📄 SbomService.php
+│   │   ├── 📁 Module25_PenetrationTesting/
+│   │   │   ├── 📄 PentestService.php
+│   │   │   ├── 📄 SocialEngineeringService.php
+│   │   │   ├── 📄 WebPentestService.php
+│   │   │   └── 📄 ApiPentestService.php
+│   │   ├── 📁 Module26_AIEngine/
+│   │   │   ├── 📄 AIDetectionService.php
+│   │   │   ├── 📄 AIAnomalyService.php
+│   │   │   ├── 📄 AIChatbotService.php
+│   │   │   ├── 📄 AICriteriaGeneratorService.php
+│   │   │   └── 📄 AIPredictionService.php
+│   │   ├── 📁 Module27_ReportAnalytics/
+│   │   │   ├── 📄 SecurityScoreService.php
+│   │   │   ├── 📄 DashboardService.php
+│   │   │   ├── 📄 ReportService.php
+│   │   │   └── 📄 ExportService.php
+│   │   ├── 📁 Module28_SystemAdmin/
+│   │   │   ├── 📄 UserManagementService.php
+│   │   │   ├── 📄 RoleManagementService.php
+│   │   │   ├── 📄 SystemConfigService.php
+│   │   │   └── 📄 AuditLogService.php
+│   │   └── 📁 Sync/
+│   │       ├── 📄 SyncService.php
+│   │       ├── 📄 FlutterSyncService.php
+│   │       ├── 📄 FirebaseSyncService.php
+│   │       └── 📄 WebSocketService.php
+│   │
+│   ├── 📁 Jobs/
+│   │   ├── 📄 SyncDataToFlutterJob.php
+│   │   ├── 📄 ProcessAISuggestionJob.php
+│   │   ├── 📄 GenerateWeeklyReportJob.php
+│   │   ├── 📄 SendSecurityAlertJob.php
+│   │   ├── 📄 CleanExpiredSessionsJob.php
+│   │   ├── 📄 RotateEncryptionKeysJob.php
+│   │   ├── 📄 RunVulnerabilityScanJob.php
+│   │   ├── 📄 BackupDatabaseJob.php
+│   │   ├── 📄 SendDigestEmailJob.php
+│   │   ├── 📄 UpdateSecurityScoreJob.php
+│   │   └── 📄 ProcessIncidentJob.php
+│   │
+│   ├── 📁 Listeners/
+│   │   ├── 📄 LogKeyVerified.php
+│   │   ├── 📄 SendKeyUsedNotification.php
+│   │   ├── 📄 UpdateSecurityScore.php
+│   │   ├── 📄 GenerateAssessmentReport.php
+│   │   ├── 📄 SyncToFirebase.php
+│   │   ├── 📄 LogUserActivity.php
+│   │   ├── 📄 SendIncidentAlert.php
+│   │   └── 📄 ProcessAIDetection.php
+│   │
+│   └── 📁 Mail/
+│       ├── 📄 KeyGeneratedMail.php
+│       ├── 📄 AssessmentCompleteMail.php
+│       ├── 📄 ReportReadyMail.php
+│       ├── 📄 TwoFactorCodeMail.php
+│       ├── 📄 SecurityAlertMail.php
+│       ├── 📄 IncidentReportMail.php
+│       ├── 📄 WeeklyDigestMail.php
+│       └── 📄 VulnerabilityAlertMail.php
+│
+├── 📁 bootstrap/
+│   ├── 📄 app.php
+│   └── 📁 cache/
+│       ├── 📄 .gitignore
+│       ├── 📄 packages.php
+│       └── 📄 services.php
+│
+├── 📁 config/
+│   ├── 📄 app.php
+│   ├── 📄 auth.php
+│   ├── 📄 broadcasting.php
+│   ├── 📄 cache.php
+│   ├── 📄 cors.php
+│   ├── 📄 database.php
+│   ├── 📄 filesystems.php
+│   ├── 📄 hashing.php
+│   ├── 📄 logging.php
+│   ├── 📄 mail.php
+│   ├── 📄 queue.php
+│   ├── 📄 sanctum.php
+│   ├── 📄 session.php
+│   ├── 📄 view.php
+│   ├── 📄 security.php
+│   ├── 📄 encryption.php
+│   ├── 📄 version.php
+│   ├── 📄 roles.php
+│   ├── 📄 domains.php
+│   ├── 📄 sync.php
+│   ├── 📄 ai.php
+│   ├── 📄 firebase.php
+│   ├── 📄 websockets.php
+│   ├── 📄 rate_limit.php
+│   ├── 📄 mfa.php
+│   ├── 📄 compliance.php
+│   └── 📄 backup.php
+│
+├── 📁 database/
+│   ├── 📁 factories/
+│   │   ├── 📄 UserFactory.php
+│   │   ├── 📄 AssessmentFactory.php
+│   │   ├── 📄 IncidentFactory.php
+│   │   ├── 📄 VulnerabilityFactory.php
+│   │   └── 📄 ReportFactory.php
+│   │
+│   ├── 📁 migrations/
+│   │   ├── 📄 2025_01_01_000001_create_roles_table.php
+│   │   ├── 📄 2025_01_01_000002_create_permissions_table.php
+│   │   ├── 📄 2025_01_01_000003_create_users_table.php
+│   │   ├── 📄 2025_01_01_000004_create_domains_table.php
+│   │   ├── 📄 2025_01_01_000005_create_criteria_table.php
+│   │   ├── 📄 2025_01_01_000006_create_assessments_table.php
+│   │   ├── 📄 2025_01_01_000007_create_version_keys_table.php
+│   │   ├── 📄 2025_01_01_000008_create_key_usage_logs_table.php
+│   │   ├── 📄 2025_01_01_000009_create_role_domain_version_table.php
+│   │   ├── 📄 2025_01_01_000010_create_user_sessions_table.php
+│   │   ├── 📄 2025_01_01_000011_create_mfa_tokens_table.php
+│   │   ├── 📄 2025_01_01_000012_create_login_histories_table.php
+│   │   ├── 📄 2025_01_01_000013_create_encryption_keys_table.php
+│   │   ├── 📄 2025_01_01_000014_create_encrypted_files_table.php
+│   │   ├── 📄 2025_01_01_000015_create_web_scan_results_table.php
+│   │   ├── 📄 2025_01_01_000016_create_sql_injection_logs_table.php
+│   │   ├── 📄 2025_01_01_000017_create_xss_logs_table.php
+│   │   ├── 📄 2025_01_01_000018_create_password_policies_table.php
+│   │   ├── 📄 2025_01_01_000019_create_phishing_urls_table.php
+│   │   ├── 📄 2025_01_01_000020_create_api_logs_table.php
+│   │   ├── 📄 2025_01_01_000021_create_code_scan_results_table.php
+│   │   ├── 📄 2025_01_01_000022_create_database_audits_table.php
+│   │   ├── 📄 2025_01_01_000023_create_network_logs_table.php
+│   │   ├── 📄 2025_01_01_000024_create_endpoints_table.php
+│   │   ├── 📄 2025_01_01_000025_create_cloud_resources_table.php
+│   │   ├── 📄 2025_01_01_000026_create_container_scans_table.php
+│   │   ├── 📄 2025_01_01_000027_create_security_logs_table.php
+│   │   ├── 📄 2025_01_01_000028_create_alerts_table.php
+│   │   ├── 📄 2025_01_01_000029_create_incidents_table.php
+│   │   ├── 📄 2025_01_01_000030_create_incident_comments_table.php
+│   │   ├── 📄 2025_01_01_000031_create_risk_assessments_table.php
+│   │   ├── 📄 2025_01_01_000032_create_compliance_checks_table.php
+│   │   ├── 📄 2025_01_01_000033_create_physical_access_logs_table.php
+│   │   ├── 📄 2025_01_01_000034_create_trainings_table.php
+│   │   ├── 📄 2025_01_01_000035_create_mobile_devices_table.php
+│   │   ├── 📄 2025_01_01_000036_create_iot_devices_table.php
+│   │   ├── 📄 2025_01_01_000037_create_vulnerabilities_table.php
+│   │   ├── 📄 2025_01_01_000038_create_email_scans_table.php
+│   │   ├── 📄 2025_01_01_000039_create_backup_jobs_table.php
+│   │   ├── 📄 2025_01_01_000040_create_cicd_scans_table.php
+│   │   ├── 📄 2025_01_01_000041_create_pentest_reports_table.php
+│   │   ├── 📄 2025_01_01_000042_create_ai_detections_table.php
+│   │   ├── 📄 2025_01_01_000043_create_ai_chat_logs_table.php
+│   │   ├── 📄 2025_01_01_000044_create_ai_criteria_suggestions_table.php
+│   │   ├── 📄 2025_01_01_000045_create_security_scores_table.php
+│   │   ├── 📄 2025_01_01_000046_create_reports_table.php
+│   │   ├── 📄 2025_01_01_000047_create_notifications_table.php
+│   │   ├── 📄 2025_01_01_000048_create_user_activity_logs_table.php
+│   │   ├── 📄 2025_01_01_000049_create_sync_logs_table.php
+│   │   ├── 📄 2025_01_01_000050_create_system_settings_table.php
+│   │   └── 📄 2025_01_01_000051_create_audit_logs_table.php
+│   │
+│   ├── 📁 seeders/
+│   │   ├── 📄 DatabaseSeeder.php
+│   │   ├── 📄 RoleSeeder.php
+│   │   ├── 📄 DomainSeeder.php
+│   │   ├── 📄 CriteriaSeeder.php
+│   │   ├── 📄 PermissionSeeder.php
+│   │   ├── 📄 RoleDomainVersionSeeder.php
+│   │   ├── 📄 AdminUserSeeder.php
+│   │   ├── 📄 TestDataSeeder.php
+│   │   └── 📄 ComplianceStandardsSeeder.php
+│   │
+│   └── 📁 data/
+│       ├── 📄 criteria_600_items.json
+│       ├── 📄 compliance_controls.json
+│       ├── 📄 vulnerability_database.json
+│       └── 📄 risk_scenarios.json
+│
+├── 📁 public/
+│   ├── 📄 index.php
+│   ├── 📄 .htaccess
+│   ├── 📄 robots.txt
+│   ├── 📄 favicon.ico
+│   │
+│   └── 📁 assets/
+│       ├── 📁 css/
+│       │   ├── 📄 app.css
+│       │   └── 📄 admin.css
+│       ├── 📁 js/
+│       │   ├── 📄 app.js
+│       │   └── 📄 admin.js
+│       ├── 📁 images/
+│       │   ├── 📄 logo.png
+│       │   └── 📄 favicon.png
+│       └── 📁 vendors/
+│           ├── 📁 bootstrap/
+│           ├── 📁 jquery/
+│           └── 📁 chartjs/
+│
+├── 📁 resources/
+│   ├── 📁 css/
+│   │   └── 📄 app.css
+│   ├── 📁 js/
+│   │   ├── 📄 app.js
+│   │   └── 📄 bootstrap.js
+│   ├── 📁 lang/
+│   │   ├── 📁 en/
+│   │   │   ├── 📄 auth.php
+│   │   │   ├── 📄 pagination.php
+│   │   │   ├── 📄 passwords.php
+│   │   │   ├── 📄 validation.php
+│   │   │   ├── 📄 roles.php
+│   │   │   ├── 📄 domains.php
+│   │   │   ├── 📄 criteria.php
+│   │   │   ├── 📄 errors.php
+│   │   │   ├── 📄 security.php
+│   │   │   ├── 📄 compliance.php
+│   │   │   └── 📄 ai.php
+│   │   └── 📁 vi/
+│   │       └── ...
+│   │
+│   └── 📁 views/
+│       └── 📁 admin/
+│           ├── 📁 layouts/
+│           │   ├── 📄 app.blade.php
+│           │   ├── 📄 sidebar.blade.php
+│           │   └── 📄 header.blade.php
+│           ├── 📄 dashboard.blade.php
+│           ├── 📁 security-score/
+│           │   ├── 📄 index.blade.php
+│           │   └── 📄 details.blade.php
+│           ├── 📁 roles/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 create.blade.php
+│           │   ├── 📄 edit.blade.php
+│           │   └── 📄 permissions.blade.php
+│           ├── 📁 users/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 create.blade.php
+│           │   ├── 📄 edit.blade.php
+│           │   └── 📄 view.blade.php
+│           ├── 📁 domains/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 create.blade.php
+│           │   └── 📄 edit.blade.php
+│           ├── 📁 criteria/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 create.blade.php
+│           │   ├── 📄 edit.blade.php
+│           │   ├── 📄 import.blade.php
+│           │   └── 📄 ai-suggestions.blade.php
+│           ├── 📁 keys/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 generate.blade.php
+│           │   └── 📄 logs.blade.php
+│           ├── 📁 assessments/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 view.blade.php
+│           │   └── 📄 review.blade.php
+│           ├── 📁 incidents/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 create.blade.php
+│           │   ├── 📄 view.blade.php
+│           │   └── 📄 resolve.blade.php
+│           ├── 📁 vulnerabilities/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 view.blade.php
+│           │   └── 📄 remediate.blade.php
+│           ├── 📁 compliance/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 iso27001.blade.php
+│           │   ├── 📄 gdpr.blade.php
+│           │   ├── 📄 pci-dss.blade.php
+│           │   └── 📄 audit.blade.php
+│           ├── 📁 reports/
+│           │   ├── 📄 index.blade.php
+│           │   ├── 📄 generate.blade.php
+│           │   ├── 📄 view.blade.php
+│           │   └── 📄 schedule.blade.php
+│           ├── 📁 ai/
+│           │   ├── 📄 dashboard.blade.php
+│           │   ├── 📄 threat-detection.blade.php
+│           │   ├── 📄 chat.blade.php
+│           │   ├── 📄 generate-criteria.blade.php
+│           │   └── 📄 predictions.blade.php
+│           ├── 📁 sync/
+│           │   ├── 📄 status.blade.php
+│           │   ├── 📄 logs.blade.php
+│           │   └── 📄 manual-sync.blade.php
+│           ├── 📁 logs/
+│           │   ├── 📄 security-logs.blade.php
+│           │   ├── 📄 audit-logs.blade.php
+│           │   ├── 📄 access-logs.blade.php
+│           │   └── 📄 api-logs.blade.php
+│           └── 📁 settings/
+│               ├── 📄 general.blade.php
+│               ├── 📄 security.blade.php
+│               ├── 📄 notification.blade.php
+│               ├── 📄 backup.blade.php
+│               └── 📄 api.blade.php
+│
+├── 📁 routes/
+│   ├── 📄 api.php
+│   ├── 📄 web.php
+│   ├── 📄 channels.php
+│   └── 📄 console.php
+│
+├── 📁 storage/
+│   ├── 📁 app/
+│   │   ├── 📁 public/
+│   │   ├── 📁 reports/
+│   │   ├── 📁 exports/
+│   │   ├── 📁 backups/
+│   │   └── 📁 encrypted/
+│   ├── 📁 framework/
+│   │   ├── 📁 cache/
+│   │   ├── 📁 sessions/
+│   │   ├── 📁 testing/
+│   │   └── 📁 views/
+│   └── 📁 logs/
+│       ├── 📄 laravel.log
+│       ├── 📄 security.log
+│       ├── 📄 audit.log
+│       ├── 📄 api.log
+│       ├── 📄 sync.log
+│       └── 📄 ai.log
+│
+└── 📁 tests/
+    ├── 📄 TestCase.php
+    ├── 📄 CreatesApplication.php
+    ├── 📁 Feature/
+    │   ├── 📄 AuthTest.php
+    │   ├── 📄 RoleTest.php
+    │   ├── 📄 KeyTest.php
+    │   ├── 📄 AssessmentTest.php
+    │   ├── 📄 VersionAccessTest.php
+    │   ├── 📄 EncryptionTest.php
+    │   ├── 📄 WebSecurityTest.php
+    │   ├── 📄 ApiSecurityTest.php
+    │   ├── 📄 IncidentTest.php
+    │   ├── 📄 ComplianceTest.php
+    │   ├── 📄 AITest.php
+    │   └── 📄 SyncTest.php
+    └── 📁 Unit/
+        ├── 📄 KeyServiceTest.php
+        ├── 📄 VersionServiceTest.php
+        ├── 📄 EncryptionServiceTest.php
+        ├── 📄 AIServiceTest.php
+        ├── 📄 PasswordStrengthTest.php
+        ├── 📄 SqlInjectionDetectorTest.php
+        └── 📄 RiskScoringTest.php
+
+# 📁 CẤU TRÚC CHI TIẾT TỪNG FILE - MOBILE_FLUTTER
+
+## FLUTTER MOBILE APP (ANDROID/IOS)
+
+Dưới đây là **cấu trúc thư mục chi tiết từng file** cho phần `mobile_flutter/`:
+
+---
+
+## 📁 CẤU TRÚC TỔNG THỂ
+
+```
+mobile_flutter/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 .metadata
+├── 📄 analysis_options.yaml
+├── 📄 pubspec.yaml
+├── 📄 pubspec.lock
+├── 📄 README.md
+├── 📄 firebase.json
+├── 📄 google-services.json
+├── 📄 GoogleService-Info.plist
+│
+├── 📁 android/
+├── 📁 ios/
+├── 📁 assets/
+├── 📁 lib/
+├── 📁 test/
+└── 📁 web/
+```
+
+---
+
+## 📁 1. THƯ MỤC ANDROID
+
+```
+android/
+│
+├── 📄 .gitignore
+├── 📄 build.gradle
+├── 📄 settings.gradle
+├── 📄 gradle.properties
+├── 📄 gradlew
+├── 📄 gradlew.bat
+├── 📄 local.properties
+│
+├── 📁 gradle/
+│   └── 📁 wrapper/
+│       ├── 📄 gradle-wrapper.jar
+│       └── 📄 gradle-wrapper.properties
+│
+└── 📁 app/
+    ├── 📄 build.gradle
+    ├── 📄 proguard-rules.pro
+    │
+    ├── 📁 src/
+    │   ├── 📁 main/
+    │   │   ├── 📄 AndroidManifest.xml
+    │   │   │
+    │   │   ├── 📁 java/
+    │   │   │   └── 📁 io/
+    │   │   │       └── 📁 flutter/
+    │   │   │           └── 📁 plugins/
+    │   │   │               └── 📄 GeneratedPluginRegistrant.java
+    │   │   │
+    │   │   ├── 📁 kotlin/
+    │   │   │   └── 📁 com/
+    │   │   │       └── 📁 example/
+    │   │   │           └── 📁 security_app/
+    │   │   │               ├── 📄 MainActivity.kt
+    │   │   │               └── 📄 SplashActivity.kt
+    │   │   │
+    │   │   ├── 📁 res/
+    │   │   │   ├── 📁 drawable/
+    │   │   │   │   ├── 📄 launch_background.xml
+    │   │   │   │   ├── 📄 ic_launcher_background.xml
+    │   │   │   │   └── 📄 ic_launcher_foreground.xml
+    │   │   │   ├── 📁 drawable-v21/
+    │   │   │   │   └── 📄 launch_background.xml
+    │   │   │   ├── 📁 mipmap-hdpi/
+    │   │   │   │   ├── 📄 ic_launcher.png
+    │   │   │   │   └── 📄 ic_launcher_round.png
+    │   │   │   ├── 📁 mipmap-mdpi/
+    │   │   │   │   ├── 📄 ic_launcher.png
+    │   │   │   │   └── 📄 ic_launcher_round.png
+    │   │   │   ├── 📁 mipmap-xhdpi/
+    │   │   │   │   ├── 📄 ic_launcher.png
+    │   │   │   │   └── 📄 ic_launcher_round.png
+    │   │   │   ├── 📁 mipmap-xxhdpi/
+    │   │   │   │   ├── 📄 ic_launcher.png
+    │   │   │   │   └── 📄 ic_launcher_round.png
+    │   │   │   ├── 📁 mipmap-xxxhdpi/
+    │   │   │   │   ├── 📄 ic_launcher.png
+    │   │   │   │   └── 📄 ic_launcher_round.png
+    │   │   │   ├── 📁 values/
+    │   │   │   │   ├── 📄 strings.xml
+    │   │   │   │   ├── 📄 styles.xml
+    │   │   │   │   └── 📄 colors.xml
+    │   │   │   ├── 📁 values-night/
+    │   │   │   │   └── 📄 styles.xml
+    │   │   │   └── 📁 xml/
+    │   │   │       └── 📄 network_security_config.xml
+    │   │   │
+    │   │   └── 📁 assets/
+    │   │       └── 📄 flutter_assets/
+    │   │
+    │   ├── 📁 debug/
+    │   │   └── 📄 AndroidManifest.xml
+    │   │
+    │   ├── 📁 profile/
+    │   │   └── 📄 AndroidManifest.xml
+    │   │
+    │   └── 📁 test/
+    │       └── 📁 java/
+    │           └── 📁 com/
+    │               └── 📁 example/
+    │                   └── 📁 security_app/
+    │                       └── 📄 ExampleUnitTest.java
+    │
+    └── 📄 google-services.json
+```
+
+---
+
+## 📁 2. THƯ MỤC IOS
+
+```
+ios/
+│
+├── 📄 .gitignore
+├── 📄 Podfile
+├── 📄 Podfile.lock
+│
+├── 📁 Flutter/
+│   ├── 📄 AppFrameworkInfo.plist
+│   ├── 📄 Debug.xcconfig
+│   ├── 📄 Release.xcconfig
+│   ├── 📄 Generated.xcconfig
+│   └── 📄 flutter_export_environment.sh
+│
+├── 📁 Runner/
+│   ├── 📄 Info.plist
+│   ├── 📄 Runner-Bridging-Header.h
+│   ├── 📄 main.m
+│   ├── 📄 AppDelegate.swift
+│   ├── 📄 GeneratedPluginRegistrant.h
+│   ├── 📄 GeneratedPluginRegistrant.m
+│   │
+│   ├── 📁 Assets.xcassets/
+│   │   ├── 📄 AppIcon.appiconset/
+│   │   │   ├── 📄 Contents.json
+│   │   │   ├── 📄 icon-20.png
+│   │   │   ├── 📄 icon-29.png
+│   │   │   ├── 📄 icon-40.png
+│   │   │   ├── 📄 icon-58.png
+│   │   │   ├── 📄 icon-60.png
+│   │   │   ├── 📄 icon-76.png
+│   │   │   ├── 📄 icon-80.png
+│   │   │   ├── 📄 icon-87.png
+│   │   │   ├── 📄 icon-120.png
+│   │   │   ├── 📄 icon-152.png
+│   │   │   ├── 📄 icon-167.png
+│   │   │   ├── 📄 icon-180.png
+│   │   │   └── 📄 icon-1024.png
+│   │   │
+│   │   ├── 📄 LaunchImage.imageset/
+│   │   │   ├── 📄 Contents.json
+│   │   │   ├── 📄 LaunchImage.png
+│   │   │   ├── 📄 LaunchImage@2x.png
+│   │   │   └── 📄 LaunchImage@3x.png
+│   │   │
+│   │   └── 📄 splash.imageset/
+│   │       ├── 📄 Contents.json
+│   │       └── 📄 splash.png
+│   │
+│   ├── 📁 Base.lproj/
+│   │   ├── 📄 LaunchScreen.storyboard
+│   │   └── 📄 Main.storyboard
+│   │
+│   └── 📄 GoogleService-Info.plist
+│
+├── 📁 Runner.xcodeproj/
+│   ├── 📄 project.pbxproj
+│   ├── 📁 project.xcworkspace/
+│   │   ├── 📄 contents.xcworkspacedata
+│   │   └── 📁 xcshareddata/
+│   │       └── 📄 IDEWorkspaceChecks.plist
+│   │
+│   └── 📁 xcshareddata/
+│       └── 📁 xcschemes/
+│           └── 📄 Runner.xcscheme
+│
+├── 📁 Runner.xcworkspace/
+│   ├── 📄 contents.xcworkspacedata
+│   └── 📁 xcshareddata/
+│       ├── 📄 IDEWorkspaceChecks.plist
+│       └── 📁 swiftpm/
+│
+└── 📁 RunnerTests/
+    └── 📄 RunnerTests.swift
+```
+
+---
+
+## 📁 3. THƯ MỤC ASSETS
+
+```
+assets/
+│
+├── 📁 images/
+│   ├── 📄 logo.png
+│   ├── 📄 logo_white.png
+│   ├── 📄 splash_background.png
+│   ├── 📄 onboarding_1.png
+│   ├── 📄 onboarding_2.png
+│   ├── 📄 onboarding_3.png
+│   ├── 📄 empty_state.png
+│   ├── 📄 error_state.png
+│   ├── 📄 no_internet.png
+│   ├── 📄 verified.png
+│   ├── 📄 lock.png
+│   ├── 📄 key.png
+│   │
+│   └── 📁 icons/
+│       ├── 📄 ic_home.png
+│       ├── 📄 ic_home_active.png
+│       ├── 📄 ic_assessment.png
+│       ├── 📄 ic_assessment_active.png
+│       ├── 📄 ic_report.png
+│       ├── 📄 ic_report_active.png
+│       ├── 📄 ic_incident.png
+│       ├── 📄 ic_incident_active.png
+│       ├── 📄 ic_profile.png
+│       ├── 📄 ic_profile_active.png
+│       ├── 📄 ic_notification.png
+│       ├── 📄 ic_settings.png
+│       ├── 📄 ic_lock.png
+│       ├── 📄 ic_key.png
+│       ├── 📄 ic_scan.png
+│       ├── 📄 ic_ai.png
+│       ├── 📄 ic_compliance.png
+│       ├── 📄 ic_vulnerability.png
+│       ├── 📄 ic_security_score.png
+│       ├── 📄 ic_sync.png
+│       ├── 📄 ic_offline.png
+│       ├── 📄 ic_online.png
+│       ├── 📄 ic_dark_mode.png
+│       ├── 📄 ic_language.png
+│       ├── 📄 ic_logout.png
+│       ├── 📄 ic_delete.png
+│       ├── 📄 ic_edit.png
+│       ├── 📄 ic_add.png
+│       ├── 📄 ic_search.png
+│       ├── 📄 ic_filter.png
+│       ├── 📄 ic_sort.png
+│       ├── 📄 ic_share.png
+│       ├── 📄 ic_download.png
+│       ├── 📄 ic_upload.png
+│       └── 📄 ic_verified.png
+│
+├── 📁 fonts/
+│   ├── 📄 Roboto-Regular.ttf
+│   ├── 📄 Roboto-Medium.ttf
+│   ├── 📄 Roboto-Bold.ttf
+│   ├── 📄 Roboto-Light.ttf
+│   ├── 📄 Roboto-Italic.ttf
+│   ├── 📄 OpenSans-Regular.ttf
+│   ├── 📄 OpenSans-Bold.ttf
+│   ├── 📄 OpenSans-Light.ttf
+│   ├── 📄 Montserrat-Regular.ttf
+│   ├── 📄 Montserrat-Bold.ttf
+│   ├── 📄 Lato-Regular.ttf
+│   ├── 📄 Lato-Bold.ttf
+│   ├── 📄 Poppins-Regular.ttf
+│   ├── 📄 Poppins-Bold.ttf
+│   └── 📄 MaterialIcons-Regular.ttf
+│
+├── 📁 animations/
+│   ├── 📄 loading.json
+│   ├── 📄 loading_blue.json
+│   ├── 📄 success.json
+│   ├── 📄 error.json
+│   ├── 📄 empty.json
+│   ├── 📄 scan.json
+│   ├── 📄 ai_thinking.json
+│   ├── 📄 security_scan.json
+│   ├── 📄 verified.json
+│   ├── 📄 unlocking.json
+│   ├── 📄 sync.json
+│   ├── 📄 offline.json
+│   ├── 📄 online.json
+│   ├── 📄 threat_detected.json
+│   └── 📄 protected.json
+│
+├── 📁 translations/
+│   ├── 📄 en.json
+│   ├── 📄 vi.json
+│   ├── 📄 ja.json
+│   ├── 📄 ko.json
+│   ├── 📄 zh.json
+│   ├── 📄 fr.json
+│   ├── 📄 de.json
+│   ├── 📄 es.json
+│   └── 📄 ru.json
+│
+└── 📁 certificates/
+    ├── 📄 api_certificate.pem
+    └── 📄 ssl_certificate.pem
+```
+
+---
+
+## 📁 4. THƯ MỤC LIB (CHÍNH)
+
+```
+lib/
+│
+├── 📄 main.dart
+│
+├── 📁 core/
+│   ├── 📁 constants/
+│   │   ├── 📄 api_constants.dart
+│   │   ├── 📄 app_constants.dart
+│   │   ├── 📄 role_constants.dart
+│   │   ├── 📄 version_config.dart
+│   │   ├── 📄 sync_constants.dart
+│   │   └── 📄 storage_keys.dart
+│   │
+│   ├── 📁 role/
+│   │   ├── 📄 role_permissions.dart
+│   │   ├── 📄 role_checker.dart
+│   │   └── 📄 role_guard.dart
+│   │
+│   ├── 📁 utils/
+│   │   ├── 📄 secure_storage.dart
+│   │   ├── 📄 logger.dart
+│   │   ├── 📄 validators.dart
+│   │   ├── 📄 network_checker.dart
+│   │   ├── 📄 encryption_helper.dart
+│   │   ├── 📄 biometric_helper.dart
+│   │   ├── 📄 date_helper.dart
+│   │   ├── 📄 permission_helper.dart
+│   │   ├── 📄 file_helper.dart
+│   │   ├── 📄 share_helper.dart
+│   │   └── 📄 image_picker_helper.dart
+│   │
+│   ├── 📁 themes/
+│   │   ├── 📄 app_theme.dart
+│   │   ├── 📄 dark_theme.dart
+│   │   ├── 📄 light_theme.dart
+│   │   ├── 📄 color_palette.dart
+│   │   └── 📄 text_styles.dart
+│   │
+│   ├── 📁 routes/
+│   │   ├── 📄 app_routes.dart
+│   │   ├── 📄 route_names.dart
+│   │   └── 📄 route_generator.dart
+│   │
+│   └── 📁 extensions/
+│       ├── 📄 string_extension.dart
+│       ├── 📄 date_extension.dart
+│       ├── 📄 context_extension.dart
+│       ├── 📄 widget_extension.dart
+│       ├── 📄 list_extension.dart
+│       └── 📄 double_extension.dart
+│
+├── 📁 data/
+│   ├── 📁 models/
+│   │   ├── 📄 user_model.dart
+│   │   ├── 📄 role_model.dart
+│   │   ├── 📄 permission_model.dart
+│   │   ├── 📄 domain_model.dart
+│   │   ├── 📄 criteria_model.dart
+│   │   ├── 📄 assessment_model.dart
+│   │   ├── 📄 assessment_detail_model.dart
+│   │   ├── 📄 key_model.dart
+│   │   ├── 📄 report_model.dart
+│   │   ├── 📄 incident_model.dart
+│   │   ├── 📄 vulnerability_model.dart
+│   │   ├── 📄 compliance_model.dart
+│   │   ├── 📄 sync_queue_model.dart
+│   │   ├── 📄 sync_metadata_model.dart
+│   │   ├── 📄 notification_model.dart
+│   │   ├── 📄 device_model.dart
+│   │   ├── 📄 session_model.dart
+│   │   ├── 📄 log_model.dart
+│   │   ├── 📄 setting_model.dart
+│   │   ├── 📄 api_response_model.dart
+│   │   └── 📄 error_model.dart
+│   │
+│   ├── 📁 repositories/
+│   │   ├── 📄 auth_repository.dart
+│   │   ├── 📄 assessment_repository.dart
+│   │   ├── 📄 key_repository.dart
+│   │   ├── 📄 report_repository.dart
+│   │   ├── 📄 sync_repository.dart
+│   │   ├── 📄 notification_repository.dart
+│   │   ├── 📄 user_repository.dart
+│   │   ├── 📄 setting_repository.dart
+│   │   ├── 📄 incident_repository.dart
+│   │   ├── 📄 vulnerability_repository.dart
+│   │   └── 📄 compliance_repository.dart
+│   │
+│   └── 📁 datasources/
+│       ├── 📁 remote/
+│       │   ├── 📄 api_service.dart
+│       │   ├── 📄 api_client.dart
+│       │   ├── 📄 sync_api.dart
+│       │   ├── 📄 web_socket_service.dart
+│       │   ├── 📄 auth_api.dart
+│       │   ├── 📄 assessment_api.dart
+│       │   ├── 📄 key_api.dart
+│       │   ├── 📄 report_api.dart
+│       │   │
+│       │   └── 📁 interceptors/
+│       │       ├── 📄 auth_interceptor.dart
+│       │       ├── 📄 retry_interceptor.dart
+│       │       ├── 📄 logging_interceptor.dart
+│       │       ├── 📄 cache_interceptor.dart
+│       │       ├── 📄 offline_interceptor.dart
+│       │       ├── 📄 timeout_interceptor.dart
+│       │       ├── 📄 language_interceptor.dart
+│       │       └── 📄 compress_interceptor.dart
+│       │
+│       └── 📁 local/
+│           ├── 📄 local_storage.dart
+│           ├── 📄 sync_database.dart
+│           ├── 📄 offline_queue.dart
+│           ├── 📄 hive_service.dart
+│           ├── 📄 hive_adapters.dart
+│           ├── 📄 sync_metadata_store.dart
+│           ├── 📄 cache_manager.dart
+│           ├── 📄 migration_helper.dart
+│           ├── 📄 database_helper.dart
+│           ├── 📄 shared_prefs_helper.dart
+│           └── 📄 file_storage_helper.dart
+│
+├── 📁 services/
+│   ├── 📁 sync/
+│   │   ├── 📄 sync_engine.dart
+│   │   ├── 📄 sync_scheduler.dart
+│   │   ├── 📄 sync_monitor.dart
+│   │   ├── 📄 background_sync.dart
+│   │   ├── 📄 realtime_sync.dart
+│   │   ├── 📄 batch_sync.dart
+│   │   ├── 📄 incremental_sync.dart
+│   │   ├── 📄 conflict_resolver.dart
+│   │   ├── 📄 sync_health_check.dart
+│   │   ├── 📄 sync_strategy.dart
+│   │   └── 📄 sync_queue_processor.dart
+│   │
+│   ├── 📁 offline/
+│   │   ├── 📄 offline_queue_manager.dart
+│   │   ├── 📄 offline_cache.dart
+│   │   ├── 📄 offline_sync_trigger.dart
+│   │   ├── 📄 offline_data_validator.dart
+│   │   ├── 📄 offline_storage_manager.dart
+│   │   └── 📄 offline_request_builder.dart
+│   │
+│   ├── 📁 api/
+│   │   ├── 📄 api_endpoints.dart
+│   │   ├── 📄 api_response.dart
+│   │   ├── 📄 api_error_handler.dart
+│   │   ├── 📄 api_version_manager.dart
+│   │   ├── 📄 api_response_parser.dart
+│   │   └── 📄 api_request_builder.dart
+│   │
+│   └── 📁 auth/
+│       ├── 📄 token_manager.dart
+│       ├── 📄 session_manager.dart
+│       ├── 📄 mfa_service.dart
+│       ├── 📄 biometric_auth.dart
+│       ├── 📄 token_refresher.dart
+│       └── 📄 auth_state_manager.dart
+│
+├── 📁 presentation/
+│   ├── 📁 providers/
+│   │   ├── 📄 auth_provider.dart
+│   │   ├── 📄 assessment_provider.dart
+│   │   ├── 📄 key_provider.dart
+│   │   ├── 📄 report_provider.dart
+│   │   ├── 📄 sync_provider.dart
+│   │   ├── 📄 notification_provider.dart
+│   │   ├── 📄 theme_provider.dart
+│   │   ├── 📄 language_provider.dart
+│   │   ├── 📄 user_provider.dart
+│   │   ├── 📄 incident_provider.dart
+│   │   ├── 📄 vulnerability_provider.dart
+│   │   ├── 📄 compliance_provider.dart
+│   │   ├── 📄 setting_provider.dart
+│   │   └── 📄 network_provider.dart
+│   │
+│   ├── 📁 screens/
+│   │   ├── 📄 splash_screen.dart
+│   │   │
+│   │   ├── 📁 auth/
+│   │   │   ├── 📄 login_screen.dart
+│   │   │   ├── 📄 register_screen.dart
+│   │   │   ├── 📄 two_factor_screen.dart
+│   │   │   ├── 📄 forgot_password_screen.dart
+│   │   │   ├── 📄 biometric_login_screen.dart
+│   │   │   ├── 📄 otp_verification_screen.dart
+│   │   │   └── 📄 change_password_screen.dart
+│   │   │
+│   │   ├── 📁 home/
+│   │   │   ├── 📄 home_screen.dart
+│   │   │   ├── 📄 dashboard_screen.dart
+│   │   │   ├── 📄 security_score_screen.dart
+│   │   │   ├── 📄 domain_list_screen.dart
+│   │   │   ├── 📄 criteria_list_screen.dart
+│   │   │   └── 📄 quick_scan_screen.dart
+│   │   │
+│   │   ├── 📁 assessment/
+│   │   │   ├── 📄 assessment_screen.dart
+│   │   │   ├── 📄 assessment_history.dart
+│   │   │   ├── 📄 assessment_detail.dart
+│   │   │   ├── 📄 submit_assessment_screen.dart
+│   │   │   ├── 📄 assessment_review_screen.dart
+│   │   │   ├── 📄 assessment_progress_screen.dart
+│   │   │   └── 📄 assessment_result_screen.dart
+│   │   │
+│   │   ├── 📁 key/
+│   │   │   ├── 📄 key_verification_screen.dart
+│   │   │   ├── 📄 key_request_screen.dart
+│   │   │   ├── 📄 key_list_screen.dart
+│   │   │   └── 📄 key_detail_screen.dart
+│   │   │
+│   │   ├── 📁 incident/
+│   │   │   ├── 📄 incident_list_screen.dart
+│   │   │   ├── 📄 incident_detail_screen.dart
+│   │   │   ├── 📄 report_incident_screen.dart
+│   │   │   ├── 📄 incident_response_screen.dart
+│   │   │   ├── 📄 incident_timeline_screen.dart
+│   │   │   └── 📄 incident_closed_screen.dart
+│   │   │
+│   │   ├── 📁 vulnerability/
+│   │   │   ├── 📄 vulnerability_list_screen.dart
+│   │   │   ├── 📄 vulnerability_detail_screen.dart
+│   │   │   ├── 📄 scan_vulnerability_screen.dart
+│   │   │   ├── 📄 remediation_screen.dart
+│   │   │   ├── 📄 vulnerability_tracker_screen.dart
+│   │   │   └── 📄 patch_management_screen.dart
+│   │   │
+│   │   ├── 📁 compliance/
+│   │   │   ├── 📄 compliance_dashboard_screen.dart
+│   │   │   ├── 📄 iso27001_screen.dart
+│   │   │   ├── 📄 gdpr_screen.dart
+│   │   │   ├── 📄 pci_dss_screen.dart
+│   │   │   ├── 📄 hipaa_screen.dart
+│   │   │   ├── 📄 nist_screen.dart
+│   │   │   ├── 📄 audit_evidence_screen.dart
+│   │   │   └── 📄 compliance_report_screen.dart
+│   │   │
+│   │   ├── 📁 report/
+│   │   │   ├── 📄 report_list_screen.dart
+│   │   │   ├── 📄 report_detail_screen.dart
+│   │   │   ├── 📄 generate_report_screen.dart
+│   │   │   ├── 📄 executive_report_screen.dart
+│   │   │   ├── 📄 export_report_screen.dart
+│   │   │   ├── 📄 schedule_report_screen.dart
+│   │   │   └── 📄 share_report_screen.dart
+│   │   │
+│   │   ├── 📁 ai/
+│   │   │   ├── 📄 ai_dashboard_screen.dart
+│   │   │   ├── 📄 threat_detection_screen.dart
+│   │   │   ├── 📄 anomaly_detection_screen.dart
+│   │   │   ├── 📄 ai_chatbot_screen.dart
+│   │   │   ├── 📄 suggest_criteria_screen.dart
+│   │   │   ├── 📄 auto_evaluate_screen.dart
+│   │   │   ├── 📄 risk_prediction_screen.dart
+│   │   │   ├── 📄 malware_analysis_screen.dart
+│   │   │   └── 📄 ai_recommendation_screen.dart
+│   │   │
+│   │   ├── 📁 security/
+│   │   │   ├── 📄 web_security_screen.dart
+│   │   │   ├── 📄 network_security_screen.dart
+│   │   │   ├── 📄 database_security_screen.dart
+│   │   │   ├── 📄 cloud_security_screen.dart
+│   │   │   ├── 📄 container_security_screen.dart
+│   │   │   ├── 📄 mobile_security_screen.dart
+│   │   │   ├── 📄 iot_security_screen.dart
+│   │   │   ├── 📄 api_security_screen.dart
+│   │   │   └── 📄 source_code_security_screen.dart
+│   │   │
+│   │   ├── 📁 admin/
+│   │   │   ├── 📄 user_management_screen.dart
+│   │   │   ├── 📄 role_management_screen.dart
+│   │   │   ├── 📄 key_management_screen.dart
+│   │   │   ├── 📄 system_logs_screen.dart
+│   │   │   ├── 📄 backup_restore_screen.dart
+│   │   │   ├── 📄 system_settings_screen.dart
+│   │   │   ├── 📄 audit_log_screen.dart
+│   │   │   ├── 📄 compliance_management_screen.dart
+│   │   │   ├── 📄 incident_management_screen.dart
+│   │   │   └── 📄 vulnerability_management_screen.dart
+│   │   │
+│   │   ├── 📁 profile/
+│   │   │   ├── 📄 profile_screen.dart
+│   │   │   ├── 📄 edit_profile_screen.dart
+│   │   │   ├── 📄 change_password_screen.dart
+│   │   │   ├── 📄 two_factor_setup_screen.dart
+│   │   │   ├── 📄 devices_screen.dart
+│   │   │   ├── 📄 activity_log_screen.dart
+│   │   │   ├── 📄 notification_settings_screen.dart
+│   │   │   └── 📄 language_settings_screen.dart
+│   │   │
+│   │   ├── 📁 notification/
+│   │   │   ├── 📄 notification_list_screen.dart
+│   │   │   └── 📄 notification_detail_screen.dart
+│   │   │
+│   │   ├── 📁 scan/
+│   │   │   ├── 📄 web_scan_screen.dart
+│   │   │   ├── 📄 url_scan_screen.dart
+│   │   │   ├── 📄 password_scan_screen.dart
+│   │   │   ├── 📄 network_scan_screen.dart
+│   │   │   ├── 📄 vulnerability_scan_screen.dart
+│   │   │   └── 📄 scan_result_screen.dart
+│   │   │
+│   │   └── 📁 onboarding/
+│   │       ├── 📄 onboarding_screen.dart
+│   │       ├── 📄 welcome_screen.dart
+│   │       └── 📄 permission_request_screen.dart
+│   │
+│   └── 📁 widgets/
+│       ├── 📁 common/
+│       │   ├── 📄 custom_button.dart
+│       │   ├── 📄 custom_textfield.dart
+│       │   ├── 📄 loading_widget.dart
+│       │   ├── 📄 error_widget.dart
+│       │   ├── 📄 empty_state_widget.dart
+│       │   ├── 📄 security_badge.dart
+│       │   ├── 📄 custom_appbar.dart
+│       │   ├── 📄 custom_bottom_navbar.dart
+│       │   ├── 📄 custom_drawer.dart
+│       │   ├── 📄 search_bar.dart
+│       │   ├── 📄 filter_chip.dart
+│       │   ├── 📄 pagination_widget.dart
+│       │   ├── 📄 confirmation_dialog.dart
+│       │   ├── 📄 snackbar_widget.dart
+│       │   ├── 📄 shimmer_loading.dart
+│       │   ├── 📄 skeleton_loading.dart
+│       │   ├── 📄 custom_tab_bar.dart
+│       │   ├── 📄 custom_dropdown.dart
+│       │   ├── 📄 custom_date_picker.dart
+│       │   ├── 📄 custom_time_picker.dart
+│       │   ├── 📄 rating_bar.dart
+│       │   └── 📄 progress_indicator.dart
+│       │
+│       ├── 📁 assessment/
+│       │   ├── 📄 criteria_card.dart
+│       │   ├── 📄 version_badge.dart
+│       │   ├── 📄 key_unlock_dialog.dart
+│       │   ├── 📄 assessment_progress.dart
+│       │   ├── 📄 score_gauge.dart
+│       │   ├── 📄 assessment_timeline.dart
+│       │   ├── 📄 criteria_answer_selector.dart
+│       │   ├── 📄 evidence_uploader.dart
+│       │   ├── 📄 assessment_summary_card.dart
+│       │   ├── 📄 criteria_group.dart
+│       │   └── 📄 assessment_comment.dart
+│       │
+│       ├── 📁 dashboard/
+│       │   ├── 📄 security_score_card.dart
+│       │   ├── 📄 risk_heatmap.dart
+│       │   ├── 📄 compliance_chart.dart
+│       │   ├── 📄 incident_timeline.dart
+│       │   ├── 📄 vulnerability_chart.dart
+│       │   ├── 📄 threat_map.dart
+│       │   ├── 📄 domain_progress_card.dart
+│       │   ├── 📄 recent_activity_card.dart
+│       │   ├── 📄 quick_action_card.dart
+│       │   ├── 📄 statistic_card.dart
+│       │   ├── 📄 trend_chart.dart
+│       │   └── 📄 kpi_card.dart
+│       │
+│       ├── 📁 incident/
+│       │   ├── 📄 incident_card.dart
+│       │   ├── 📄 severity_indicator.dart
+│       │   ├── 📄 status_badge.dart
+│       │   ├── 📄 incident_timeline_item.dart
+│       │   ├── 📄 incident_comment_item.dart
+│       │   ├── 📄 incident_attachment_item.dart
+│       │   ├── 📄 incident_filter.dart
+│       │   └── 📄 incident_stats.dart
+│       │
+│       ├── 📁 report/
+│       │   ├── 📄 report_chart.dart
+│       │   ├── 📄 report_filter.dart
+│       │   ├── 📄 report_share_button.dart
+│       │   ├── 📄 report_export_button.dart
+│       │   ├── 📄 report_preview.dart
+│       │   ├── 📄 report_schedule_picker.dart
+│       │   └── 📄 report_template.dart
+│       │
+│       ├── 📁 ai/
+│       │   ├── 📄 ai_chat_bubble.dart
+│       │   ├── 📄 ai_threat_card.dart
+│       │   ├── 📄 ai_prediction_card.dart
+│       │   ├── 📄 ai_suggestion_card.dart
+│       │   ├── 📄 ai_loading_animation.dart
+│       │   ├── 📄 ai_result_chart.dart
+│       │   ├── 📄 ai_recommendation_list.dart
+│       │   └── 📄 ai_confidence_indicator.dart
+│       │
+│       ├── 📁 security/
+│       │   ├── 📄 security_scan_card.dart
+│       │   ├── 📄 security_score_indicator.dart
+│       │   ├── 📄 security_header_card.dart
+│       │   ├── 📄 security_tip_card.dart
+│       │   ├── 📄 vulnerability_score_badge.dart
+│       │   └── 📄 compliance_status_indicator.dart
+│       │
+│       └── 📁 sync/
+│           ├── 📄 sync_status_widget.dart
+│           ├── 📄 offline_banner.dart
+│           ├── 📄 last_sync_time.dart
+│           ├── 📄 sync_progress_indicator.dart
+│           ├── 📄 sync_queue_badge.dart
+│           └── 📄 offline_indicator.dart
+│
+├── 📁 firebase/
+│   ├── 📄 firebase_options.dart
+│   ├── 📄 firebase_auth_service.dart
+│   ├── 📄 firebase_messaging.dart
+│   ├── 📄 firestore_sync.dart
+│   ├── 📄 realtime_database.dart
+│   ├── 📄 notification_handler.dart
+│   ├── 📄 dynamic_links.dart
+│   ├── 📄 remote_config.dart
+│   ├── 📄 crashlytics_service.dart
+│   └── 📄 analytics_service.dart
+│
+├── 📁 localization/
+│   ├── 📄 app_localizations.dart
+│   ├── 📄 app_localizations_en.dart
+│   ├── 📄 app_localizations_vi.dart
+│   ├── 📄 app_localizations_ja.dart
+│   ├── 📄 app_localizations_ko.dart
+│   ├── 📄 app_localizations_zh.dart
+│   ├── 📄 app_localizations_fr.dart
+│   ├── 📄 app_localizations_de.dart
+│   ├── 📄 app_localizations_es.dart
+│   └── 📄 app_localizations_ru.dart
+│
+└── 📁 utils/
+    ├── 📄 app_version.dart
+    ├── 📄 device_info.dart
+    ├── 📄 package_info.dart
+    ├── 📄 url_launcher_helper.dart
+    ├── 📄 file_download_helper.dart
+    ├── 📄 biometric_helper.dart
+    ├── 📄 permission_handler.dart
+    ├── 📄 image_compressor.dart
+    ├── 📄 audio_recorder.dart
+    ├── 📄 video_recorder.dart
+    ├── 📄 location_helper.dart
+    └── 📄 qr_code_scanner.dart
+```
+
+---
+
+## 📁 5. THƯ MỤC TEST
+
+```
+test/
+│
+├── 📄 widget_test.dart
+│
+├── 📁 unit/
+│   ├── 📄 auth_test.dart
+│   ├── 📄 key_test.dart
+│   ├── 📄 encryption_test.dart
+│   ├── 📄 validation_test.dart
+│   ├── 📄 model_test.dart
+│   ├── 📄 repository_test.dart
+│   ├── 📄 service_test.dart
+│   ├── 📄 sync_engine_test.dart
+│   ├── 📄 offline_queue_test.dart
+│   ├── 📄 token_manager_test.dart
+│   └── 📄 api_client_test.dart
+│
+├── 📁 integration/
+│   ├── 📄 app_test.dart
+│   ├── 📄 sync_test.dart
+│   ├── 📄 api_test.dart
+│   ├── 📄 navigation_test.dart
+│   ├── 📄 assessment_flow_test.dart
+│   ├── 📄 key_verification_flow_test.dart
+│   └── 📄 offline_sync_test.dart
+│
+└── 📁 mocks/
+    ├── 📄 mock_api_service.dart
+    ├── 📄 mock_repository.dart
+    ├── 📄 mock_provider.dart
+    ├── 📄 mock_database.dart
+    └── 📄 mock_secure_storage.dart
+```
+
+---
+
+## 📄 6. FILE PUBSPEC.YAML
+
+```yaml
+name: security_evaluation_app
+description: Security Evaluation System - Flutter Mobile App
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.7
+  lottie: ^2.7.0
+  shimmer: ^3.0.0
+  
+  # State Management
+  flutter_riverpod: ^2.4.0
+  
+  # Networking
+  dio: ^5.3.0
+  socket_io_client: ^2.0.1
+  
+  # Local Storage
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.0
+  
+  # Security
+  flutter_secure_storage: ^9.0.0
+  local_auth: ^2.1.6
+  cryptography: ^2.5.0
+  
+  # Firebase
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  firebase_messaging: ^14.7.0
+  firebase_storage: ^11.6.0
+  firebase_crashlytics: ^3.4.0
+  
+  # Utils
+  intl: ^0.18.1
+  url_launcher: ^6.2.0
+  share_plus: ^7.2.0
+  connectivity_plus: ^5.0.2
+  permission_handler: ^10.4.3
+  device_info_plus: ^9.1.0
+  
+  # Charts
+  fl_chart: ^0.63.0
+  
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.6
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/images/icons/
+    - assets/fonts/
+    - assets/animations/
+    - assets/translations/
+  
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto-Light.ttf
+          weight: 300
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG FILE MOBILE_FLUTTER
+
+| Thành phần | Số lượng file |
+|-----------|--------------|
+| Android native | 35 |
+| iOS native | 25 |
+| Assets | 120 |
+| Core | 30 |
+| Data | 65 |
+| Services | 35 |
+| Presentation | 180 |
+| Firebase | 10 |
+| Localization | 10 |
+| Utils | 12 |
+| Tests | 20 |
+| **TỔNG** | **~542 files** |
+
+---
+
+
+# 📁 CẤU TRÚC CHI TIẾT TỪNG FILE - WEB_ADMIN
+
+## ADMIN WEB PANEL (HTML/CSS/JS/PHP)
+
+Dưới đây là **cấu trúc thư mục chi tiết từng file** cho phần `web_admin/`:
+
+---
+
+## 📁 CẤU TRÚC TỔNG THỂ
+
+```
+web_admin/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 .htaccess
+├── 📄 index.php
+├── 📄 README.md
+├── 📄 robots.txt
+├── 📄 composer.json
+├── 📄 package.json
+├── 📄 phpunit.xml
+│
+├── 📁 assets/
+├── 📁 css/
+├── 📁 js/
+├── 📁 fonts/
+├── 📁 images/
+├── 📁 pages/
+├── 📁 includes/
+├── 📁 api/
+├── 📁 config/
+├── 📁 logs/
+├── 📁 cache/
+├── 📁 backups/
+└── 📁 tests/
+```
+
+---
+
+## 📁 1. THƯ MỤC ASSETS
+
+```
+web_admin/assets/
+│
+├── 📁 css/
+│   ├── 📄 main.css
+│   ├── 📄 dashboard.css
+│   ├── 📄 admin.css
+│   ├── 📄 auth.css
+│   ├── 📄 responsive.css
+│   ├── 📄 dark-mode.css
+│   ├── 📄 components.css
+│   ├── 📄 tables.css
+│   ├── 📄 forms.css
+│   ├── 📄 charts.css
+│   ├── 📄 alerts.css
+│   ├── 📄 animations.css
+│   ├── 📄 print.css
+│   │
+│   └── 📁 vendors/
+│       ├── 📄 bootstrap.min.css
+│       ├── 📄 fontawesome.min.css
+│       ├── 📄 datatables.min.css
+│       ├── 📄 select2.min.css
+│       ├── 📄 toastr.min.css
+│       ├── 📄 fullcalendar.min.css
+│       └── 📄 chartjs.min.css
+│
+├── 📁 js/
+│   ├── 📄 main.js
+│   ├── 📄 dashboard.js
+│   ├── 📄 admin.js
+│   ├── 📄 auth.js
+│   ├── 📄 api.js
+│   ├── 📄 datatable.js
+│   ├── 📄 charts.js
+│   ├── 📄 forms.js
+│   ├── 📄 validation.js
+│   ├── 📄 notifications.js
+│   ├── 📄 ajax.js
+│   ├── 📄 websocket.js
+│   ├── 📄 sync.js
+│   ├── 📄 export.js
+│   ├── 📄 import.js
+│   │
+│   └── 📁 vendors/
+│       ├── 📄 jquery.min.js
+│       ├── 📄 bootstrap.min.js
+│       ├── 📄 datatables.min.js
+│       ├── 📄 select2.min.js
+│       ├── 📄 toastr.min.js
+│       ├── 📄 moment.min.js
+│       ├── 📄 fullcalendar.min.js
+│       ├── 📄 chartjs.min.js
+│       └── 📄 socket.io.min.js
+│
+├── 📁 fonts/
+│   ├── 📄 Roboto-Regular.ttf
+│   ├── 📄 Roboto-Bold.ttf
+│   ├── 📄 Roboto-Light.ttf
+│   ├── 📄 OpenSans-Regular.ttf
+│   ├── 📄 OpenSans-Bold.ttf
+│   └── 📄 fontawesome-webfont.ttf
+│
+└── 📁 images/
+    ├── 📄 logo.png
+    ├── 📄 logo-white.png
+    ├── 📄 favicon.ico
+    ├── 📄 default-avatar.png
+    ├── 📄 empty-state.png
+    ├── 📄 error-404.png
+    ├── 📄 error-500.png
+    │
+    ├── 📁 icons/
+    │   ├── 📄 dashboard.png
+    │   ├── 📄 users.png
+    │   ├── 📄 roles.png
+    │   ├── 📄 assessment.png
+    │   ├── 📄 report.png
+    │   ├── 📄 settings.png
+    │   └── 📄 backup.png
+    │
+    └── 📁 flags/
+        ├── 📄 vn.png
+        ├── 📄 us.png
+        ├── 📄 jp.png
+        ├── 📄 kr.png
+        ├── 📄 cn.png
+        └── 📄 fr.png
+```
+
+---
+
+## 📁 2. THƯ MỤC PAGES
+
+```
+web_admin/pages/
+│
+├── 📄 index.php
+├── 📄 login.php
+├── 📄 logout.php
+├── 📄 forgot-password.php
+├── 📄 reset-password.php
+├── 📄 profile.php
+├── 📄 settings.php
+├── 📄 404.php
+├── 📄 403.php
+├── 📄 500.php
+│
+├── 📁 auth/
+│   ├── 📄 login.php
+│   ├── 📄 register.php
+│   ├── 📄 two-factor.php
+│   └── 📄 verify-otp.php
+│
+├── 📁 dashboard/
+│   ├── 📄 index.php
+│   ├── 📄 security-score.php
+│   ├── 📄 risk-matrix.php
+│   ├── 📄 compliance-status.php
+│   ├── 📄 threat-map.php
+│   └── 📄 realtime-monitor.php
+│
+├── 📁 users/
+│   ├── 📄 index.php
+│   ├── 📄 create.php
+│   ├── 📄 edit.php
+│   ├── 📄 view.php
+│   ├── 📄 delete.php
+│   ├── 📄 roles.php
+│   ├── 📄 permissions.php
+│   └── 📄 activity-log.php
+│
+├── 📁 roles/
+│   ├── 📄 index.php
+│   ├── 📄 create.php
+│   ├── 📄 edit.php
+│   ├── 📄 permissions.php
+│   └── 📄 assignments.php
+│
+├── 📁 domains/
+│   ├── 📄 index.php
+│   ├── 📄 create.php
+│   ├── 📄 edit.php
+│   ├── 📄 view.php
+│   └── 📄 import.php
+│
+├── 📁 criteria/
+│   ├── 📄 index.php
+│   ├── 📄 create.php
+│   ├── 📄 edit.php
+│   ├── 📄 view.php
+│   ├── 📄 import.php
+│   ├── 📄 export.php
+│   ├── 📄 bulk-edit.php
+│   ├── 📄 versions.php
+│   └── 📄 ai-suggestions.php
+│
+├── 📁 keys/
+│   ├── 📄 index.php
+│   ├── 📄 generate.php
+│   ├── 📄 revoke.php
+│   ├── 📄 logs.php
+│   ├── 📄 requests.php
+│   ├── 📄 approve-request.php
+│   └── 📄 settings.php
+│
+├── 📁 assessments/
+│   ├── 📄 index.php
+│   ├── 📄 view.php
+│   ├── 📄 review.php
+│   ├── 📄 approve.php
+│   ├── 📄 reject.php
+│   ├── 📄 history.php
+│   ├── 📄 compare.php
+│   └── 📄 export.php
+│
+├── 📁 incidents/
+│   ├── 📄 index.php
+│   ├── 📄 view.php
+│   ├── 📄 create.php
+│   ├── 📄 edit.php
+│   ├── 📄 resolve.php
+│   ├── 📄 timeline.php
+│   ├── 📄 comments.php
+│   ├── 📄 attachments.php
+│   └── 📄 categories.php
+│
+├── 📁 vulnerabilities/
+│   ├── 📄 index.php
+│   ├── 📄 view.php
+│   ├── 📄 scan.php
+│   ├── 📄 remediate.php
+│   ├── 📄 patch.php
+│   ├── 📄 cve-database.php
+│   ├── 📄 reports.php
+│   └── 📄 settings.php
+│
+├── 📁 compliance/
+│   ├── 📄 index.php
+│   ├── 📄 iso27001.php
+│   ├── 📄 gdpr.php
+│   ├── 📄 pci-dss.php
+│   ├── 📄 hipaa.php
+│   ├── 📄 nist.php
+│   ├── 📄 audit.php
+│   ├── 📄 evidence.php
+│   └── 📄 checklist.php
+│
+├── 📁 reports/
+│   ├── 📄 index.php
+│   ├── 📄 generate.php
+│   ├── 📄 view.php
+│   ├── 📄 download.php
+│   ├── 📄 schedule.php
+│   ├── 📄 templates.php
+│   ├── 📄 executive.php
+│   ├── 📄 compliance.php
+│   ├── 📄 risk.php
+│   ├── 📄 vulnerability.php
+│   └── 📄 incident.php
+│
+├── 📁 ai/
+│   ├── 📄 index.php
+│   ├── 📄 threat-detection.php
+│   ├── 📄 anomaly-detection.php
+│   ├── 📄 predictions.php
+│   ├── 📄 chat.php
+│   ├── 📄 generate-criteria.php
+│   ├── 📄 auto-evaluate.php
+│   ├── 📄 models.php
+│   └── 📄 settings.php
+│
+├── 📁 sync/
+│   ├── 📄 index.php
+│   ├── 📄 status.php
+│   ├── 📄 logs.php
+│   ├── 📄 manual.php
+│   ├── 📄 schedule.php
+│   ├── 📄 conflicts.php
+│   └── 📄 settings.php
+│
+├── 📁 logs/
+│   ├── 📄 index.php
+│   ├── 📄 security.php
+│   ├── 📄 audit.php
+│   ├── 📄 access.php
+│   ├── 📄 error.php
+│   ├── 📄 api.php
+│   └── 📄 export.php
+│
+├── 📁 settings/
+│   ├── 📄 index.php
+│   ├── 📄 security.php
+│   ├── 📄 notification.php
+│   ├── 📄 email.php
+│   ├── 📄 backup.php
+│   ├── 📄 api.php
+│   ├── 📄 database.php
+│   ├── 📄 cache.php
+│   ├── 📄 logging.php
+│   └── 📄 localization.php
+│
+└── 📁 backups/
+    ├── 📄 index.php
+    ├── 📄 create.php
+    ├── 📄 restore.php
+    ├── 📄 download.php
+    ├── 📄 schedule.php
+    └── 📄 settings.php
+```
+
+---
+
+## 📁 3. THƯ MỤC INCLUDES
+
+```
+web_admin/includes/
+│
+├── 📄 config.php
+├── 📄 database.php
+├── 📄 functions.php
+├── 📄 auth.php
+├── 📄 session.php
+├── 📄 validation.php
+├── 📄 csrf.php
+├── 📄 sanitize.php
+├── 📄 pagination.php
+├── 📄 upload.php
+├── 📄 email.php
+├── 📄 logger.php
+├── 📄 cache.php
+├── 📄 api.php
+├── 📄 sync.php
+├── 📄 export.php
+├── 📄 import.php
+├── 📄 notification.php
+├── 📄 report.php
+├── 📄 chart.php
+├── 📄 datatable.php
+│
+├── 📁 classes/
+│   ├── 📄 User.php
+│   ├── 📄 Role.php
+│   ├── 📄 Domain.php
+│   ├── 📄 Criteria.php
+│   ├── 📄 Assessment.php
+│   ├── 📄 Key.php
+│   ├── 📄 Report.php
+│   ├── 📄 Incident.php
+│   ├── 📄 Vulnerability.php
+│   ├── 📄 Compliance.php
+│   ├── 📄 AIEngine.php
+│   ├── 📄 SyncEngine.php
+│   └── 📄 BackupManager.php
+│
+└── 📁 templates/
+    ├── 📄 header.php
+    ├── 📄 footer.php
+    ├── 📄 sidebar.php
+    ├── 📄 navbar.php
+    ├── 📄 breadcrumb.php
+    ├── 📄 alerts.php
+    └── 📄 modal.php
+```
+
+---
+
+## 📁 4. THƯ MỤC API
+
+```
+web_admin/api/
+│
+├── 📄 get-stats.php
+├── 📄 get-users.php
+├── 📄 get-roles.php
+├── 📄 get-domains.php
+├── 📄 get-criteria.php
+├── 📄 get-assessments.php
+├── 📄 get-keys.php
+├── 📄 get-reports.php
+├── 📄 get-incidents.php
+├── 📄 get-vulnerabilities.php
+├── 📄 get-compliance.php
+├── 📄 get-ai-data.php
+├── 📄 get-sync-status.php
+├── 📄 get-logs.php
+├── 📄 get-security-trend.php
+├── 📄 get-recent-activities.php
+├── 📄 get-vulnerability-stats.php
+│
+├── 📄 create-user.php
+├── 📄 update-user.php
+├── 📄 delete-user.php
+├── 📄 generate-key.php
+├── 📄 revoke-key.php
+├── 📄 approve-assessment.php
+├── 📄 reject-assessment.php
+├── 📄 run-scan.php
+├── 📄 run-sync.php
+├── 📄 export-data.php
+├── 📄 import-data.php
+│
+└── 📄 webhook.php
+```
+
+---
+
+## 📁 5. THƯ MỤC CONFIG
+
+```
+web_admin/config/
+│
+├── 📄 database.php
+├── 📄 app.php
+├── 📄 auth.php
+├── 📄 mail.php
+├── 📄 cache.php
+├── 📄 session.php
+├── 📄 upload.php
+├── 📄 logging.php
+├── 📄 api.php
+├── 📄 sync.php
+├── 📄 backup.php
+├── 📄 security.php
+├── 📄 version.php
+├── 📄 roles.php
+├── 📄 permissions.php
+└── 📄 constants.php
+```
+
+---
+
+## 📁 6. THƯ MỤC LOGS
+
+```
+web_admin/logs/
+│
+├── 📄 app.log
+├── 📄 error.log
+├── 📄 security.log
+├── 📄 audit.log
+├── 📄 access.log
+├── 📄 api.log
+├── 📄 sync.log
+├── 📄 debug.log
+│
+└── 📁 archive/
+    ├── 📄 app_2025_01_01.log.gz
+    ├── 📄 app_2025_01_02.log.gz
+    └── 📄 app_2025_01_03.log.gz
+```
+
+---
+
+## 📁 7. THƯ MỤC CACHE
+
+```
+web_admin/cache/
+│
+├── 📁 views/
+├── 📁 data/
+├── 📁 templates/
+├── 📁 api/
+│
+└── 📄 .gitignore
+```
+
+---
+
+## 📁 8. THƯ MỤC BACKUPS
+
+```
+web_admin/backups/
+│
+├── 📁 database/
+├── 📁 files/
+├── 📁 config/
+├── 📁 latest/
+│
+└── 📄 .gitignore
+```
+
+---
+
+## 📁 9. THƯ MỤC TESTS
+
+```
+web_admin/tests/
+│
+├── 📁 unit/
+│   ├── 📄 AuthTest.php
+│   ├── 📄 UserTest.php
+│   ├── 📄 RoleTest.php
+│   ├── 📄 DomainTest.php
+│   ├── 📄 CriteriaTest.php
+│   ├── 📄 AssessmentTest.php
+│   ├── 📄 KeyTest.php
+│   └── 📄 ReportTest.php
+│
+├── 📁 integration/
+│   ├── 📄 AuthFlowTest.php
+│   ├── 📄 AssessmentFlowTest.php
+│   ├── 📄 KeyFlowTest.php
+│   └── 📄 ReportFlowTest.php
+│
+└── 📁 fixtures/
+    ├── 📄 users.php
+    ├── 📄 assessments.php
+    └── 📄 keys.php
+```
+
+---
+
+## 📄 10. FILE CẤU HÌNH MẪU
+
+### 📄 `web_admin/.env.example`
+
+```env
+# Application
+APP_NAME="Security Evaluation Admin"
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://admin.security-system.com
+
+# Database
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=security_evaluation
+DB_USER=root
+DB_PASS=password
+
+# API
+API_BASE_URL=https://api.security-system.com/api/v1
+API_KEY=your-api-key
+
+# Session
+SESSION_NAME=admin_session
+SESSION_LIFETIME=7200
+SESSION_SECURE=true
+
+# Security
+CSRF_KEY=csrf_token
+ENCRYPTION_KEY=your-32-character-key
+
+# Pagination
+ITEMS_PER_PAGE=20
+
+# Upload
+UPLOAD_MAX_SIZE=10485760
+ALLOWED_EXTENSIONS=jpg,png,pdf,doc,docx,xlsx
+
+# Logging
+LOG_PATH=./logs
+LOG_LEVEL=info
+
+# Cache
+CACHE_ENABLED=true
+CACHE_PATH=./cache
+CACHE_LIFETIME=3600
+
+# Backup
+BACKUP_PATH=./backups
+BACKUP_RETENTION_DAYS=30
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG FILE WEB_ADMIN
+
+| Thành phần | Số lượng file |
+|-----------|--------------|
+| CSS files | 20 |
+| JS files | 20 |
+| Images | 30 |
+| Pages (PHP) | 120 |
+| Includes | 25 |
+| API endpoints | 30 |
+| Config files | 16 |
+| Tests | 15 |
+| **TỔNG** | **~276 files** |
+
+
+# 📁 CẤU TRÚC CHI TIẾT TỪNG FILE - FIREBASE_FUNCTIONS
+
+## FIREBASE CLOUD FUNCTIONS (NODE.JS 20)
+
+Dưới đây là **cấu trúc thư mục chi tiết từng file** cho phần `firebase_functions/`:
+
+---
+
+## 📁 CẤU TRÚC TỔNG THỂ
+
+```
+firebase_functions/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 firebase.json
+├── 📄 .firebaserc
+├── 📄 README.md
+│
+└── 📁 functions/
+    ├── 📄 .eslintrc.js
+    ├── 📄 .prettierrc
+    ├── 📄 package.json
+    ├── 📄 package-lock.json
+    ├── 📄 .env
+    ├── 📄 .env.example
+    ├── 📄 index.js
+    │
+    ├── 📁 src/
+    ├── 📁 lib/
+    ├── 📁 node_modules/
+    ├── 📁 logs/
+    └── 📁 tests/
+```
+
+---
+
+## 📁 1. THƯ MỤC FUNCTIONS/SRC
+
+```
+firebase_functions/functions/src/
+│
+├── 📄 index.js
+│
+├── 📁 auth/
+│   ├── 📄 onUserCreate.js
+│   ├── 📄 onUserDelete.js
+│   ├── 📄 onUserLogin.js
+│   ├── 📄 sendVerificationEmail.js
+│   ├── 📄 sendWelcomeEmail.js
+│   └── 📄 syncUserToMySQL.js
+│
+├── 📁 firestore/
+│   ├── 📄 onAssessmentCreate.js
+│   ├── 📄 onAssessmentUpdate.js
+│   ├── 📄 onAssessmentDelete.js
+│   ├── 📄 onKeyVerified.js
+│   ├── 📄 onIncidentCreate.js
+│   ├── 📄 onIncidentUpdate.js
+│   ├── 📄 onVulnerabilityCreate.js
+│   ├── 📄 onComplianceCheck.js
+│   ├── 📄 onAIDetection.js
+│   ├── 📄 onCriteriaSuggestion.js
+│   ├── 📄 onUserActivity.js
+│   ├── 📄 onReportGenerated.js
+│   └── 📄 onSyncTrigger.js
+│
+├── 📁 realtime/
+│   ├── 📄 onPresenceUpdate.js
+│   ├── 📄 onNotificationSent.js
+│   ├── 📄 onChatMessage.js
+│   ├── 📄 onStatusChange.js
+│   └── 📄 onTypingIndicator.js
+│
+├── 📁 storage/
+│   ├── 📄 onFileUpload.js
+│   ├── 📄 onFileDelete.js
+│   ├── 📄 onFileMetadataUpdate.js
+│   ├── 📄 compressImage.js
+│   ├── 📄 scanFileForMalware.js
+│   ├── 📄 encryptFile.js
+│   └── 📄 generateThumbnail.js
+│
+├── 📁 notifications/
+│   ├── 📄 sendPushNotification.js
+│   ├── 📄 sendEmailNotification.js
+│   ├── 📄 sendSMSAlert.js
+│   ├── 📄 sendSecurityAlert.js
+│   ├── 📄 sendAssessmentReminder.js
+│   ├── 📄 sendIncidentReport.js
+│   ├── 📄 sendKeyExpiryWarning.js
+│   ├── 📄 sendVulnerabilityAlert.js
+│   ├── 📄 sendComplianceReport.js
+│   ├── 📄 sendWeeklyDigest.js
+│   └── 📄 sendMonthlyReport.js
+│
+├── 📁 sync/
+│   ├── 📄 syncToLaravel.js
+│   ├── 📄 syncToMySQL.js
+│   ├── 📄 syncToMongoDB.js
+│   ├── 📄 webhookLaravel.js
+│   ├── 📄 handleConflict.js
+│   ├── 📄 batchSync.js
+│   ├── 📄 incrementalSync.js
+│   ├── 📄 realtimeSync.js
+│   └── 📄 syncStatus.js
+│
+├── 📁 scheduled/
+│   ├── 📄 dailyDigest.js
+│   ├── 📄 weeklyReport.js
+│   ├── 📄 monthlyReport.js
+│   ├── 📄 backupDatabase.js
+│   ├── 📄 cleanExpiredTokens.js
+│   ├── 📄 cleanOldLogs.js
+│   ├── 📄 rotateEncryptionKeys.js
+│   ├── 📄 checkKeyExpiry.js
+│   ├── 📄 runVulnerabilityScan.js
+│   ├── 📄 generateSecurityScore.js
+│   ├── 📄 sendReminders.js
+│   ├── 📄 complianceCheck.js
+│   ├── 📄 backupFirestore.js
+│   └── 📄 healthCheck.js
+│
+├── 📁 security/
+│   ├── 📄 detectSQLInjection.js
+│   ├── 📄 detectXSS.js
+│   ├── 📄 validateInput.js
+│   ├── 📄 sanitizeData.js
+│   ├── 📄 rateLimiter.js
+│   ├── 📄 ipBlocker.js
+│   ├── 📄 auditLogger.js
+│   ├── 📄 encryptData.js
+│   ├── 📄 decryptData.js
+│   └── 📄 hashPassword.js
+│
+├── 📁 ai/
+│   ├── 📄 analyzeThreat.js
+│   ├── 📄 detectAnomaly.js
+│   ├── 📄 classifyMalware.js
+│   ├── 📄 predictRisk.js
+│   ├── 📄 generateCriteria.js
+│   ├── 📄 autoEvaluate.js
+│   ├── 📄 chatResponse.js
+│   ├── 📄 recommendRemediation.js
+│   ├── 📄 analyzePattern.js
+│   └── 📄 trainModel.js
+│
+├── 📁 webhooks/
+│   ├── 📄 laravelWebhook.js
+│   ├── 📄 flutterWebhook.js
+│   ├── 📄 thirdPartyWebhook.js
+│   ├── 📄 githubWebhook.js
+│   ├── 📄 slackWebhook.js
+│   ├── 📄 teamsWebhook.js
+│   └── 📄 discordWebhook.js
+│
+├── 📁 utils/
+│   ├── 📄 logger.js
+│   ├── 📄 config.js
+│   ├── 📄 database.js
+│   ├── 📄 redis.js
+│   ├── 📄 queue.js
+│   ├── 📄 validator.js
+│   ├── 📄 formatter.js
+│   ├── 📄 dateHelper.js
+│   ├── 📄 errorHandler.js
+│   ├── 📄 retryHandler.js
+│   ├── 📄 cacheManager.js
+│   ├── 📄 metricsCollector.js
+│   └── 📄 healthChecker.js
+│
+└── 📁 constants/
+    ├── 📄 roles.js
+    ├── 📄 permissions.js
+    ├── 📄 statusCodes.js
+    ├── 📄 errorMessages.js
+    ├── 📄 notificationTypes.js
+    ├── 📄 eventTypes.js
+    ├── 📄 syncTypes.js
+    └── 📄 configDefaults.js
+```
+
+---
+
+## 📁 2. THƯ MỤC FUNCTIONS/TESTS
+
+```
+firebase_functions/functions/tests/
+│
+├── 📄 test-auth.js
+├── 📄 test-firestore.js
+├── 📄 test-notifications.js
+├── 📄 test-sync.js
+├── 📄 test-scheduled.js
+├── 📄 test-security.js
+├── 📄 test-ai.js
+├── 📄 test-webhooks.js
+├── 📄 test-utils.js
+│
+├── 📁 fixtures/
+│   ├── 📄 userData.json
+│   ├── 📄 assessmentData.json
+│   ├── 📄 incidentData.json
+│   └── 📄 vulnerabilityData.json
+│
+└── 📁 mocks/
+    ├── 📄 mockFirestore.js
+    ├── 📄 mockAuth.js
+    ├── 📄 mockStorage.js
+    └── 📄 mockApi.js
+```
+
+---
+
+## 📁 3. THƯ MỤC FUNCTIONS/LOGS
+
+```
+firebase_functions/functions/logs/
+│
+├── 📄 functions.log
+├── 📄 error.log
+├── 📄 sync.log
+├── 📄 notification.log
+├── 📄 security.log
+├── 📄 audit.log
+│
+└── 📁 archive/
+    ├── 📄 functions_2025_01_01.log.gz
+    ├── 📄 functions_2025_01_02.log.gz
+    └── 📄 functions_2025_01_03.log.gz
+```
+
+---
+
+## 📄 4. FILE PACKAGE.JSON
+
+```json
+{
+  "name": "security-evaluation-functions",
+  "version": "1.0.0",
+  "description": "Firebase Cloud Functions for Security Evaluation System",
+  "main": "lib/index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "test": "jest",
+    "lint": "eslint src",
+    "format": "prettier --write src"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0",
+    "axios": "^1.6.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.6.5",
+    "nodemailer": "^6.9.7",
+    "redis": "^4.6.10",
+    "sharp": "^0.33.0",
+    "stripe": "^14.0.0",
+    "twilio": "^4.19.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "eslint": "^8.52.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3"
+  },
+  "private": true
+}
+```
+
+---
+
+## 📄 5. FILE .ENV.EXAMPLE
+
+```env
+# Firebase
+FIREBASE_PROJECT_ID=security-evaluation-system
+FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk@security-evaluation-system.iam.gserviceaccount.com
+
+# MySQL Database
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=your_password
+MYSQL_DATABASE=security_evaluation
+
+# Laravel API
+LARAVEL_API_URL=https://api.security-system.com/api/v1
+LARAVEL_API_KEY=your-api-key
+
+# SMTP Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_FROM=noreply@security-system.com
+
+# Twilio SMS
+TWILIO_ACCOUNT_SID=your_account_sid
+TWILIO_AUTH_TOKEN=your_auth_token
+TWILIO_PHONE_NUMBER=+1234567890
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+# Slack Webhook
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/xxx/yyy/zzz
+
+# AI Service
+AI_API_URL=https://ai.security-system.com
+AI_API_KEY=your-ai-api-key
+
+# Encryption
+ENCRYPTION_KEY=your-32-character-encryption-key
+
+# Logging
+LOG_LEVEL=info
+LOG_PATH=./logs
+```
+
+---
+
+## 📄 6. FILE FIREBASE.JSON
+
+```json
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.env"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "auth": {
+      "port": 9099
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    }
+  }
+}
+```
+
+---
+
+## 📄 7. FILE CODE MẪU - INDEX.JS
+
+```javascript
+const { initializeApp } = require('firebase-admin/app');
+const { getFirestore } = require('firebase-admin/firestore');
+const { getAuth } = require('firebase-admin/auth');
+const { getStorage } = require('firebase-admin/storage');
+const functions = require('firebase-functions');
+
+// Initialize Firebase Admin
+initializeApp();
+
+// Initialize services
+const db = getFirestore();
+const auth = getAuth();
+const storage = getStorage();
+
+// Import modules
+const authTriggers = require('./auth');
+const firestoreTriggers = require('./firestore');
+const realtimeTriggers = require('./realtime');
+const storageTriggers = require('./storage');
+const notifications = require('./notifications');
+const sync = require('./sync');
+const scheduled = require('./scheduled');
+const security = require('./security');
+const ai = require('./ai');
+const webhooks = require('./webhooks');
+
+// Auth triggers
+exports.onUserCreate = authTriggers.onUserCreate;
+exports.onUserDelete = authTriggers.onUserDelete;
+exports.sendVerificationEmail = authTriggers.sendVerificationEmail;
+
+// Firestore triggers
+exports.onAssessmentCreate = firestoreTriggers.onAssessmentCreate;
+exports.onAssessmentUpdate = firestoreTriggers.onAssessmentUpdate;
+exports.onKeyVerified = firestoreTriggers.onKeyVerified;
+exports.onIncidentCreate = firestoreTriggers.onIncidentCreate;
+
+// Storage triggers
+exports.onFileUpload = storageTriggers.onFileUpload;
+exports.onFileDelete = storageTriggers.onFileDelete;
+exports.compressImage = storageTriggers.compressImage;
+
+// Notifications
+exports.sendPushNotification = notifications.sendPushNotification;
+exports.sendEmailNotification = notifications.sendEmailNotification;
+exports.sendSecurityAlert = notifications.sendSecurityAlert;
+
+// Sync functions
+exports.syncToLaravel = sync.syncToLaravel;
+exports.webhookLaravel = sync.webhookLaravel;
+exports.handleConflict = sync.handleConflict;
+
+// Scheduled functions
+exports.dailyDigest = functions.pubsub.schedule('0 8 * * *').onRun(scheduled.dailyDigest);
+exports.weeklyReport = functions.pubsub.schedule('0 9 * * 1').onRun(scheduled.weeklyReport);
+exports.cleanExpiredTokens = functions.pubsub.schedule('0 2 * * *').onRun(scheduled.cleanExpiredTokens);
+exports.healthCheck = functions.pubsub.schedule('*/5 * * * *').onRun(scheduled.healthCheck);
+
+// Security functions
+exports.detectSQLInjection = security.detectSQLInjection;
+exports.rateLimiter = security.rateLimiter;
+exports.auditLogger = security.auditLogger;
+
+// AI functions
+exports.analyzeThreat = ai.analyzeThreat;
+exports.detectAnomaly = ai.detectAnomaly;
+exports.generateCriteria = ai.generateCriteria;
+
+// Webhooks
+exports.laravelWebhook = webhooks.laravelWebhook;
+exports.slackWebhook = webhooks.slackWebhook;
+
+// Realtime triggers
+exports.onPresenceUpdate = realtimeTriggers.onPresenceUpdate;
+exports.onNotificationSent = realtimeTriggers.onNotificationSent;
+
+// Export database and auth for other modules
+module.exports.db = db;
+module.exports.auth = auth;
+module.exports.storage = storage;
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG FILE FIREBASE_FUNCTIONS
+
+| Thành phần | Số lượng file |
+|-----------|--------------|
+| Auth triggers | 6 |
+| Firestore triggers | 13 |
+| Realtime triggers | 5 |
+| Storage triggers | 7 |
+| Notifications | 11 |
+| Sync functions | 9 |
+| Scheduled functions | 14 |
+| Security functions | 10 |
+| AI functions | 10 |
+| Webhooks | 7 |
+| Utils | 13 |
+| Constants | 8 |
+| Tests | 10 |
+| Config files | 5 |
+| **TỔNG** | **~128 files** |
+
+---
+
+# 📁 CẤU TRÚC CHI TIẾT TỪNG FILE - AI_ENGINE
+
+## AI SECURITY ENGINE (PYTHON 3.11)
+
+Dưới đây là **cấu trúc thư mục chi tiết từng file** cho phần `ai_engine/`:
+
+---
+
+## 📁 CẤU TRÚC TỔNG THỂ
+
+```
+ai_engine/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 Dockerfile
+├── 📄 Makefile
+├── 📄 README.md
+├── 📄 docker-compose.yml
+├── 📄 main.py
+├── 📄 pyproject.toml
+├── 📄 requirements-dev.txt
+├── 📄 requirements.txt
+├── 📄 setup.py
+│
+├── 📁 src/
+├── 📁 models/
+├── 📁 data/
+├── 📁 api/
+├── 📁 services/
+├── 📁 training/
+├── 📁 utils/
+├── 📁 tests/
+├── 📁 notebooks/
+├── 📁 scripts/
+├── 📁 configs/
+└── 📁 logs/
+```
+
+---
+
+## 📁 1. THƯ MỤC SRC
+
+```
+ai_engine/src/
+│
+├── 📄 __init__.py
+├── 📄 main.py
+│
+├── 📁 core/
+│   ├── 📄 __init__.py
+│   ├── 📄 config.py
+│   ├── 📄 logger.py
+│   ├── 📄 exceptions.py
+│   ├── 📄 constants.py
+│   └── 📄 utils.py
+│
+├── 📁 models/
+│   ├── 📄 __init__.py
+│   ├── 📄 base_model.py
+│   ├── 📄 threat_detection.py
+│   ├── 📄 anomaly_detection.py
+│   ├── 📄 malware_classifier.py
+│   ├── 📄 phishing_detector.py
+│   ├── 📄 risk_predictor.py
+│   ├── 📄 criteria_generator.py
+│   ├── 📄 auto_evaluator.py
+│   ├── 📄 nlp_chatbot.py
+│   ├── 📄 pattern_analyzer.py
+│   └── 📄 model_manager.py
+│
+├── 📁 services/
+│   ├── 📄 __init__.py
+│   ├── 📄 detection_service.py
+│   ├── 📄 analysis_service.py
+│   ├── 📄 prediction_service.py
+│   ├── 📄 evaluation_service.py
+│   ├── 📄 generation_service.py
+│   ├── 📄 chat_service.py
+│   ├── 📄 report_service.py
+│   └── 📄 webhook_service.py
+│
+├── 📁 api/
+│   ├── 📄 __init__.py
+│   ├── 📄 app.py
+│   ├── 📄 routes.py
+│   ├── 📄 middleware.py
+│   ├── 📄 schemas.py
+│   ├── 📄 dependencies.py
+│   │
+│   ├── 📁 endpoints/
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 health.py
+│   │   ├── 📄 threat.py
+│   │   ├── 📄 anomaly.py
+│   │   ├── 📄 malware.py
+│   │   ├── 📄 phishing.py
+│   │   ├── 📄 risk.py
+│   │   ├── 📄 criteria.py
+│   │   ├── 📄 evaluate.py
+│   │   ├── 📄 chat.py
+│   │   ├── 📄 report.py
+│   │   └── 📄 webhook.py
+│   │
+│   └── 📁 v1/
+│       ├── 📄 __init__.py
+│       ├── 📄 auth.py
+│       ├── 📄 detection.py
+│       ├── 📄 analysis.py
+│       └── 📄 prediction.py
+│
+├── 📁 data/
+│   ├── 📄 __init__.py
+│   ├── 📄 loader.py
+│   ├── 📄 preprocessor.py
+│   ├── 📄 feature_extractor.py
+│   ├── 📄 normalizer.py
+│   ├── 📄 augmenter.py
+│   │
+│   ├── 📁 datasets/
+│   │   ├── 📄 threat_dataset.csv
+│   │   ├── 📄 anomaly_dataset.csv
+│   │   ├── 📄 malware_dataset.csv
+│   │   ├── 📄 phishing_dataset.csv
+│   │   ├── 📄 criteria_dataset.json
+│   │   └── 📄 security_knowledge.txt
+│   │
+│   └── 📁 embeddings/
+│       ├── 📄 threat_embeddings.npy
+│       ├── 📄 anomaly_embeddings.npy
+│       └── 📄 text_embeddings.npy
+│
+├── 📁 training/
+│   ├── 📄 __init__.py
+│   ├── 📄 trainer.py
+│   ├── 📄 evaluator.py
+│   ├── 📄 validator.py
+│   │
+│   ├── 📁 scripts/
+│   │   ├── 📄 train_threat_detection.py
+│   │   ├── 📄 train_anomaly_detection.py
+│   │   ├── 📄 train_malware_classifier.py
+│   │   ├── 📄 train_phishing_detector.py
+│   │   ├── 📄 train_risk_predictor.py
+│   │   ├── 📄 train_criteria_generator.py
+│   │   ├── 📄 train_auto_evaluator.py
+│   │   └── 📄 train_chatbot.py
+│   │
+│   └── 📁 configs/
+│       ├── 📄 threat_config.yaml
+│       ├── 📄 anomaly_config.yaml
+│       ├── 📄 malware_config.yaml
+│       ├── 📄 phishing_config.yaml
+│       ├── 📄 risk_config.yaml
+│       ├── 📄 criteria_config.yaml
+│       └── 📄 chatbot_config.yaml
+│
+└── 📁 utils/
+    ├── 📄 __init__.py
+    ├── 📄 metrics.py
+    ├── 📄 helpers.py
+    ├── 📄 validators.py
+    ├── 📄 formatters.py
+    ├── 📄 file_handlers.py
+    ├── 📄 db_connector.py
+    ├── 📄 redis_client.py
+    ├── 📄 cache_manager.py
+    ├── 📄 rate_limiter.py
+    └── 📄 async_worker.py
+```
+
+---
+
+## 📁 2. THƯ MỤC MODELS (LƯU TRỮ MODEL)
+
+```
+ai_engine/models/
+│
+├── 📄 threat_detection_model.h5
+├── 📄 threat_detection_model.onnx
+├── 📄 threat_vectorizer.pkl
+├── 📄 anomaly_detection_model.h5
+├── 📄 anomaly_detection_model.pkl
+├── 📄 malware_classifier.bin
+├── 📄 malware_features.pkl
+├── 📄 phishing_detector.pkl
+├── 📄 phishing_features.pkl
+├── 📄 risk_predictor.pkl
+├── 📄 risk_scaler.pkl
+├── 📄 criteria_generator_model.pt
+├── 📄 criteria_generator_tokenizer.pkl
+├── 📄 auto_evaluator_model.pkl
+├── 📄 nlp_chatbot_model.pt
+├── 📄 nlp_chatbot_tokenizer.pkl
+├── 📄 pattern_analyzer.pkl
+│
+├── 📁 archived/
+│   ├── 📄 threat_model_v1.h5
+│   ├── 📄 threat_model_v2.h5
+│   └── 📄 threat_model_v3.h5
+│
+└── 📁 exported/
+    ├── 📄 model_manifest.json
+    └── 📄 model_versions.txt
+```
+
+---
+
+## 📁 3. THƯ MỤC DATA
+
+```
+ai_engine/data/
+│
+├── 📁 raw/
+│   ├── 📄 threats_raw.json
+│   ├── 📄 anomalies_raw.csv
+│   ├── 📄 malware_samples.zip
+│   ├── 📄 phishing_urls.txt
+│   └── 📄 security_incidents.csv
+│
+├── 📁 processed/
+│   ├── 📄 threats_processed.parquet
+│   ├── 📄 anomalies_processed.parquet
+│   ├── 📄 malware_features.parquet
+│   ├── 📄 phishing_features.parquet
+│   └── 📄 criteria_features.parquet
+│
+├── 📁 external/
+│   ├── 📄 cve_database.json
+│   ├── 📄 owasp_top_10.json
+│   ├── 📄 nist_controls.json
+│   └── 📄 iso27001_controls.json
+│
+└── 📁 cache/
+    ├── 📄 threat_cache.pkl
+    ├── 📄 anomaly_cache.pkl
+    └── 📄 embedding_cache.npy
+```
+
+---
+
+## 📁 4. THƯ MỤC API
+
+```
+ai_engine/api/
+│
+├── 📄 __init__.py
+├── 📄 app.py
+├── 📄 dependencies.py
+├── 📄 middleware.py
+├── 📄 routes.py
+├── 📄 schemas.py
+│
+├── 📁 endpoints/
+│   ├── 📄 __init__.py
+│   ├── 📄 anomaly.py
+│   ├── 📄 chat.py
+│   ├── 📄 criteria.py
+│   ├── 📄 evaluate.py
+│   ├── 📄 health.py
+│   ├── 📄 malware.py
+│   ├── 📄 phishing.py
+│   ├── 📄 report.py
+│   ├── 📄 risk.py
+│   ├── 📄 threat.py
+│   └── 📄 webhook.py
+│
+└── 📁 v1/
+    ├── 📄 __init__.py
+    ├── 📄 analysis.py
+    ├── 📄 auth.py
+    ├── 📄 detection.py
+    └── 📄 prediction.py
+```
+
+---
+
+## 📁 5. THƯ MỤC SERVICES
+
+```
+ai_engine/services/
+│
+├── 📄 __init__.py
+├── 📄 analysis_service.py
+├── 📄 chat_service.py
+├── 📄 detection_service.py
+├── 📄 evaluation_service.py
+├── 📄 generation_service.py
+├── 📄 prediction_service.py
+├── 📄 report_service.py
+└── 📄 webhook_service.py
+```
+
+---
+
+## 📁 6. THƯ MỤC TESTS
+
+```
+ai_engine/tests/
+│
+├── 📄 __init__.py
+├── 📄 test_anomaly.py
+├── 📄 test_api.py
+├── 📄 test_chatbot.py
+├── 📄 test_criteria.py
+├── 📄 test_detection.py
+├── 📄 test_evaluate.py
+├── 📄 test_malware.py
+├── 📄 test_models.py
+├── 📄 test_phishing.py
+├── 📄 test_risk.py
+├── 📄 test_services.py
+│
+├── 📁 fixtures/
+│   ├── 📄 anomaly_samples.json
+│   ├── 📄 malware_samples.json
+│   ├── 📄 phishing_samples.json
+│   └── 📄 threat_samples.json
+│
+└── 📁 mocks/
+    ├── 📄 mock_api.py
+    ├── 📄 mock_models.py
+    └── 📄 mock_services.py
+```
+
+---
+
+## 📁 7. THƯ MỤC NOTEBOOKS
+
+```
+ai_engine/notebooks/
+│
+├── 📄 01_data_exploration.ipynb
+├── 📄 02_feature_engineering.ipynb
+├── 📄 03_model_training.ipynb
+├── 📄 04_model_evaluation.ipynb
+├── 📄 05_threat_detection_demo.ipynb
+├── 📄 06_anomaly_detection_demo.ipynb
+├── 📄 07_criteria_generation_demo.ipynb
+└── 📄 08_chatbot_demo.ipynb
+```
+
+---
+
+## 📁 8. THƯ MỤC SCRIPTS
+
+```
+ai_engine/scripts/
+│
+├── 📄 backup_models.py
+├── 📄 benchmark.py
+├── 📄 clean_logs.py
+├── 📄 download_models.py
+├── 📄 evaluate_models.py
+├── 📄 export_models.py
+├── 📄 monitor.py
+└── 📄 preprocess_data.py
+```
+
+---
+
+## 📁 9. THƯ MỤC CONFIGS
+
+```
+ai_engine/configs/
+│
+├── 📄 api_config.yaml
+├── 📄 app_config.yaml
+├── 📄 database_config.yaml
+├── 📄 logging_config.yaml
+├── 📄 model_config.yaml
+└── 📄 security_config.yaml
+```
+
+---
+
+## 📁 10. THƯ MỤC LOGS
+
+```
+ai_engine/logs/
+│
+├── 📄 app.log
+├── 📄 error.log
+├── 📄 detection.log
+├── 📄 training.log
+├── 📄 api.log
+├── 📄 performance.log
+├── 📄 audit.log
+│
+└── 📁 archive/
+    ├── 📄 app_2025_01_01.log.gz
+    ├── 📄 app_2025_01_02.log.gz
+    └── 📄 app_2025_01_03.log.gz
+```
+
+---
+
+## 📄 11. FILE REQUIREMENTS.TXT
+
+```txt
+# Core
+python==3.11
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.4
+
+# Machine Learning
+scikit-learn==1.3.2
+tensorflow==2.15.0
+torch==2.1.2
+torchvision==0.16.2
+transformers==4.36.2
+xgboost==2.0.3
+lightgbm==4.1.0
+catboost==1.2.2
+
+# NLP
+nltk==3.8.1
+spacy==3.7.2
+langchain==0.1.0
+openai==1.6.1
+sentence-transformers==2.2.2
+
+# API
+fastapi==0.108.0
+uvicorn==0.25.0
+pydantic==2.5.2
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+asyncpg==0.29.0
+redis==5.0.1
+motor==3.3.2
+
+# Utils
+python-dotenv==1.0.0
+pyyaml==6.0.1
+joblib==1.3.2
+tqdm==4.66.1
+click==8.1.7
+schedule==1.2.0
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+black==23.12.1
+flake8==7.0.0
+mypy==1.8.0
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.18.0
+```
+
+---
+
+## 📄 12. FILE .ENV.EXAMPLE
+
+```env
+# API Configuration
+API_HOST=0.0.0.0
+API_PORT=8000
+API_WORKERS=4
+API_RELOAD=false
+API_DEBUG=false
+
+# Security
+API_SECRET_KEY=your-secret-key-here
+API_JWT_ALGORITHM=HS256
+API_ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=ai_engine
+DB_USER=postgres
+DB_PASSWORD=your_password
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=
+REDIS_DB=0
+
+# MongoDB
+MONGODB_HOST=localhost
+MONGODB_PORT=27017
+MONGODB_DB=ai_engine
+
+# OpenAI
+OPENAI_API_KEY=your-openai-api-key
+OPENAI_MODEL=gpt-4
+
+# Models Path
+MODELS_PATH=./models
+DATA_PATH=./data
+LOGS_PATH=./logs
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FORMAT=json
+
+# Laravel Webhook
+LARAVEL_WEBHOOK_URL=https://api.security-system.com/api/v1/ai/webhook
+LARAVEL_API_KEY=your-laravel-api-key
+```
+
+---
+
+## 📄 13. FILE DOCKERFILE
+
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/ ./src/
+COPY models/ ./models/
+COPY configs/ ./configs/
+
+ENV PYTHONPATH=/app/src
+
+EXPOSE 8000
+
+CMD ["python", "src/main.py"]
+```
+
+---
+
+## 📄 14. FILE DOCKER-COMPOSE.YML
+
+```yaml
+version: '3.8'
+
+services:
+  ai-engine:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ai_engine
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG FILE AI_ENGINE
+
+| Thành phần | Số lượng file |
+|-----------|--------------|
+| Core modules | 6 |
+| Models | 12 |
+| Services | 9 |
+| API endpoints | 11 |
+| Data processors | 7 |
+| Training scripts | 8 |
+| Utils | 11 |
+| Tests | 15 |
+| Notebooks | 8 |
+| Scripts | 8 |
+| Configs | 6 |
+| **TỔNG** | **~101 files** |
+
+---
+
+# 📁 CẤU TRÚC THƯ MỤC TEST_SYSTEM - CHI TIẾT NHẤT
+
+## TOÀN BỘ CẤU TRÚC THƯ MỤC VÀ FILE
+
+Dưới đây là **cấu trúc thư mục chi tiết nhất** cho `test_system/`:
+
+---
+
+## 📁 CẤU TRÚC GỐC
+
+```
+test_system/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 index.html
+├── 📄 test_runner.php
+├── 📄 docker-compose.yml
+├── 📄 Dockerfile
+├── 📄 phpunit.xml
+├── 📄 jest.config.js
+├── 📄 playwright.config.ts
+├── 📄 k6.config.js
+├── 📄 sonar-project.properties
+├── 📄 package.json
+├── 📄 composer.json
+│
+├── 📁 api_tests/
+├── 📁 unit_tests/
+├── 📁 integration_tests/
+├── 📁 e2e_tests/
+├── 📁 performance_tests/
+├── 📁 security_tests/
+├── 📁 ui_tests/
+├── 📁 mobile_tests/
+├── 📁 criteria_tests/
+├── 📁 regression_tests/
+├── 📁 smoke_tests/
+├── 📁 sanity_tests/
+├── 📁 acceptance_tests/
+├── 📁 load_tests/
+├── 📁 stress_tests/
+├── 📁 spike_tests/
+├── 📁 soak_tests/
+├── 📁 chaos_tests/
+├── 📁 contract_tests/
+├── 📁 component_tests/
+├── 📁 module_tests/
+├── 📁 database_tests/
+├── 📁 queue_tests/
+├── 📁 cache_tests/
+├── 📁 storage_tests/
+├── 📁 network_tests/
+├── 📁 concurrency_tests/
+├── 📁 reliability_tests/
+├── 📁 failover_tests/
+├── 📁 recovery_tests/
+├── 📁 backup_tests/
+├── 📁 monitoring_tests/
+├── 📁 alert_tests/
+├── 📁 logging_tests/
+├── 📁 audit_tests/
+├── 📁 compliance_tests/
+├── 📁 localization_tests/
+├── 📁 accessibility_tests/
+├── 📁 cross_browser_tests/
+├── 📁 compatibility_tests/
+├── 📁 upgrade_tests/
+├── 📁 migration_tests/
+├── 📁 rollback_tests/
+├── 📁 deployment_tests/
+├── 📁 configuration_tests/
+├── 📁 dependency_tests/
+├── 📁 fixtures/
+├── 📁 mocks/
+├── 📁 stubs/
+├── 📁 factories/
+├── 📁 seeds/
+├── 📁 reports/
+├── 📁 logs/
+├── 📁 screenshots/
+├── 📁 videos/
+├── 📁 artifacts/
+├── 📁 coverage/
+├── 📁 benchmarks/
+├── 📁 datasets/
+├── 📁 generators/
+├── 📁 validators/
+├── 📁 assertions/
+├── 📁 helpers/
+├── 📁 runners/
+├── 📁 orchestrators/
+├── 📁 schedulers/
+├── 📁 monitors/
+├── 📁 reporters/
+├── 📁 notifiers/
+├── 📁 configs/
+├── 📁 scripts/
+├── 📁 tools/
+├── 📁 drivers/
+├── 📁 adapters/
+├── 📁 extensions/
+├── 📁 plugins/
+├── 📁 templates/
+└── 📁 docs/
+```
+
+---
+
+## 📁 1. THƯ MỤC API_TESTS
+
+```
+api_tests/
+│
+├── 📁 v1/
+│   ├── 📄 test_auth.php
+│   ├── 📄 test_mfa.php
+│   ├── 📄 test_rbac.php
+│   ├── 📄 test_encryption.php
+│   ├── 📄 test_web_security.php
+│   ├── 📄 test_password.php
+│   ├── 📄 test_url_security.php
+│   ├── 📄 test_api_security.php
+│   ├── 📄 test_source_code.php
+│   ├── 📄 test_db_security.php
+│   ├── 📄 test_network.php
+│   ├── 📄 test_endpoint.php
+│   ├── 📄 test_cloud.php
+│   ├── 📄 test_container.php
+│   ├── 📄 test_logging.php
+│   ├── 📄 test_incident.php
+│   ├── 📄 test_vulnerability.php
+│   ├── 📄 test_backup.php
+│   ├── 📄 test_risk.php
+│   ├── 📄 test_compliance.php
+│   ├── 📄 test_physical.php
+│   ├── 📄 test_mobile.php
+│   ├── 📄 test_iot.php
+│   ├── 📄 test_devsecops.php
+│   ├── 📄 test_pentest.php
+│   ├── 📄 test_ai_engine.php
+│   ├── 📄 test_sync.php
+│   ├── 📄 test_reports.php
+│   └── 📄 test_keys.php
+│
+├── 📁 v2/
+│   └── 📄 (các file tương tự v1)
+│
+├── 📁 schemas/
+│   ├── 📄 user.schema.json
+│   ├── 📄 assessment.schema.json
+│   ├── 📄 key.schema.json
+│   ├── 📄 report.schema.json
+│   ├── 📄 incident.schema.json
+│   ├── 📄 vulnerability.schema.json
+│   └── 📄 compliance.schema.json
+│
+└── 📁 collections/
+    ├── 📄 auth_collection.json
+    ├── 📄 assessment_collection.json
+    ├── 📄 report_collection.json
+    ├── 📄 key_collection.json
+    ├── 📄 incident_collection.json
+    ├── 📄 vulnerability_collection.json
+    └── 📄 compliance_collection.json
+```
+
+---
+
+## 📁 2. THƯ MỤC UNIT_TESTS
+
+```
+unit_tests/
+│
+├── 📁 models/
+│   ├── 📄 UserTest.php
+│   ├── 📄 RoleTest.php
+│   ├── 📄 PermissionTest.php
+│   ├── 📄 DomainTest.php
+│   ├── 📄 CriteriaTest.php
+│   ├── 📄 AssessmentTest.php
+│   ├── 📄 AssessmentDetailTest.php
+│   ├── 📄 KeyTest.php
+│   ├── 📄 KeyUsageTest.php
+│   ├── 📄 ReportTest.php
+│   ├── 📄 IncidentTest.php
+│   ├── 📄 IncidentCommentTest.php
+│   ├── 📄 VulnerabilityTest.php
+│   ├── 📄 ComplianceTest.php
+│   ├── 📄 NotificationTest.php
+│   ├── 📄 DeviceTest.php
+│   ├── 📄 SessionTest.php
+│   ├── 📄 LogTest.php
+│   └── 📄 SettingTest.php
+│
+├── 📁 services/
+│   ├── 📄 AuthServiceTest.php
+│   ├── 📄 MfaServiceTest.php
+│   ├── 📄 RbacServiceTest.php
+│   ├── 📄 JwtServiceTest.php
+│   ├── 📄 EncryptionServiceTest.php
+│   ├── 📄 KeyServiceTest.php
+│   ├── 📄 AssessmentServiceTest.php
+│   ├── 📄 ReportServiceTest.php
+│   ├── 📄 IncidentServiceTest.php
+│   ├── 📄 VulnerabilityServiceTest.php
+│   ├── 📄 ComplianceServiceTest.php
+│   ├── 📄 SyncServiceTest.php
+│   ├── 📄 NotificationServiceTest.php
+│   ├── 📄 AIServiceTest.php
+│   └── 📄 CacheServiceTest.php
+│
+├── 📁 controllers/
+│   ├── 📄 AuthControllerTest.php
+│   ├── 📄 MfaControllerTest.php
+│   ├── 📄 RoleControllerTest.php
+│   ├── 📄 AssessmentControllerTest.php
+│   ├── 📄 KeyControllerTest.php
+│   ├── 📄 ReportControllerTest.php
+│   ├── 📄 IncidentControllerTest.php
+│   ├── 📄 VulnerabilityControllerTest.php
+│   ├── 📄 ComplianceControllerTest.php
+│   ├── 📄 AIControllerTest.php
+│   ├── 📄 SyncControllerTest.php
+│   └── 📄 AdminControllerTest.php
+│
+├── 📁 repositories/
+│   ├── 📄 UserRepositoryTest.php
+│   ├── 📄 AssessmentRepositoryTest.php
+│   ├── 📄 KeyRepositoryTest.php
+│   ├── 📄 ReportRepositoryTest.php
+│   ├── 📄 IncidentRepositoryTest.php
+│   └── 📄 SyncRepositoryTest.php
+│
+├── 📁 validators/
+│   ├── 📄 UserValidatorTest.php
+│   ├── 📄 AssessmentValidatorTest.php
+│   ├── 📄 KeyValidatorTest.php
+│   ├── 📄 ReportValidatorTest.php
+│   ├── 📄 IncidentValidatorTest.php
+│   ├── 📄 VulnerabilityValidatorTest.php
+│   └── 📄 ComplianceValidatorTest.php
+│
+├── 📁 helpers/
+│   ├── 📄 EncryptionHelperTest.php
+│   ├── 📄 ValidationHelperTest.php
+│   ├── 📄 FormatHelperTest.php
+│   ├── 📄 DateHelperTest.php
+│   ├── 📄 FileHelperTest.php
+│   ├── 📄 ImageHelperTest.php
+│   ├── 📄 StringHelperTest.php
+│   ├── 📄 ArrayHelperTest.php
+│   ├── 📄 NumberHelperTest.php
+│   └── 📄 UrlHelperTest.php
+│
+└── 📁 utils/
+    ├── 📄 LoggerTest.php
+    ├── 📄 CacheTest.php
+    ├── 📄 QueueTest.php
+    ├── 📄 DatabaseTest.php
+    ├── 📄 RedisTest.php
+    ├── 📄 HttpClientTest.php
+    └── 📄 RateLimiterTest.php
+```
+
+---
+
+## 📁 3. THƯ MỤC INTEGRATION_TESTS
+
+```
+integration_tests/
+│
+├── 📄 auth_flow_test.php
+├── 📄 assessment_flow_test.php
+├── 📄 key_verification_flow_test.php
+├── 📄 report_generation_flow_test.php
+├── 📄 incident_management_flow_test.php
+├── 📄 vulnerability_scan_flow_test.php
+├── 📄 compliance_check_flow_test.php
+├── 📄 ai_detection_flow_test.php
+├── 📄 sync_flow_test.php
+├── 📄 user_management_flow_test.php
+├── 📄 role_management_flow_test.php
+├── 📄 backup_restore_flow_test.php
+├── 📄 upgrade_flow_test.php
+├── 📄 migration_flow_test.php
+├── 📄 rollback_flow_test.php
+├── 📄 deployment_flow_test.php
+├── 📄 test_sync_laravel_flutter.php
+├── 📄 test_firebase_sync.php
+├── 📄 test_ai_integration.php
+├── 📄 test_database_integration.php
+├── 📄 test_cache_integration.php
+├── 📄 test_queue_integration.php
+├── 📄 test_storage_integration.php
+├── 📄 test_email_integration.php
+├── 📄 test_sms_integration.php
+├── 📄 test_push_integration.php
+├── 📄 test_webhook_integration.php
+├── 📄 test_third_party_api.php
+├── 📄 test_end_to_end.php
+└── 📄 test_smoke.php
+```
+
+---
+
+## 📁 4. THƯ MỤC E2E_TESTS
+
+```
+e2e_tests/
+│
+├── 📁 scenarios/
+│   ├── 📄 user_journey_test.php
+│   ├── 📄 admin_journey_test.php
+│   ├── 📄 assessor_journey_test.php
+│   ├── 📄 auditor_journey_test.php
+│   ├── 📄 security_officer_journey_test.php
+│   ├── 📄 compliance_officer_journey_test.php
+│   ├── 📄 incident_responder_journey_test.php
+│   └── 📄 pentester_journey_test.php
+│
+├── 📁 workflows/
+│   ├── 📄 registration_workflow_test.php
+│   ├── 📄 login_workflow_test.php
+│   ├── 📄 mfa_workflow_test.php
+│   ├── 📄 assessment_workflow_test.php
+│   ├── 📄 key_unlock_workflow_test.php
+│   ├── 📄 incident_report_workflow_test.php
+│   ├── 📄 vulnerability_scan_workflow_test.php
+│   ├── 📄 compliance_audit_workflow_test.php
+│   ├── 📄 report_generation_workflow_test.php
+│   ├── 📄 sync_workflow_test.php
+│   ├── 📄 backup_restore_workflow_test.php
+│   └── 📄 upgrade_workflow_test.php
+│
+├── 📁 critical_paths/
+│   ├── 📄 login_path_test.php
+│   ├── 📄 assessment_path_test.php
+│   ├── 📄 key_verification_path_test.php
+│   ├── 📄 report_generation_path_test.php
+│   ├── 📄 incident_resolution_path_test.php
+│   └── 📄 compliance_audit_path_test.php
+│
+└── 📁 user_flows/
+    ├── 📄 new_user_flow_test.php
+    ├── 📄 existing_user_flow_test.php
+    ├── 📄 admin_user_flow_test.php
+    └── 📄 guest_user_flow_test.php
+```
+
+---
+
+## 📁 5. THƯ MỤC PERFORMANCE_TESTS
+
+```
+performance_tests/
+│
+├── 📄 load_test_api.php
+├── 📄 stress_test_database.php
+├── 📄 concurrent_users_test.php
+├── 📄 response_time_test.php
+├── 📄 memory_usage_test.php
+├── 📄 cpu_usage_test.php
+├── 📄 endurance_test.php
+├── 📄 spike_test.php
+├── 📄 scalability_test.php
+├── 📄 throughput_test.php
+├── 📄 latency_test.php
+├── 📄 resource_utilization_test.php
+├── 📄 connection_pool_test.php
+├── 📄 thread_pool_test.php
+│
+├── 📁 k6/
+│   ├── 📄 test_auth.js
+│   ├── 📄 test_assessment.js
+│   ├── 📄 test_report.js
+│   ├── 📄 test_api_load.js
+│   ├── 📄 test_incident.js
+│   ├── 📄 test_vulnerability.js
+│   ├── 📄 test_compliance.js
+│   ├── 📄 test_sync.js
+│   ├── 📄 config.js
+│   ├── 📄 thresholds.js
+│   ├── 📄 helpers.js
+│   └── 📄 scenarios.js
+│
+├── 📁 jmeter/
+│   ├── 📄 test_plan.jmx
+│   ├── 📄 distributed_test.jmx
+│   ├── 📄 user_credentials.csv
+│   ├── 📄 test_data.csv
+│   └── 📄 assertions.jmx
+│
+├── 📁 locust/
+│   ├── 📄 locustfile.py
+│   ├── 📄 test_scenarios.py
+│   ├── 📄 user_behavior.py
+│   ├── 📄 config.py
+│   ├── 📄 tasks.py
+│   └── 📄 wait_time.py
+│
+└── 📁 artillery/
+    ├── 📄 test_load.yml
+    ├── 📄 test_spike.yml
+    ├── 📄 test_soak.yml
+    ├── 📄 test_stress.yml
+    ├── 📄 processor.js
+    └── 📄 functions.js
+```
+
+---
+
+## 📁 6. THƯ MỤC SECURITY_TESTS
+
+```
+security_tests/
+│
+├── 📄 test_sql_injection.php
+├── 📄 test_xss.php
+├── 📄 test_csrf.php
+├── 📄 test_ssrf.php
+├── 📄 test_rate_limiting.php
+├── 📄 test_jwt_security.php
+├── 📄 test_mfa_bypass.php
+├── 📄 test_role_escalation.php
+├── 📄 test_file_upload.php
+├── 📄 test_path_traversal.php
+├── 📄 test_command_injection.php
+├── 📄 test_xxe.php
+├── 📄 test_open_redirect.php
+├── 📄 test_cors.php
+├── 📄 test_ssl_tls.php
+├── 📄 test_clickjacking.php
+├── 📄 test_session_fixation.php
+├── 📄 test_idor.php
+├── 📄 test_race_condition.php
+├── 📄 test_deserialization.php
+├── 📄 test_log_forging.php
+├── 📄 test_dependency_vulnerability.php
+├── 📄 test_secrets_scan.php
+├── 📄 test_container_security.php
+├── 📄 test_cloud_security.php
+├── 📄 test_api_security.php
+├── 📄 test_graphql_security.php
+├── 📄 test_websocket_security.php
+├── 📄 test_grpc_security.php
+├── 📄 test_mobile_security.php
+├── 📄 test_iot_security.php
+└── 📄 test_ai_security.php
+```
+
+---
+
+## 📁 7. THƯ MỤC UI_TESTS
+
+```
+ui_tests/
+│
+├── 📁 selenium/
+│   ├── 📄 test_login.py
+│   ├── 📄 test_assessment.py
+│   ├── 📄 test_report.py
+│   ├── 📄 test_admin_panel.py
+│   ├── 📄 test_dashboard.py
+│   ├── 📄 test_user_management.py
+│   ├── 📄 test_role_management.py
+│   ├── 📄 test_criteria_management.py
+│   ├── 📄 test_key_management.py
+│   ├── 📄 test_incident_management.py
+│   ├── 📄 test_vulnerability_management.py
+│   ├── 📄 test_compliance_management.py
+│   ├── 📄 test_ai_dashboard.py
+│   ├── 📄 test_sync_status.py
+│   ├── 📄 conftest.py
+│   ├── 📄 pytest.ini
+│   ├── 📄 base_test.py
+│   └── 📄 page_objects/
+│       ├── 📄 login_page.py
+│       ├── 📄 dashboard_page.py
+│       ├── 📄 assessment_page.py
+│       ├── 📄 report_page.py
+│       ├── 📄 user_page.py
+│       └── 📄 admin_page.py
+│
+├── 📁 playwright/
+│   ├── 📄 test_login.spec.ts
+│   ├── 📄 test_assessment.spec.ts
+│   ├── 📄 test_report.spec.ts
+│   ├── 📄 test_admin.spec.ts
+│   ├── 📄 test_dashboard.spec.ts
+│   ├── 📄 test_user_management.spec.ts
+│   ├── 📄 test_role_management.spec.ts
+│   ├── 📄 test_criteria.spec.ts
+│   ├── 📄 test_keys.spec.ts
+│   ├── 📄 test_incidents.spec.ts
+│   ├── 📄 test_vulnerabilities.spec.ts
+│   ├── 📄 test_compliance.spec.ts
+│   ├── 📄 test_ai.spec.ts
+│   ├── 📄 test_sync.spec.ts
+│   ├── 📄 playwright.config.ts
+│   ├── 📄 global-setup.ts
+│   ├── 📄 global-teardown.ts
+│   └── 📄 pages/
+│       ├── 📄 login.page.ts
+│       ├── 📄 dashboard.page.ts
+│       ├── 📄 assessment.page.ts
+│       └── 📄 admin.page.ts
+│
+├── 📁 cypress/
+│   ├── 📄 login.cy.js
+│   ├── 📄 assessment.cy.js
+│   ├── 📄 report.cy.js
+│   ├── 📄 admin.cy.js
+│   ├── 📄 dashboard.cy.js
+│   ├── 📄 user_management.cy.js
+│   ├── 📄 role_management.cy.js
+│   ├── 📄 criteria.cy.js
+│   ├── 📄 keys.cy.js
+│   ├── 📄 incidents.cy.js
+│   ├── 📄 vulnerabilities.cy.js
+│   ├── 📄 compliance.cy.js
+│   ├── 📄 ai.cy.js
+│   ├── 📄 sync.cy.js
+│   ├── 📄 cypress.config.js
+│   ├── 📄 e2e.js
+│   ├── 📄 support/
+│   │   ├── 📄 commands.js
+│   │   ├── 📄 e2e.js
+│   │   └── 📄 index.js
+│   └── 📁 fixtures/
+│       ├── 📄 users.json
+│       ├── 📄 assessments.json
+│       ├── 📄 keys.json
+│       ├── 📄 reports.json
+│       └── 📄 incidents.json
+│
+└── 📁 visual_tests/
+    ├── 📁 screenshots/
+    │   ├── 📁 baseline/
+    │   ├── 📁 current/
+    │   └── 📁 diff/
+    ├── 📁 storybook/
+    │   ├── 📁 stories/
+    │   │   ├── 📄 Login.stories.js
+    │   │   ├── 📄 Dashboard.stories.js
+    │   │   ├── 📄 Assessment.stories.js
+    │   │   ├── 📄 Report.stories.js
+    │   │   ├── 📄 Incident.stories.js
+    │   │   ├── 📄 Vulnerability.stories.js
+    │   │   └── 📄 Compliance.stories.js
+    │   └── 📄 main.js
+    ├── 📁 percy/
+    │   ├── 📄 percy.config.js
+    │   └── 📄 snapshot.js
+    └── 📁 backstop/
+        ├── 📄 backstop.json
+        └── 📄 scenarios.js
+```
+
+---
+
+## 📁 8. THƯ MỤC MOBILE_TESTS
+
+```
+mobile_tests/
+│
+├── 📁 detox/
+│   ├── 📄 e2e/
+│   │   ├── 📄 login.spec.js
+│   │   ├── 📄 assessment.spec.js
+│   │   ├── 📄 report.spec.js
+│   │   ├── 📄 key_verification.spec.js
+│   │   ├── 📄 incident.spec.js
+│   │   ├── 📄 vulnerability.spec.js
+│   │   ├── 📄 compliance.spec.js
+│   │   ├── 📄 ai_chat.spec.js
+│   │   ├── 📄 offline_mode.spec.js
+│   │   └── 📄 sync.spec.js
+│   └── 📄 detox.config.js
+│
+├── 📁 espresso/
+│   ├── 📄 LoginTest.kt
+│   ├── 📄 AssessmentTest.kt
+│   ├── 📄 ReportTest.kt
+│   ├── 📄 KeyVerificationTest.kt
+│   ├── 📄 IncidentTest.kt
+│   ├── 📄 VulnerabilityTest.kt
+│   ├── 📄 ComplianceTest.kt
+│   ├── 📄 OfflineTest.kt
+│   ├── 📄 SyncTest.kt
+│   └── 📄 BaseTest.kt
+│
+├── 📁 xctest/
+│   ├── 📄 LoginTests.swift
+│   ├── 📄 AssessmentTests.swift
+│   ├── 📄 ReportTests.swift
+│   ├── 📄 KeyVerificationTests.swift
+│   ├── 📄 IncidentTests.swift
+│   ├── 📄 VulnerabilityTests.swift
+│   ├── 📄 ComplianceTests.swift
+│   ├── 📄 OfflineTests.swift
+│   ├── 📄 SyncTests.swift
+│   └── 📄 BaseTests.swift
+│
+└── 📁 flutter_driver/
+    ├── 📄 test_driver.dart
+    ├── 📄 app_test.dart
+    ├── 📄 login_test.dart
+    ├── 📄 assessment_test.dart
+    ├── 📄 report_test.dart
+    ├── 📄 key_test.dart
+    ├── 📄 offline_test.dart
+    ├── 📄 sync_test.dart
+    └── 📄 performance_test.dart
+```
+
+---
+
+## 📁 9. THƯ MỤC CRITERIA_TESTS
+
+```
+criteria_tests/
+│
+├── 📄 test_criteria_D01_iam.php
+├── 📄 test_criteria_D02_encryption.php
+├── 📄 test_criteria_D03_web.php
+├── 📄 test_criteria_D04_password.php
+├── 📄 test_criteria_D05_url.php
+├── 📄 test_criteria_D06_api.php
+├── 📄 test_criteria_D07_sourcecode.php
+├── 📄 test_criteria_D08_database.php
+├── 📄 test_criteria_D09_network.php
+├── 📄 test_criteria_D10_endpoint.php
+├── 📄 test_criteria_D11_cloud.php
+├── 📄 test_criteria_D12_container.php
+├── 📄 test_criteria_D13_logging.php
+├── 📄 test_criteria_D14_incident.php
+├── 📄 test_criteria_D15_risk.php
+├── 📄 test_criteria_D16_compliance.php
+├── 📄 test_criteria_D17_physical.php
+├── 📄 test_criteria_D18_awareness.php
+├── 📄 test_criteria_D19_mobile.php
+├── 📄 test_criteria_D20_iot.php
+├── 📄 test_criteria_D21_vulnerability.php
+├── 📄 test_criteria_D22_email.php
+├── 📄 test_criteria_D23_backup.php
+├── 📄 test_criteria_D24_devsecops.php
+└── 📄 test_criteria_D25_pentest.php
+```
+
+---
+
+## 📁 10. THƯ MỤC REGRESSION_TESTS
+
+```
+regression_tests/
+│
+├── 📄 regression_suite_1.php
+├── 📄 regression_suite_2.php
+├── 📄 regression_suite_3.php
+├── 📄 regression_auth.php
+├── 📄 regression_assessment.php
+├── 📄 regression_key.php
+├── 📄 regression_report.php
+├── 📄 regression_incident.php
+├── 📄 regression_vulnerability.php
+├── 📄 regression_compliance.php
+├── 📄 regression_ai.php
+├── 📄 regression_sync.php
+├── 📄 regression_api.php
+├── 📄 regression_ui.php
+├── 📄 regression_mobile.php
+└── 📄 regression_database.php
+```
+
+---
+
+## 📁 11. THƯ MỤC SMOKE_TESTS
+
+```
+smoke_tests/
+│
+├── 📄 smoke_auth.php
+├── 📄 smoke_assessment.php
+├── 📄 smoke_key.php
+├── 📄 smoke_report.php
+├── 📄 smoke_incident.php
+├── 📄 smoke_vulnerability.php
+├── 📄 smoke_compliance.php
+├── 📄 smoke_ai.php
+├── 📄 smoke_sync.php
+├── 📄 smoke_api.php
+├── 📄 smoke_database.php
+├── 📄 smoke_cache.php
+├── 📄 smoke_queue.php
+└── 📄 smoke_storage.php
+```
+
+---
+
+## 📁 12. THƯ MỤC CONTRACT_TESTS
+
+```
+contract_tests/
+│
+├── 📁 pact/
+│   ├── 📄 consumer/
+│   │   ├── 📄 user_consumer_test.js
+│   │   ├── 📄 assessment_consumer_test.js
+│   │   ├── 📄 report_consumer_test.js
+│   │   ├── 📄 key_consumer_test.js
+│   │   ├── 📄 incident_consumer_test.js
+│   │   ├── 📄 vulnerability_consumer_test.js
+│   │   └── 📄 compliance_consumer_test.js
+│   ├── 📄 provider/
+│   │   ├── 📄 user_provider_test.js
+│   │   ├── 📄 assessment_provider_test.js
+│   │   ├── 📄 report_provider_test.js
+│   │   ├── 📄 key_provider_test.js
+│   │   ├── 📄 incident_provider_test.js
+│   │   ├── 📄 vulnerability_provider_test.js
+│   │   └── 📄 compliance_provider_test.js
+│   └── 📄 pacts/
+│       ├── 📄 user_contract.json
+│       ├── 📄 assessment_contract.json
+│       ├── 📄 report_contract.json
+│       ├── 📄 key_contract.json
+│       ├── 📄 incident_contract.json
+│       ├── 📄 vulnerability_contract.json
+│       └── 📄 compliance_contract.json
+│
+└── 📁 openapi/
+    ├── 📄 validator.js
+    ├── 📄 spec_validator.py
+    ├── 📄 contract_tester.py
+    └── 📄 schemas/
+        ├── 📄 user.yaml
+        ├── 📄 assessment.yaml
+        ├── 📄 report.yaml
+        ├── 📄 key.yaml
+        ├── 📄 incident.yaml
+        ├── 📄 vulnerability.yaml
+        └── 📄 compliance.yaml
+```
+
+---
+
+## 📁 13. THƯ MỤC FIXTURES
+
+```
+fixtures/
+│
+├── 📄 users.json
+├── 📄 roles.json
+├── 📄 permissions.json
+├── 📄 domains.json
+├── 📄 criteria.json
+├── 📄 assessments.json
+├── 📄 assessment_details.json
+├── 📄 keys.json
+├── 📄 key_usages.json
+├── 📄 reports.json
+├── 📄 incidents.json
+├── 📄 incident_comments.json
+├── 📄 vulnerabilities.json
+├── 📄 compliance_checks.json
+├── 📄 ai_detections.json
+├── 📄 sync_logs.json
+├── 📄 notifications.json
+├── 📄 devices.json
+├── 📄 sessions.json
+├── 📄 logs.json
+├── 📄 settings.json
+├── 📄 valid_users.csv
+├── 📄 invalid_users.csv
+├── 📄 test_assessments.csv
+├── 📄 test_incidents.json
+├── 📄 anomaly_samples.json
+├── 📄 malware_samples.json
+├── 📄 phishing_samples.json
+├── 📄 sql_injection_payloads.txt
+├── 📄 xss_payloads.txt
+├── 📄 command_injection_payloads.txt
+└── 📄 threat_samples.json
+```
+
+---
+
+## 📁 14. THƯ MỤC MOCKS
+
+```
+mocks/
+│
+├── 📄 mock_api_service.php
+├── 📄 mock_repository.php
+├── 📄 mock_provider.php
+├── 📄 mock_database.php
+├── 📄 mock_cache.php
+├── 📄 mock_queue.php
+├── 📄 mock_storage.php
+├── 📄 mock_email.php
+├── 📄 mock_sms.php
+├── 📄 mock_push.php
+├── 📄 mock_webhook.php
+├── 📄 mock_firebase.php
+├── 📄 mock_ai_service.php
+├── 📄 mock_auth_service.php
+├── 📄 mock_user_service.php
+├── 📄 mock_assessment_service.php
+├── 📄 mock_key_service.php
+├── 📄 mock_report_service.php
+├── 📄 mock_incident_service.php
+├── 📄 mock_vulnerability_service.php
+├── 📄 mock_compliance_service.php
+├── 📄 mock_sync_service.php
+├── 📄 mock_notification_service.php
+├── 📄 mock_http_client.php
+├── 📄 mock_redis_client.php
+└── 📄 mock_mysql_client.php
+```
+
+---
+
+## 📁 15. THƯ MỤC REPORTS
+
+```
+reports/
+│
+├── 📄 report_viewer.php
+├── 📄 export_test_report.php
+├── 📄 email_report.php
+├── 📄 compare_reports.php
+├── 📄 dashboard.php
+├── 📄 generate_coverage_report.php
+├── 📄 generate_performance_report.php
+├── 📄 generate_security_report.php
+├── 📄 generate_api_report.php
+│
+├── 📁 output/
+│   ├── 📄 latest_report.json
+│   ├── 📄 latest_report.html
+│   ├── 📄 latest_report.pdf
+│   ├── 📄 latest_report.xml
+│   ├── 📄 summary_report.csv
+│   ├── 📄 coverage_report.html
+│   ├── 📄 performance_report.html
+│   ├── 📄 security_report.html
+│   ├── 📄 api_report.html
+│   └── 📄 junit.xml
+│
+├── 📁 historical/
+│   ├── 📄 report_2025_01_01.json
+│   ├── 📄 report_2025_01_02.json
+│   ├── 📄 report_2025_01_03.json
+│   ├── 📄 report_2025_01_04.json
+│   ├── 📄 report_2025_01_05.json
+│   └── 📁 archive/
+│
+└── 📁 badges/
+    ├── 📄 tests_passed_badge.svg
+    ├── 📄 coverage_badge.svg
+    ├── 📄 performance_badge.svg
+    ├── 📄 security_badge.svg
+    └── 📄 api_badge.svg
+```
+
+---
+
+## 📁 16. THƯ MỤC LOGS
+
+```
+logs/
+│
+├── 📄 test_execution.log
+├── 📄 error.log
+├── 📄 debug.log
+├── 📄 api_test.log
+├── 📄 security_test.log
+├── 📄 performance_test.log
+├── 📄 automation.log
+├── 📄 coverage.log
+├── 📄 audit.log
+├── 📄 selenium.log
+├── 📄 playwright.log
+├── 📄 cypress.log
+├── 📄 appium.log
+├── 📄 k6.log
+├── 📄 jmeter.log
+├── 📄 locust.log
+│
+└── 📁 archive/
+    ├── 📄 test_2025_01_01.log.gz
+    ├── 📄 test_2025_01_02.log.gz
+    ├── 📄 test_2025_01_03.log.gz
+    ├── 📄 test_2025_01_04.log.gz
+    ├── 📄 test_2025_01_05.log.gz
+    ├── 📄 test_2025_01_06.log.gz
+    └── 📄 test_2025_01_07.log.gz
+```
+
+---
+
+## 📁 17. THƯ MỤC RUNNERS
+
+```
+runners/
+│
+├── 📄 run_all_tests.sh
+├── 📄 run_api_tests.sh
+├── 📄 run_criteria_tests.sh
+├── 📄 run_security_scan.sh
+├── 📄 run_performance_tests.sh
+├── 📄 run_integration_tests.sh
+├── 📄 run_regression_tests.sh
+├── 📄 run_smoke_tests.sh
+├── 📄 run_ui_tests.sh
+├── 📄 run_unit_tests.sh
+├── 📄 run_coverage.sh
+├── 📄 run_mutation_tests.sh
+├── 📄 run_chaos_tests.sh
+├── 📄 run_load_tests.sh
+├── 📄 run_stress_tests.sh
+├── 📄 run_e2e_tests.sh
+├── 📄 run_mobile_tests.sh
+├── 📄 run_contract_tests.sh
+├── 📄 generate_report.sh
+├── 📄 send_report.sh
+├── 📄 clean_logs.sh
+├── 📄 setup_test_env.sh├── 📄 teardown_test_env.sh
+└── 📄 docker_run_tests.sh
+```
+
+---
+
+## 📁 18. THƯ MỤC CONFIGS
+
+```
+configs/
+│
+├── 📄 test_config.php
+├── 📄 database_test.php
+├── 📄 api_config.php
+├── 📄 constants.php
+├── 📄 email_config.php
+├── 📄 report_config.php
+├── 📄 selenium_config.php
+├── 📄 playwright_config.php
+├── 📄 cypress_config.php
+├── 📄 load_test_config.php
+├── 📄 security_config.php
+├── 📄 logging_config.php
+├── 📄 cache_config.php
+├── 📄 queue_config.php
+├── 📄 environment_config.php
+├── 📄 mobile_config.php
+├── 📄 ci_config.php
+└── 📄 deployment_config.php
+```
+
+---
+
+## 📁 19. THƯ MỤC NOTIFIERS
+
+```
+notifiers/
+│
+├── 📄 slack_notifier.php
+├── 📄 email_notifier.php
+├── 📄 teams_notifier.php
+├── 📄 discord_notifier.php
+├── 📄 webhook_notifier.php
+├── 📄 sms_notifier.php
+├── 📄 telegram_notifier.php
+├── 📄 push_notifier.php
+├── 📄 jira_notifier.php
+├── 📄 sentry_notifier.php
+├── 📄 datadog_notifier.php
+├── 📄 prometheus_notifier.php
+│
+└── 📁 templates/
+    ├── 📄 test_success.html
+    ├── 📄 test_failure.html
+    ├── 📄 test_summary.html
+    ├── 📄 daily_report.html
+    ├── 📄 weekly_report.html
+    ├── 📄 monthly_report.html
+    ├── 📄 security_alert.html
+    ├── 📄 performance_alert.html
+    └── 📄 coverage_report.html
+```
+
+---
+
+## 📁 20. THƯ MỤC HELPERS
+
+```
+helpers/
+│
+├── 📄 assertion_helper.php
+├── 📄 data_helper.php
+├── 📄 time_helper.php
+├── 📄 file_helper.php
+├── 📄 string_helper.php
+├── 📄 array_helper.php
+├── 📄 random_helper.php
+├── 📄 crypto_helper.php
+├── 📄 http_helper.php
+├── 📄 db_helper.php
+├── 📄 api_helper.php
+├── 📄 auth_helper.php
+├── 📄 mock_helper.php
+├── 📄 fixture_helper.php
+├── 📄 report_helper.php
+├── 📄 cleanup_helper.php
+├── 📄 validation_helper.php
+├── 📄 conversion_helper.php
+├── 📄 math_helper.php
+├── 📄 regex_helper.php
+├── 📄 url_helper.php
+├── 📄 json_helper.php
+├── 📄 xml_helper.php
+├── 📄 csv_helper.php
+└── 📄 pdf_helper.php
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG THƯ MỤC CON
+
+| Cấp độ | Số lượng |
+|--------|----------|
+| Thư mục cấp 1 | 50 |
+| Thư mục cấp 2 | 80 |
+| Thư mục cấp 3 | 40 |
+| **TỔNG** | **~170 thư mục** |
+
+---
+
+# 📁 CẤU TRÚC CHI TIẾT TỪNG FILE - MOBILE_API
+
+## API DÀNH CHO MOBILE FLUTTER (ANDROID/IOS) - FILE CUỐI CÙNG
+
+
+
+---
+
+## 📁 CẤU TRÚC TỔNG THỂ
+
+```
+mobile_api/
+│
+├── 📄 .env
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 index.php
+├── 📄 .htaccess
+├── 📄 composer.json
+├── 📄 package.json
+├── 📄 phpunit.xml
+├── 📄 docker-compose.yml
+├── 📄 Dockerfile
+├── 📄 swagger.yaml
+├── 📄 postman_collection.json
+│
+├── 📁 v1/
+├── 📁 v2/
+├── 📁 v3/
+├── 📁 auth/
+├── 📁 middleware/
+├── 📁 controllers/
+├── 📁 services/
+├── 📁 repositories/
+├── 📁 models/
+├── 📁 transformers/
+├── 📁 validators/
+├── 📁 docs/
+├── 📁 tests/
+├── 📁 config/
+├── 📁 logs/
+├── 📁 cache/
+├── 📁 queues/
+├── 📁 events/
+├── 📁 listeners/
+├── 📁 jobs/
+├── 📁 notifications/
+├── 📁 webhooks/
+├── 📁 sdk/
+├── 📁 examples/
+├── 📁 rate_limits/
+├── 📁 security/
+├── 📁 monitoring/
+├── 📁 analytics/
+└── 📁 utils/
+```
+
+---
+
+## 📁 1. THƯ MỤC V1 (API VERSION 1)
+
+```
+mobile_api/v1/
+│
+├── 📄 index.php
+│
+├── 📁 endpoints/
+│   ├── 📄 auth.php
+│   ├── 📄 user.php
+│   ├── 📄 role.php
+│   ├── 📄 domain.php
+│   ├── 📄 criteria.php
+│   ├── 📄 assessment.php
+│   ├── 📄 key.php
+│   ├── 📄 report.php
+│   ├── 📄 incident.php
+│   ├── 📄 vulnerability.php
+│   ├── 📄 compliance.php
+│   ├── 📄 ai.php
+│   ├── 📄 sync.php
+│   ├── 📄 notification.php
+│   ├── 📄 setting.php
+│   ├── 📄 device.php
+│   ├── 📄 session.php
+│   ├── 📄 log.php
+│   ├── 📄 file.php
+│   └── 📄 webhook.php
+│
+├── 📁 schemas/
+│   ├── 📄 user.schema.json
+│   ├── 📄 assessment.schema.json
+│   ├── 📄 key.schema.json
+│   ├── 📄 report.schema.json
+│   ├── 📄 incident.schema.json
+│   ├── 📄 vulnerability.schema.json
+│   ├── 📄 compliance.schema.json
+│   └── 📄 response.schema.json
+│
+└── 📁 responses/
+    ├── 📄 success.php
+    ├── 📄 error.php
+    ├── 📄 validation.php
+    └── 📄 pagination.php
+```
+
+---
+
+## 📁 2. THƯ MỤC AUTH (XÁC THỰC)
+
+```
+mobile_api/auth/
+│
+├── 📄 login.php
+├── 📄 register.php
+├── 📄 logout.php
+├── 📄 refresh.php
+├── 📄 forgot_password.php
+├── 📄 reset_password.php
+├── 📄 verify_email.php
+├── 📄 resend_verification.php
+├── 📄 change_password.php
+├── 📄 two_factor.php
+├── 📄 verify_otp.php
+├── 📄 biometric_login.php
+├── 📄 social_login.php
+├── 📄 mfa_setup.php
+├── 📄 mfa_verify.php
+└── 📄 session.php
+```
+
+---
+
+## 📁 3. THƯ MỤC MIDDLEWARE
+
+```
+mobile_api/middleware/
+│
+├── 📄 AuthMiddleware.php
+├── 📄 RoleMiddleware.php
+├── 📄 RateLimitMiddleware.php
+├── 📄 CorsMiddleware.php
+├── 📄 LogMiddleware.php
+├── 📄 CacheMiddleware.php
+├── 📄 CompressionMiddleware.php
+├── 📄 EncryptionMiddleware.php
+├── 📄 ValidationMiddleware.php
+├── 📄 ThrottleMiddleware.php
+├── 📄 IpWhitelistMiddleware.php
+├── 📄 UserAgentMiddleware.php
+├── 📄 DeviceMiddleware.php
+├── 📄 VersionMiddleware.php
+├── 📄 MaintenanceMiddleware.php
+├── 📄 SecurityHeadersMiddleware.php
+├── 📄 ContentTypeMiddleware.php
+├── 📄 LanguageMiddleware.php
+└── 📄 TimezoneMiddleware.php
+```
+
+---
+
+## 📁 4. THƯ MỤC CONTROLLERS
+
+```
+mobile_api/controllers/
+│
+├── 📄 AuthController.php
+├── 📄 UserController.php
+├── 📄 RoleController.php
+├── 📄 DomainController.php
+├── 📄 CriteriaController.php
+├── 📄 AssessmentController.php
+├── 📄 KeyController.php
+├── 📄 ReportController.php
+├── 📄 IncidentController.php
+├── 📄 VulnerabilityController.php
+├── 📄 ComplianceController.php
+├── 📄 AIController.php
+├── 📄 SyncController.php
+├── 📄 NotificationController.php
+├── 📄 SettingController.php
+├── 📄 DeviceController.php
+├── 📄 SessionController.php
+├── 📄 LogController.php
+├── 📄 FileController.php
+├── 📄 WebhookController.php
+├── 📄 HealthController.php
+├── 📄 MetricsController.php
+└── 📄 DebugController.php
+```
+
+---
+
+## 📁 5. THƯ MỤC SERVICES
+
+```
+mobile_api/services/
+│
+├── 📄 AuthService.php
+├── 📄 UserService.php
+├── 📄 RoleService.php
+├── 📄 DomainService.php
+├── 📄 CriteriaService.php
+├── 📄 AssessmentService.php
+├── 📄 KeyService.php
+├── 📄 ReportService.php
+├── 📄 IncidentService.php
+├── 📄 VulnerabilityService.php
+├── 📄 ComplianceService.php
+├── 📄 AIService.php
+├── 📄 SyncService.php
+├── 📄 NotificationService.php
+├── 📄 SettingService.php
+├── 📄 DeviceService.php
+├── 📄 SessionService.php
+├── 📄 LogService.php
+├── 📄 FileService.php
+├── 📄 WebhookService.php
+├── 📄 EmailService.php
+├── 📄 SmsService.php
+├── 📄 PushService.php
+├── 📄 CacheService.php
+├── 📄 QueueService.php
+├── 📄 EncryptionService.php
+└── 📄 ValidationService.php
+```
+
+---
+
+## 📁 6. THƯ MỤC MODELS
+
+```
+mobile_api/models/
+│
+├── 📄 User.php
+├── 📄 Role.php
+├── 📄 Permission.php
+├── 📄 Domain.php
+├── 📄 Criteria.php
+├── 📄 Assessment.php
+├── 📄 AssessmentDetail.php
+├── 📄 Key.php
+├── 📄 KeyUsage.php
+├── 📄 Report.php
+├── 📄 Incident.php
+├── 📄 Vulnerability.php
+├── 📄 Compliance.php
+├── 📄 AIPrediction.php
+├── 📄 SyncQueue.php
+├── 📄 SyncLog.php
+├── 📄 Notification.php
+├── 📄 Device.php
+├── 📄 Session.php
+├── 📄 Log.php
+├── 📄 Setting.php
+├── 📄 Token.php
+├── 📄 Otp.php
+├── 📄 Mfa.php
+└── 📄 AuditLog.php
+```
+
+---
+
+## 📁 7. THƯ MỤC VALIDATORS
+
+```
+mobile_api/validators/
+│
+├── 📄 AuthValidator.php
+├── 📄 UserValidator.php
+├── 📄 RoleValidator.php
+├── 📄 DomainValidator.php
+├── 📄 CriteriaValidator.php
+├── 📄 AssessmentValidator.php
+├── 📄 KeyValidator.php
+├── 📄 ReportValidator.php
+├── 📄 IncidentValidator.php
+├── 📄 VulnerabilityValidator.php
+├── 📄 ComplianceValidator.php
+├── 📄 AIValidator.php
+├── 📄 SyncValidator.php
+├── 📄 NotificationValidator.php
+├── 📄 SettingValidator.php
+├── 📄 DeviceValidator.php
+├── 📄 FileValidator.php
+├── 📄 WebhookValidator.php
+├── 📄 CustomValidator.php
+└── 📄 RuleValidator.php
+```
+
+---
+
+## 📁 8. THƯ MỤC DOCS
+
+```
+mobile_api/docs/
+│
+├── 📄 api_reference.md
+├── 📄 authentication.md
+├── 📄 endpoints.md
+├── 📄 errors.md
+├── 📄 rate_limits.md
+├── 📄 versioning.md
+├── 📄 webhooks.md
+├── 📄 sdk.md
+├── 📄 changelog.md
+├── 📄 migration_guide.md
+├── 📄 best_practices.md
+├── 📄 faq.md
+│
+├── 📁 examples/
+│   ├── 📄 auth_example.php
+│   ├── 📄 assessment_example.php
+│   ├── 📄 key_example.php
+│   ├── 📄 report_example.php
+│   ├── 📄 incident_example.php
+│   ├── 📄 vulnerability_example.php
+│   ├── 📄 compliance_example.php
+│   ├── 📄 ai_example.php
+│   └── 📄 sync_example.php
+│
+└── 📁 postman/
+    ├── 📄 environment.json
+    ├── 📄 collection.json
+    └── 📄 tests.json
+```
+
+---
+
+## 📁 9. THƯ MỤC TESTS
+
+```
+mobile_api/tests/
+│
+├── 📁 unit/
+│   ├── 📄 AuthTest.php
+│   ├── 📄 UserTest.php
+│   ├── 📄 RoleTest.php
+│   ├── 📄 DomainTest.php
+│   ├── 📄 CriteriaTest.php
+│   ├── 📄 AssessmentTest.php
+│   ├── 📄 KeyTest.php
+│   ├── 📄 ReportTest.php
+│   ├── 📄 IncidentTest.php
+│   ├── 📄 VulnerabilityTest.php
+│   ├── 📄 ComplianceTest.php
+│   ├── 📄 AITest.php
+│   ├── 📄 SyncTest.php
+│   ├── 📄 NotificationTest.php
+│   ├── 📄 SettingTest.php
+│   └── 📄 DeviceTest.php
+│
+├── 📁 integration/
+│   ├── 📄 AuthFlowTest.php
+│   ├── 📄 AssessmentFlowTest.php
+│   ├── 📄 KeyFlowTest.php
+│   ├── 📄 ReportFlowTest.php
+│   ├── 📄 IncidentFlowTest.php
+│   ├── 📄 VulnerabilityFlowTest.php
+│   ├── 📄 ComplianceFlowTest.php
+│   ├── 📄 AIFlowTest.php
+│   ├── 📄 SyncFlowTest.php
+│   └── 📄 EndToEndTest.php
+│
+└── 📁 fixtures/
+    ├── 📄 users.php
+    ├── 📄 assessments.php
+    ├── 📄 keys.php
+    ├── 📄 reports.php
+    ├── 📄 incidents.php
+    ├── 📄 vulnerabilities.php
+    └── 📄 compliance.php
+```
+
+---
+
+## 📁 10. THƯ MỤC CONFIG
+
+```
+mobile_api/config/
+│
+├── 📄 app.php
+├── 📄 database.php
+├── 📄 cache.php
+├── 📄 queue.php
+├── 📄 mail.php
+├── 📄 services.php
+├── 📄 auth.php
+├── 📄 cors.php
+├── 📄 rate_limit.php
+├── 📄 logging.php
+├── 📄 security.php
+├── 📄 api.php
+├── 📄 version.php
+├── 📄 roles.php
+├── 📄 permissions.php
+├── 📄 constants.php
+└── 📄 routes.php
+```
+
+---
+
+## 📁 11. THƯ MỤC LOGS
+
+```
+mobile_api/logs/
+│
+├── 📄 api.log
+├── 📄 error.log
+├── 📄 debug.log
+├── 📄 auth.log
+├── 📄 request.log
+├── 📄 response.log
+├── 📄 slow.log
+├── 📄 security.log
+├── 📄 audit.log
+├── 📄 sync.log
+├── 📄 queue.log
+│
+└── 📁 archive/
+    ├── 📄 api_2025_01_01.log.gz
+    ├── 📄 api_2025_01_02.log.gz
+    └── 📄 api_2025_01_03.log.gz
+```
+
+---
+
+## 📁 12. THƯ MỤC CACHE
+
+```
+mobile_api/cache/
+│
+├── 📁 data/
+├── 📁 views/
+├── 📁 routes/
+├── 📁 config/
+├── 📁 sessions/
+├── 📁 opcache/
+│
+└── 📄 .gitignore
+```
+
+---
+
+## 📁 13. THƯ MỤC QUEUES
+
+```
+mobile_api/queues/
+│
+├── 📁 failed/
+├── 📁 processed/
+├── 📁 pending/
+│
+├── 📄 sync_job.php
+├── 📄 email_job.php
+├── 📄 notification_job.php
+├── 📄 report_job.php
+├── 📄 export_job.php
+├── 📄 import_job.php
+├── 📄 backup_job.php
+├── 📄 cleanup_job.php
+└── 📄 webhook_job.php
+```
+
+---
+
+## 📁 14. THƯ MỤC EVENTS
+
+```
+mobile_api/events/
+│
+├── 📄 UserLoggedIn.php
+├── 📄 UserRegistered.php
+├── 📄 PasswordReset.php
+├── 📄 AssessmentCreated.php
+├── 📄 AssessmentSubmitted.php
+├── 📄 KeyVerified.php
+├── 📄 ReportGenerated.php
+├── 📄 IncidentReported.php
+├── 📄 VulnerabilityDetected.php
+├── 📄 SyncCompleted.php
+├── 📄 NotificationSent.php
+├── 📄 DeviceRegistered.php
+├── 📄 SessionExpired.php
+└── 📄 WebhookReceived.php
+```
+
+---
+
+## 📁 15. THƯ MỤC LISTENERS
+
+```
+mobile_api/listeners/
+│
+├── 📄 SendWelcomeEmail.php
+├── 📄 SendLoginNotification.php
+├── 📄 LogUserActivity.php
+├── 📄 UpdateLastLogin.php
+├── 📄 GenerateAssessmentReport.php
+├── 📄 NotifyKeyVerified.php
+├── 📄 SendIncidentAlert.php
+├── 📄 SyncToFirebase.php
+├── 📄 UpdateMetrics.php
+├── 📄 ClearCache.php
+├── 📄 SendWebhook.php
+└── 📄 AuditTrail.php
+```
+
+---
+
+## 📁 16. THƯ MỤC JOBS
+
+```
+mobile_api/jobs/
+│
+├── 📄 ProcessSync.php
+├── 📄 SendEmail.php
+├── 📄 SendPushNotification.php
+├── 📄 GenerateReport.php
+├── 📄 ExportData.php
+├── 📄 ImportData.php
+├── 📄 BackupDatabase.php
+├── 📄 CleanOldLogs.php
+├── 📄 ProcessWebhook.php
+├── 📄 UpdateCache.php
+├── 📄 RecalculateScore.php
+└── 📄 RunScheduledTask.php
+```
+
+---
+
+## 📁 17. THƯ MỤC NOTIFICATIONS
+
+```
+mobile_api/notifications/
+│
+├── 📄 WelcomeNotification.php
+├── 📄 PasswordResetNotification.php
+├── 📄 AssessmentCreatedNotification.php
+├── 📄 KeyVerifiedNotification.php
+├── 📄 ReportReadyNotification.php
+├── 📄 IncidentCreatedNotification.php
+├── 📄 VulnerabilityAlertNotification.php
+├── 📄 SyncCompleteNotification.php
+├── 📄 DeviceLoginNotification.php
+├── 📄 SecurityAlertNotification.php
+├── 📄 MaintenanceNotification.php
+│
+└── 📁 channels/
+    ├── 📄 MailChannel.php
+    ├── 📄 PushChannel.php
+    ├── 📄 SmsChannel.php
+    ├── 📄 SlackChannel.php
+    ├── 📄 TeamsChannel.php
+    └── 📄 DatabaseChannel.php
+```
+
+---
+
+## 📁 18. THƯ MỤC WEBHOOKS
+
+```
+mobile_api/webhooks/
+│
+├── 📄 stripe.php
+├── 📄 github.php
+├── 📄 gitlab.php
+├── 📄 slack.php
+├── 📄 teams.php
+├── 📄 discord.php
+├── 📄 telegram.php
+├── 📄 custom.php
+├── 📄 test.php
+└── 📄 manager.php
+```
+
+---
+
+## 📁 19. THƯ MỤC SDK
+
+```
+mobile_api/sdk/
+│
+├── 📁 php/
+│   ├── 📄 Client.php
+│   ├── 📄 Auth.php
+│   ├── 📄 Assessment.php
+│   ├── 📄 Key.php
+│   ├── 📄 Report.php
+│   ├── 📄 Incident.php
+│   ├── 📄 Vulnerability.php
+│   ├── 📄 Compliance.php
+│   ├── 📄 AI.php
+│   ├── 📄 Sync.php
+│   ├── 📄 Notification.php
+│   └── 📄 Exception.php
+│
+├── 📁 javascript/
+│   ├── 📄 index.js
+│   ├── 📄 client.js
+│   ├── 📄 auth.js
+│   ├── 📄 assessment.js
+│   ├── 📄 key.js
+│   └── 📄 report.js
+│
+├── 📁 dart/
+│   ├── 📄 client.dart
+│   ├── 📄 auth.dart
+│   ├── 📄 assessment.dart
+│   ├── 📄 key.dart
+│   └── 📄 report.dart
+│
+└── 📁 kotlin/
+    ├── 📄 Client.kt
+    ├── 📄 Auth.kt
+    ├── 📄 Assessment.kt
+    └── 📄 Key.kt
+```
+
+---
+
+## 📁 20. THƯ MỤC EXAMPLES
+
+```
+mobile_api/examples/
+│
+├── 📄 curl_examples.sh
+├── 📄 php_example.php
+├── 📄 javascript_example.js
+├── 📄 python_example.py
+├── 📄 dart_example.dart
+├── 📄 kotlin_example.kt
+├── 📄 swift_example.swift
+├── 📄 java_example.java
+│
+└── 📁 flutter/
+    ├── 📄 main.dart
+    ├── 📄 api_service.dart
+    ├── 📄 auth_service.dart
+    └── 📄 assessment_service.dart
+```
+
+---
+
+## 📁 21. THƯ MỤC RATE_LIMITS
+
+```
+mobile_api/rate_limits/
+│
+├── 📄 config.php
+├── 📄 rules.php
+├── 📄 middleware.php
+├── 📄 storage.php
+├── 📄 monitor.php
+├── 📄 alerts.php
+└── 📄 reports.php
+```
+
+---
+
+## 📁 22. THƯ MỤC SECURITY
+
+```
+mobile_api/security/
+│
+├── 📄 encryption.php
+├── 📄 decryption.php
+├── 📄 jwt.php
+├── 📄 csrf.php
+├── 📄 xss.php
+├── 📄 sql_injection.php
+├── 📄 rate_limiter.php
+├── 📄 ip_filter.php
+├── 📄 user_agent.php
+├── 📄 device_fingerprint.php
+├── 📄 audit_logger.php
+└── 📄 security_headers.php
+```
+
+---
+
+## 📁 23. THƯ MỤC MONITORING
+
+```
+mobile_api/monitoring/
+│
+├── 📄 health.php
+├── 📄 metrics.php
+├── 📄 performance.php
+├── 📄 uptime.php
+├── 📄 alerts.php
+├── 📄 dashboard.php
+├── 📄 reports.php
+├── 📄 endpoints.php
+├── 📄 status.php
+└── 📄 analytics.php
+```
+
+---
+
+## 📁 24. THƯ MỤC ANALYTICS
+
+```
+mobile_api/analytics/
+│
+├── 📄 tracker.php
+├── 📄 collector.php
+├── 📄 processor.php
+├── 📄 aggregator.php
+├── 📄 reporter.php
+├── 📄 dashboard.php
+├── 📄 insights.php
+├── 📄 trends.php
+└── 📄 export.php
+```
+
+---
+
+## 📁 25. THƯ MỤC UTILS
+
+```
+mobile_api/utils/
+│
+├── 📄 Response.php
+├── 📄 Request.php
+├── 📄 Validator.php
+├── 📄 Sanitizer.php
+├── 📄 Formatter.php
+├── 📄 Converter.php
+├── 📄 Generator.php
+├── 📄 Helper.php
+├── 📄 Logger.php
+├── 📄 Cache.php
+├── 📄 Queue.php
+├── 📄 Database.php
+├── 📄 Redis.php
+├── 📄 HttpClient.php
+├── 📄 FileSystem.php
+├── 📄 ImageProcessor.php
+├── 📄 PdfGenerator.php
+├── 📄 ExcelGenerator.php
+├── 📄 CsvGenerator.php
+├── 📄 JsonGenerator.php
+├── 📄 XmlGenerator.php
+└── 📄 ZipArchive.php
+```
+
+---
+
+## 📊 TỔNG KẾT SỐ LƯỢNG FILE MOBILE_API
+
+| Thành phần | Số lượng file |
+|-----------|--------------|
+| API Version directories | 3 |
+| Endpoints | 20 |
+| Schemas | 8 |
+| Auth files | 16 |
+| Middleware | 19 |
+| Controllers | 23 |
+| Services | 27 |
+| Models | 25 |
+| Validators | 20 |
+| Docs | 20 |
+| Tests | 35 |
+| Config | 17 |
+| Logs | 12 |
+| Cache | 1 |
+| Queues | 9 |
+| Events | 14 |
+| Listeners | 12 |
+| Jobs | 12 |
+| Notifications | 17 |
+| Webhooks | 10 |
+| SDK | 25 |
+| Examples | 15 |
+| Rate Limits | 7 |
+| Security | 12 |
+| Monitoring | 10 |
+| Analytics | 9 |
+| Utils | 23 |
+| **TỔNG** | **~425 files** |
+
+---
