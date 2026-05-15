@@ -1,0 +1,400 @@
+Dưới đây là kiến trúc đầy đủ cho hệ thống **Security Evaluation System** với:
+
+* 25 chức năng Dashboard
+* 10 Role phân quyền
+* Quét URL + Password
+* Mã hóa dữ liệu
+* Phân quyền khóa tài liệu
+* Quản lý theo công ty
+* Multi-tenant bảo mật cao
+
+---
+
+# KIẾN TRÚC ROLE HỆ THỐNG (10 ROLE)
+
+| Level | Role                 | Quyền                    |
+| ----- | -------------------- | ------------------------ |
+| 1     | Viewer               | Chỉ xem                  |
+| 2     | Staff                | Xem + nhập dữ liệu       |
+| 3     | Security Operator    | Quét cơ bản              |
+| 4     | Security Analyst     | Đánh giá bảo mật         |
+| 5     | Senior Analyst       | Phân tích nâng cao       |
+| 6     | Security Manager     | Quản lý hệ thống công ty |
+| 7     | Company Root Admin   | Chủ quản công ty         |
+| 8     | System Auditor       | Kiểm toán toàn hệ thống  |
+| 9     | Super Security Admin | Điều hành nền tảng       |
+| 10    | System Owner         | Toàn quyền               |
+
+---
+
+# LOGIC ROLE CÔNG TY
+
+## Quy tắc:
+
+* Mỗi công ty chỉ có:
+
+  * 1 Role cấp 7 chính
+* Role 7:
+
+  * tạo user
+  * khóa tài liệu
+  * phân quyền
+  * xem log công ty
+* Chỉ người cùng công ty:
+
+  * mới add được user vào hệ thống công ty đó
+* User công ty A:
+
+  * không thấy dữ liệu công ty B
+
+---
+
+# CHỨC NĂNG KHÓA TÀI LIỆU
+
+## Logic:
+
+Nếu:
+
+* Role 7+
+* khóa tài liệu
+
+Thì:
+
+* Role thấp hơn:
+
+  * không xem
+  * không tải
+  * không sửa
+  * không export
+
+---
+
+# CẤU TRÚC QUYỀN TÀI LIỆU
+
+| Quyền        | Mô tả            |
+| ------------ | ---------------- |
+| public       | tất cả công ty   |
+| company      | trong công ty    |
+| manager_only | role >= 6        |
+| root_only    | role >= 7        |
+| encrypted    | bắt buộc giải mã |
+
+---
+
+# MÃ HÓA DỮ LIỆU
+
+## Dữ liệu phải mã hóa:
+
+* password
+* token
+* tài liệu
+* báo cáo
+* API key
+* log bảo mật
+* URL scan result
+
+---
+
+# CÔNG NGHỆ MÃ HÓA
+
+| Thành phần | Công nghệ        |
+| ---------- | ---------------- |
+| Password   | Argon2id         |
+| Data       | AES-256          |
+| JWT        | RS256            |
+| File       | AES Encrypt File |
+| API Key    | Hash + Encrypt   |
+
+---
+
+# CHỨC NĂNG QUÉT URL
+
+## Chức năng:
+
+* Quét SQL Injection
+* XSS
+* CSRF
+* Open Redirect
+* Directory Traversal
+* Sensitive File
+* Header Security
+* SSL Check
+* Port Detection
+* WAF Detection
+
+---
+
+# CHỨC NĂNG QUÉT PASSWORD
+
+## Hệ thống kiểm tra:
+
+* độ mạnh
+* rò rỉ
+* brute force
+* dictionary attack
+* reuse password
+* hash type
+* leaked database
+
+---
+
+# 25 CHỨC NĂNG DASHBOARD
+
+| STT | Chức năng                |
+| --- | ------------------------ |
+| 1   | Dashboard tổng quan      |
+| 2   | Quản lý user             |
+| 3   | Quản lý role             |
+| 4   | Quản lý công ty          |
+| 5   | URL Security Scan        |
+| 6   | Password Security Scan   |
+| 7   | AI Risk Detection        |
+| 8   | Threat Intelligence      |
+| 9   | Vulnerability Management |
+| 10  | File Encryption          |
+| 11  | Document Lock            |
+| 12  | Activity Logs            |
+| 13  | Audit Logs               |
+| 14  | Real-time Monitoring     |
+| 15  | Security Alerts          |
+| 16  | API Key Manager          |
+| 17  | Device Management        |
+| 18  | Session Management       |
+| 19  | 2FA Authentication       |
+| 20  | Backup System            |
+| 21  | Export Reports           |
+| 22  | Security Score           |
+| 23  | Incident Response        |
+| 24  | Compliance Report        |
+| 25  | AI Security Assistant    |
+
+---
+
+# DASHBOARD ADMIN CAO CẤP
+
+## Widget:
+
+* số lượng scan
+* mức độ nguy hiểm
+* AI đánh giá
+* biểu đồ CVE
+* cảnh báo realtime
+* top IP attack
+* failed login
+* brute force
+* công ty đang hoạt động
+* tài liệu bị khóa
+
+---
+
+# DATABASE TABLES
+
+## Core Tables
+
+| Table           |
+| --------------- |
+| users           |
+| roles           |
+| permissions     |
+| companies       |
+| company_users   |
+| scans           |
+| vulnerabilities |
+| documents       |
+| encrypted_files |
+| activity_logs   |
+| audit_logs      |
+| api_keys        |
+| notifications   |
+| security_alerts |
+| login_histories |
+| sessions        |
+| device_tokens   |
+
+---
+
+# PHÂN QUYỀN LARAVEL
+
+## Middleware:
+
+```php
+role
+permission
+company.access
+document.lock
+security.level
+```
+
+---
+
+# SECURITY MIDDLEWARE
+
+```php
+CheckRoleLevel
+CheckCompanyAccess
+CheckDocumentPermission
+CheckEncryptionAccess
+Check2FA
+CheckSessionSecurity
+```
+
+---
+
+# URL SCAN ENGINE
+
+## Scan Modules
+
+```txt
+SQLiScanner
+XSSScanner
+CSRFScanner
+HeaderScanner
+SSLScanner
+PortScanner
+DirectoryScanner
+SensitiveFileScanner
+WAFScanner
+```
+
+---
+
+# PASSWORD SCAN ENGINE
+
+## Engine:
+
+```txt
+PasswordStrengthChecker
+LeakedPasswordChecker
+BruteForceAnalyzer
+HashAnalyzer
+DictionaryAttackDetector
+```
+
+---
+
+# KIẾN TRÚC BẢO MẬT
+
+## Backend
+
+* PHP Laravel 12
+* Sanctum/JWT
+* Queue Redis
+* WebSocket
+* Scheduler
+
+---
+
+## Frontend
+
+* React / Vue
+* Tailwind
+* ApexCharts
+* Dark Security UI
+
+---
+
+## Mobile
+
+* Flutter
+* Realtime Notification
+* Scan Monitoring
+
+---
+
+# PHÂN CẤP BẢO MẬT
+
+| Level    | Ý nghĩa    |
+| -------- | ---------- |
+| Low      | Thấp       |
+| Medium   | Trung bình |
+| High     | Cao        |
+| Critical | Nguy hiểm  |
+
+---
+
+# CHỨC NĂNG AI
+
+## AI phân tích:
+
+* URL nguy hiểm
+* pattern tấn công
+* bất thường đăng nhập
+* brute force
+* malware behavior
+* AI security score
+
+---
+
+# HỆ THỐNG LOG
+
+## Theo dõi:
+
+* đăng nhập
+* quét
+* export
+* xóa
+* sửa
+* mở tài liệu
+* giải mã
+* thay đổi role
+
+---
+
+# BẢO MẬT BỔ SUNG
+
+## Nên có:
+
+* Rate Limit
+* IP Block
+* Geo Block
+* Device Fingerprint
+* Anti Session Hijacking
+* CSRF Protection
+* Secure Headers
+* CSP
+* DDOS Detect
+
+---
+
+# KIẾN TRÚC MULTI-TENANT
+
+## Mỗi công ty:
+
+* dữ liệu riêng
+* tài liệu riêng
+* scan riêng
+* user riêng
+* role riêng
+
+---
+
+# ROLE 7 (ROOT COMPANY ADMIN)
+
+## Có thể:
+
+* thêm user
+* khóa tài liệu
+* cấp quyền
+* xem log
+* export
+* giải mã dữ liệu công ty
+
+## Không thể:
+
+* truy cập công ty khác
+* sửa hệ thống global
+
+---
+
+# GỢI Ý PHIÊN BẢN
+
+| Version | Nội dung            |
+| ------- | ------------------- |
+| v1.0    | User + Role         |
+| v1.5    | URL Scan            |
+| v2.0    | Password Scan       |
+| v2.5    | Encryption          |
+| v3.0    | AI Security         |
+| v3.5    | Multi Company       |
+| v4.0    | Realtime Monitoring |
+| v5.0    | Full Enterprise     |
