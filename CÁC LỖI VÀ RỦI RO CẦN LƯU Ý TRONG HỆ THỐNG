@@ -1,0 +1,463 @@
+# CÁC LỖI VÀ RỦI RO CẦN LƯU Ý TRONG HỆ THỐNG
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. LỖI PHÂN QUYỀN (RBAC BUG)
+
+## Nguy hiểm:
+
+Role thấp có thể:
+
+* xem dữ liệu role cao
+* truy cập API admin
+* sửa báo cáo
+
+## Cần kiểm tra:
+
+* middleware
+* policy
+* permission matrix
+* API authorization
+
+## Giải pháp:
+
+* RBAC + Policy Laravel
+* kiểm tra role mỗi request
+* route protection
+
+---
+
+# 2. LỖI MULTI-COMPANY
+
+## Nguy hiểm:
+
+Company A có thể:
+
+* xem dữ liệu company B
+* add user sang company khác
+* export dữ liệu ngoài quyền
+
+## Cần:
+
+```php
+where('company_id', auth()->user()->company_id)
+```
+
+## Giải pháp:
+
+* tenant isolation
+* company middleware
+* global scope
+
+---
+
+# 3. LỖI KHÓA TÀI LIỆU
+
+## Nguy hiểm:
+
+R07 khóa tài liệu nhưng:
+
+* R05 vẫn xem được
+* API vẫn trả dữ liệu
+* export vẫn hoạt động
+
+## Giải pháp:
+
+* kiểm tra trạng thái lock ở:
+
+  * controller
+  * API
+  * export
+  * download
+
+---
+
+# 4. LỖI ENCRYPTION
+
+## Nguy hiểm:
+
+* dữ liệu mã hóa nhưng key lộ
+* decrypt sai role
+* lưu plaintext password
+
+## Không được:
+
+```txt
+password = 123456
+```
+
+## Phải:
+
+```txt
+bcrypt / argon2
+AES-256
+```
+
+## Giải pháp:
+
+* Laravel Crypt
+* key rotation
+* encrypted storage
+
+---
+
+# 5. LỖI JWT / TOKEN
+
+## Nguy hiểm:
+
+* token hết hạn vẫn dùng được
+* fake JWT
+* token leak
+
+## Giải pháp:
+
+* JWT expire
+* refresh token
+* revoke token
+* device session
+
+---
+
+# 6. LỖI URL SECURITY SCAN
+
+## Nguy hiểm:
+
+Scanner:
+
+* scan nội bộ server
+* SSRF
+* internal IP access
+
+## Ví dụ:
+
+```txt
+127.0.0.1
+localhost
+192.168.x.x
+```
+
+## Giải pháp:
+
+* block internal IP
+* validate URL
+* timeout request
+
+---
+
+# 7. LỖI PASSWORD SCANNER
+
+## Nguy hiểm:
+
+* lưu password raw
+* log password
+* export password
+
+## Giải pháp:
+
+* chỉ check hash
+* không lưu password
+* hidden input
+
+---
+
+# 8. LỖI FILE UPLOAD
+
+## Nguy hiểm:
+
+Upload:
+
+* webshell
+* malware
+* fake image
+
+## Ví dụ:
+
+```txt
+shell.php.jpg
+```
+
+## Giải pháp:
+
+* MIME validation
+* scan malware
+* random filename
+* storage ngoài public
+
+---
+
+# 9. LỖI EXPORT PDF/EXCEL
+
+## Nguy hiểm:
+
+* export dữ liệu company khác
+* export file chứa malware
+* bypass permission
+
+## Giải pháp:
+
+* check role trước export
+* signed URL
+* encrypted report
+
+---
+
+# 10. LỖI REALTIME MONITORING
+
+## Nguy hiểm:
+
+* websocket leak
+* realtime data leak
+* bypass auth
+
+## Giải pháp:
+
+* private channel
+* auth websocket
+* session verify
+
+---
+
+# 11. LỖI AI SECURITY ANALYZE
+
+## Nguy hiểm:
+
+AI:
+
+* phân tích sai
+* false positive
+* false negative
+
+## Giải pháp:
+
+* manual review
+* confidence score
+* human approval
+
+---
+
+# 12. LỖI DATABASE SECURITY
+
+## Nguy hiểm:
+
+* SQL Injection
+* DB leak
+* full table access
+
+## Giải pháp:
+
+* ORM Eloquent
+* prepared statement
+* DB encryption
+
+---
+
+# 13. LỖI API SECURITY
+
+## Nguy hiểm:
+
+* brute force API
+* API abuse
+* no rate limit
+
+## Giải pháp:
+
+* throttle middleware
+* API key
+* rate limit
+
+---
+
+# 14. LỖI AUDIT LOG
+
+## Nguy hiểm:
+
+* xóa log
+* sửa log
+* log không đầy đủ
+
+## Giải pháp:
+
+* immutable logs
+* append only
+* backup logs
+
+---
+
+# 15. LỖI SESSION
+
+## Nguy hiểm:
+
+* session hijacking
+* multi-login attack
+
+## Giải pháp:
+
+* device tracking
+* force logout
+* session timeout
+
+---
+
+# 16. LỖI BACKUP
+
+## Nguy hiểm:
+
+* backup không mã hóa
+* restore sai dữ liệu
+* backup public
+
+## Giải pháp:
+
+* encrypted backup
+* private storage
+* backup verify
+
+---
+
+# 17. LỖI MALWARE SCAN
+
+## Nguy hiểm:
+
+* malware bypass
+* fake clean file
+
+## Giải pháp:
+
+* multiple engine scan
+* hash database
+* sandbox analyze
+
+---
+
+# 18. LỖI SYSTEM SETTINGS
+
+## Nguy hiểm:
+
+Role thấp:
+
+* sửa config
+* sửa SMTP
+* sửa security level
+
+## Giải pháp:
+
+* chỉ R07+
+* audit config change
+* config backup
+
+---
+
+# 19. LỖI THREAT INTELLIGENCE
+
+## Nguy hiểm:
+
+* fake IOC feed
+* CVE feed lỗi
+
+## Giải pháp:
+
+* trusted source only
+* verify signature
+
+---
+
+# 20. LỖI DASHBOARD
+
+## Nguy hiểm:
+
+* hiển thị sai dữ liệu
+* leak chart
+* cache company khác
+
+## Giải pháp:
+
+* cache theo company
+* role filter
+* secure API
+
+---
+
+# 21. LỖI MOBILE FLUTTER
+
+## Nguy hiểm:
+
+* hardcode token
+* APK reverse engineering
+* local storage leak
+
+## Giải pháp:
+
+* flutter_secure_storage
+* SSL pinning
+* obfuscation
+
+---
+
+# 22. LỖI DEVSECOPS
+
+## Nguy hiểm:
+
+* lộ .env
+* lộ API key
+* pipeline leak
+
+## Giải pháp:
+
+* secret manager
+* CI/CD scan
+* hidden env
+
+---
+
+# 23. LỖI DOCKER/K8S
+
+## Nguy hiểm:
+
+* container escape
+* exposed port
+* root container
+
+## Giải pháp:
+
+* non-root container
+* firewall
+* secure namespace
+
+---
+
+# 24. LỖI KHẨN CẤP CẦN ƯU TIÊN
+
+| Mức độ   | Lỗi                   |
+| -------- | --------------------- |
+| Critical | SQL Injection         |
+| Critical | Broken Access Control |
+| Critical | JWT bypass            |
+| Critical | Multi-company leak    |
+| High     | File upload webshell  |
+| High     | SSRF URL scan         |
+| High     | Session hijacking     |
+| High     | Exposed backup        |
+| Medium   | Log tampering         |
+| Medium   | Cache leak            |
+
+---
+
+# 25. NGUYÊN TẮC BẢO MẬT CẦN ÁP DỤNG
+
+## Hệ thống phải có:
+
+* Zero Trust
+* RBAC
+* MFA
+* AES-256
+* JWT Security
+* Audit Logs
+* Rate Limit
+* Secure Upload
+* Realtime Monitoring
+* Threat Detection
+* AI Analyze
+* Backup Encryption
+* Multi Tenant Isolation
