@@ -1,0 +1,302 @@
+# GIỚI THIỆU SƠ BỘ HỆ THỐNG
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. GIỚI THIỆU HỆ THỐNG
+
+Security Evaluation System là hệ thống đánh giá và quản lý bảo mật dành cho doanh nghiệp, hỗ trợ mô hình đa công ty (Multi-Tenant Security Platform), giúp quản lý người dùng, quét bảo mật, mã hóa dữ liệu và giám sát an ninh mạng trên một nền tảng tập trung.
+
+Hệ thống được thiết kế nhằm:
+
+* đánh giá mức độ an toàn hệ thống
+* phát hiện lỗ hổng bảo mật
+* quản lý dữ liệu doanh nghiệp
+* phân quyền nhiều cấp
+* giám sát hoạt động realtime
+* hỗ trợ AI phân tích nguy cơ bảo mật
+
+---
+
+# 2. CÔNG NGHỆ SỬ DỤNG
+
+## Backend
+
+* Laravel 12
+* REST API
+* JWT Authentication
+* Redis Queue
+* WebSocket
+
+## Frontend
+
+* ReactJS / VueJS
+* TailwindCSS
+* ApexCharts
+
+## Mobile
+
+* Flutter
+
+## Database
+
+* MySQL / PostgreSQL
+
+---
+
+# 3. KIẾN TRÚC HỆ THỐNG
+
+Hệ thống hoạt động theo mô hình:
+
+* Multi Company
+* Multi Role
+* RBAC Security
+* Zero Trust
+* Encryption First
+
+Mỗi công ty:
+
+* có dữ liệu riêng
+* có user riêng
+* có logs riêng
+* có tài liệu riêng
+* có quyền quản trị riêng
+
+---
+
+# 4. HỆ THỐNG ROLE
+
+Hệ thống gồm 10 cấp quyền:
+
+| Level | Role                 |
+| ----- | -------------------- |
+| R1    | Viewer               |
+| R2    | Staff                |
+| R3    | Security Operator    |
+| R4    | Security Analyst     |
+| R5    | Senior Analyst       |
+| R6    | Security Manager     |
+| R7    | Company Root Admin   |
+| R8    | System Auditor       |
+| R9    | Super Security Admin |
+| R10   | System Owner         |
+
+---
+
+# 5. QUY TẮC PHÂN QUYỀN
+
+## Chỉ Role từ R6 trở lên:
+
+được phép tạo tài khoản người dùng.
+
+## Quy tắc:
+
+* không được tạo role cao hơn mình
+* chỉ cùng công ty mới thêm user được
+* công ty A không thấy dữ liệu công ty B
+* role cao có thể khóa tài liệu role thấp
+
+---
+
+# 6. CHỨC NĂNG CHÍNH CỦA HỆ THỐNG
+
+Hệ thống gồm 25 chức năng chính:
+
+| STT | Chức năng                 |
+| --- | ------------------------- |
+| 1   | Dashboard                 |
+| 2   | User Manager              |
+| 3   | Role Manager              |
+| 4   | Company Manager           |
+| 5   | URL Security Scan         |
+| 6   | Password Security Scan    |
+| 7   | Vulnerability Manager     |
+| 8   | Threat Detection          |
+| 9   | AI Security Analyze       |
+| 10  | Document Manager          |
+| 11  | Document Lock             |
+| 12  | Encryption Center         |
+| 13  | Audit Logs                |
+| 14  | Activity Logs             |
+| 15  | Security Alerts           |
+| 16  | Device Management         |
+| 17  | Session Management        |
+| 18  | API Key Manager           |
+| 19  | Backup System             |
+| 20  | Export Reports            |
+| 21  | Compliance Reports        |
+| 22  | Realtime Monitoring       |
+| 23  | Incident Response         |
+| 24  | Two Factor Authentication |
+| 25  | System Settings           |
+
+---
+
+# 7. CHỨC NĂNG QUÉT URL
+
+Hệ thống hỗ trợ:
+
+* SQL Injection Scan
+* XSS Detection
+* CSRF Detection
+* Open Redirect Detection
+* SSL Check
+* Security Header Check
+* Directory Traversal Detection
+* Sensitive File Detection
+* WAF Detection
+
+---
+
+# 8. CHỨC NĂNG QUÉT PASSWORD
+
+Hệ thống hỗ trợ:
+
+* kiểm tra độ mạnh mật khẩu
+* kiểm tra password bị rò rỉ
+* brute force risk
+* dictionary attack
+* password reuse detection
+
+---
+
+# 9. MÃ HÓA DỮ LIỆU
+
+Dữ liệu được mã hóa:
+
+* password
+* token
+* API key
+* tài liệu
+* báo cáo
+* scan result
+
+Công nghệ:
+
+* AES-256
+* Argon2id
+
+---
+
+# 10. KHÓA TÀI LIỆU
+
+Nếu role cao khóa tài liệu:
+
+* role thấp không xem được
+* không tải được
+* không export được
+* không giải mã được
+
+---
+
+# 11. HỆ THỐNG AI SECURITY
+
+AI hỗ trợ:
+
+* đánh giá URL nguy hiểm
+* phân tích nguy cơ bảo mật
+* phát hiện brute force
+* phát hiện hành vi bất thường
+* tính Security Score
+
+---
+
+# 12. DASHBOARD REALTIME
+
+Dashboard hiển thị:
+
+* tổng số scan
+* mức độ nguy hiểm
+* user online
+* failed login
+* realtime alert
+* top vulnerability
+* locked document
+* active company
+
+---
+
+# 13. CHỨC NĂNG ĐỘC QUYỀN THEO ROLE
+
+## R3:
+
+* chạy scan bảo mật
+
+## R5:
+
+* AI security analyze
+
+## R6:
+
+* tạo user R1-R5
+* quản lý nhân sự bảo mật
+
+## R7:
+
+* quản lý toàn bộ công ty
+* khóa tài liệu công ty
+* giải mã dữ liệu công ty
+
+## R8:
+
+* audit hệ thống
+
+## R9:
+
+* quản lý toàn bộ công ty
+* global security control
+
+## R10:
+
+* master access toàn hệ thống
+
+---
+
+# 14. BẢO MẬT HỆ THỐNG
+
+Bao gồm:
+
+* CSRF Protection
+* XSS Protection
+* Rate Limit
+* IP Block
+* Session Security
+* Device Tracking
+* 2FA Authentication
+* Secure Headers
+
+---
+
+# 15. DATABASE CORE TABLES
+
+```txt id="nvyy7e"
+users
+roles
+permissions
+companies
+company_users
+documents
+encrypted_files
+scans
+vulnerabilities
+audit_logs
+activity_logs
+sessions
+devices
+api_keys
+reports
+```
+
+---
+
+# 16. MỤC TIÊU HỆ THỐNG
+
+Hệ thống hướng tới:
+
+* nền tảng quản lý bảo mật doanh nghiệp
+* hệ thống SOC mini
+* nền tảng AI Security
+* giám sát an ninh realtime
+* quản lý dữ liệu bảo mật nhiều cấp
+* hỗ trợ doanh nghiệp chuyển đổi số an toàn
