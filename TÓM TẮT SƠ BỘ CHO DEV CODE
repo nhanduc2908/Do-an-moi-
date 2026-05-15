@@ -1,0 +1,340 @@
+# TÓM TẮT SƠ BỘ CHO DEV CODE
+
+## Security Evaluation System (Multi Company + Multi Role)
+
+---
+
+# 1. MỤC TIÊU HỆ THỐNG
+
+Hệ thống đánh giá bảo mật:
+
+* Quét URL
+* Quét Password
+* Mã hóa dữ liệu
+* Phân quyền nhiều cấp
+* Quản lý nhiều công ty
+* Dashboard realtime
+* AI phân tích nguy cơ
+
+---
+
+# 2. KIẾN TRÚC CHÍNH
+
+## Backend
+
+* PHP Laravel 12
+* REST API
+* JWT/Sanctum
+* Redis Queue
+* WebSocket
+
+## Frontend
+
+* ReactJS / VueJS
+* TailwindCSS
+* ApexCharts
+
+## Mobile
+
+* Flutter
+
+## Database
+
+* MySQL/PostgreSQL
+
+---
+
+# 3. HỆ THỐNG ROLE (10 ROLE)
+
+| Level | Role               |
+| ----- | ------------------ |
+| 1     | Viewer             |
+| 2     | Staff              |
+| 3     | Security Operator  |
+| 4     | Analyst            |
+| 5     | Senior Analyst     |
+| 6     | Security Manager   |
+| 7     | Company Root Admin |
+| 8     | Auditor            |
+| 9     | Super Admin        |
+| 10    | System Owner       |
+
+---
+
+# 4. LOGIC ROLE
+
+## Role 7:
+
+Là admin cao nhất của từng công ty.
+
+Có thể:
+
+* thêm user
+* khóa tài liệu
+* cấp quyền
+* xem log công ty
+
+Không thể:
+
+* truy cập công ty khác
+* sửa hệ thống global
+
+---
+
+# 5. MULTI COMPANY
+
+## Mỗi công ty:
+
+* user riêng
+* dữ liệu riêng
+* scan riêng
+* file riêng
+* role riêng
+
+## Rule:
+
+Chỉ user cùng company:
+
+* mới add được user vào công ty đó.
+
+---
+
+# 6. KHÓA TÀI LIỆU
+
+## Nếu role cao khóa tài liệu:
+
+Role thấp hơn:
+
+* không xem
+* không tải
+* không sửa
+* không export
+
+---
+
+# 7. MÃ HÓA DỮ LIỆU
+
+## Encrypt:
+
+* password
+* tài liệu
+* API key
+* scan result
+* token
+* report
+
+## Công nghệ:
+
+* Argon2id
+* AES-256
+
+---
+
+# 8. URL SCANNER
+
+## Chức năng:
+
+* SQL Injection
+* XSS
+* CSRF
+* Open Redirect
+* SSL Check
+* Port Scan
+* Header Security
+* Directory Scan
+* Sensitive File Scan
+
+---
+
+# 9. PASSWORD SCANNER
+
+## Kiểm tra:
+
+* độ mạnh
+* leaked password
+* brute force
+* dictionary attack
+* reuse password
+
+---
+
+# 10. 25 DASHBOARD MODULES
+
+| STT | Module            |
+| --- | ----------------- |
+| 1   | Dashboard         |
+| 2   | User Manager      |
+| 3   | Role Manager      |
+| 4   | Company Manager   |
+| 5   | URL Scanner       |
+| 6   | Password Scanner  |
+| 7   | Vulnerability     |
+| 8   | Threat Detection  |
+| 9   | AI Security       |
+| 10  | Logs              |
+| 11  | Audit Logs        |
+| 12  | Security Alert    |
+| 13  | Encryption        |
+| 14  | Document Lock     |
+| 15  | Reports           |
+| 16  | Monitoring        |
+| 17  | API Manager       |
+| 18  | Device Manager    |
+| 19  | Session Manager   |
+| 20  | 2FA               |
+| 21  | Backup            |
+| 22  | Export            |
+| 23  | Security Score    |
+| 24  | Incident Response |
+| 25  | Settings          |
+
+---
+
+# 11. DATABASE TABLES
+
+## Core Tables
+
+```txt id="ykwhd8"
+users
+roles
+permissions
+companies
+company_users
+documents
+encrypted_files
+scans
+vulnerabilities
+security_logs
+audit_logs
+api_keys
+notifications
+sessions
+devices
+reports
+```
+
+---
+
+# 12. MIDDLEWARE
+
+```php id="6hwb7m"
+CheckRole
+CheckCompany
+CheckPermission
+CheckDocumentAccess
+CheckEncryptionAccess
+Check2FA
+```
+
+---
+
+# 13. SECURITY FEATURES
+
+## Có:
+
+* Rate Limit
+* CSRF
+* XSS Protection
+* Secure Headers
+* Device Tracking
+* Session Security
+* IP Block
+* Login Attempt Limit
+
+---
+
+# 14. DASHBOARD ADMIN
+
+## Widget:
+
+* tổng scan
+* user online
+* failed login
+* threat level
+* top vulnerability
+* company active
+* locked document
+* realtime alert
+
+---
+
+# 15. PHÂN QUYỀN DATABASE
+
+## users
+
+```txt id="jd7fru"
+id
+company_id
+role_level
+name
+email
+password
+status
+```
+
+## documents
+
+```txt id="bq77e5"
+id
+company_id
+locked_by_role
+encrypted
+file_path
+```
+
+---
+
+# 16. API STRUCTURE
+
+## API:
+
+```txt id="apd8yf"
+/api/auth
+/api/users
+/api/roles
+/api/company
+/api/scan/url
+/api/scan/password
+/api/reports
+/api/security
+```
+
+---
+
+# 17. DEV PRIORITY
+
+## Phase 1
+
+* auth
+* role
+* company
+* dashboard
+
+## Phase 2
+
+* URL scan
+* password scan
+* logs
+
+## Phase 3
+
+* encryption
+* document lock
+* AI security
+
+## Phase 4
+
+* realtime
+* mobile
+* websocket
+
+---
+
+# 18. MỤC TIÊU BẢO MẬT
+
+* Multi-tenant
+* Zero Trust
+* RBAC
+* Encryption First
+* Audit Everything
+* Least Privilege
