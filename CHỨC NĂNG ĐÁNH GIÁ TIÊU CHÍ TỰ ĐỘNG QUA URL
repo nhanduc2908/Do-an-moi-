@@ -1,0 +1,269 @@
+# CHỨC NĂNG ĐÁNH GIÁ TIÊU CHÍ TỰ ĐỘNG QUA URL
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. TỔNG QUAN CHỨC NĂNG
+
+Hệ thống hỗ trợ:
+
+* nhập URL website
+* hệ thống tự động quét bảo mật
+* phân tích tiêu chí
+* chấm điểm
+* tạo file đánh giá
+* sinh báo cáo PDF/Excel
+* hiển thị biểu đồ dashboard
+
+---
+
+# 2. QUY TRÌNH HOẠT ĐỘNG
+
+## Bước 1 — Nhập URL
+
+Ví dụ:
+
+```txt id="tfrdhn"
+https://example.com
+```
+
+---
+
+## Bước 2 — Hệ thống Scan
+
+Hệ thống tự động kiểm tra:
+
+| Module              | Nội dung         |
+| ------------------- | ---------------- |
+| Web Security        | SQLi/XSS/CSRF    |
+| URL Security        | phishing/malware |
+| SSL Security        | HTTPS/TLS        |
+| Header Security     | CSP/HSTS         |
+| Password Security   | login policy     |
+| API Security        | JWT/API          |
+| Malware Scanner     | webshell/malware |
+| Threat Intelligence | blacklist/CVE    |
+
+---
+
+## Bước 3 — AI Analyze
+
+AI sẽ:
+
+* phân tích mức nguy hiểm
+* tính risk score
+* phân loại vulnerability
+* đưa remediation
+* dự đoán rủi ro
+
+---
+
+## Bước 4 — Mapping 600 Tiêu Chí
+
+Hệ thống:
+
+* tự động map kết quả scan
+* đối chiếu 600 tiêu chí
+* đánh dấu:
+
+  * PASS
+  * WARNING
+  * FAIL
+  * CRITICAL
+
+---
+
+# 3. FILE ĐÁNH GIÁ TỰ ĐỘNG
+
+## Hệ thống tạo:
+
+```txt id="ltzl1s"
+evaluation_report_2026.pdf
+evaluation_report_2026.xlsx
+```
+
+---
+
+# 4. CẤU TRÚC FILE ĐÁNH GIÁ
+
+## File gồm:
+
+| Phần              | Nội dung          |
+| ----------------- | ----------------- |
+| Thông tin website | domain/IP/server  |
+| Security Score    | điểm tổng         |
+| 600 tiêu chí      | PASS/FAIL         |
+| Vulnerability     | danh sách lỗ hổng |
+| Risk Level        | mức nguy hiểm     |
+| Threat Graph      | biểu đồ           |
+| AI Analyze        | phân tích AI      |
+| Remediation       | hướng xử lý       |
+| Audit Logs        | lịch sử scan      |
+
+---
+
+# 5. HỆ THỐNG CHẤM ĐIỂM
+
+## Công thức:
+
+Security\ Score = \frac{PASS\ Criteria}{Total\ Criteria} \times 100
+
+---
+
+# 6. PHÂN LOẠI ĐÁNH GIÁ
+
+| Điểm   | Mức độ    |
+| ------ | --------- |
+| 90-100 | Excellent |
+| 75-89  | Good      |
+| 60-74  | Medium    |
+| 40-59  | Weak      |
+| 0-39   | Critical  |
+
+---
+
+# 7. VÍ DỤ ĐÁNH GIÁ
+
+## URL:
+
+```txt id="xupwqf"
+https://company-demo.com
+```
+
+## Kết quả:
+
+| Tiêu chí                 | Trạng thái |
+| ------------------------ | ---------- |
+| SQL Injection Protection | PASS       |
+| XSS Protection           | PASS       |
+| CSRF Protection          | WARNING    |
+| HTTPS Security           | PASS       |
+| CSP Header               | FAIL       |
+| Malware Detect           | PASS       |
+
+---
+
+# 8. DASHBOARD SAU KHI ĐÁNH GIÁ
+
+## Dashboard hiển thị:
+
+* Security Score Chart
+* Threat Pie Chart
+* Vulnerability Timeline
+* Realtime Threat
+* AI Risk Graph
+* PASS/FAIL Ratio
+* Severity Chart
+
+---
+
+# 9. CÁC LỖ HỔNG HỆ THỐNG CÓ THỂ PHÁT HIỆN
+
+| Lỗi               | Detect |
+| ----------------- | ------ |
+| SQL Injection     | ✅      |
+| XSS               | ✅      |
+| CSRF              | ✅      |
+| SSRF              | ✅      |
+| RCE               | ✅      |
+| Directory Listing | ✅      |
+| Weak SSL          | ✅      |
+| Open Port         | ✅      |
+| Webshell          | ✅      |
+| Malware URL       | ✅      |
+
+---
+
+# 10. AI PHÂN TÍCH
+
+## AI hỗ trợ:
+
+* threat classification
+* anomaly detection
+* risk prediction
+* attack pattern detect
+* remediation suggestion
+* security scoring
+
+---
+
+# 11. EXPORT FILE ĐÁNH GIÁ
+
+## Export:
+
+* PDF
+* Excel
+* JSON
+* CSV
+
+## Có thể:
+
+* mã hóa file
+* ký số report
+* khóa report
+* phân quyền download
+
+---
+
+# 12. ROLE ĐƯỢC DÙNG
+
+| Role | Quyền               |
+| ---- | ------------------- |
+| R01  | Xem report          |
+| R02  | Scan cơ bản         |
+| R03  | Scan nâng cao       |
+| R04  | Phân tích risk      |
+| R05  | AI Analyze          |
+| R06  | Duyệt report        |
+| R07  | Full company report |
+| R08  | Audit report        |
+| R09  | Global report       |
+| R10  | Root control        |
+
+---
+
+# 13. CẤU TRÚC DATABASE ĐÁNH GIÁ
+
+## evaluation_reports
+
+| Field       | Mô tả      |
+| ----------- | ---------- |
+| id          | ID report  |
+| company_id  | Công ty    |
+| url         | URL scan   |
+| score       | Điểm       |
+| risk_level  | Risk       |
+| ai_summary  | AI analyze |
+| report_file | PDF        |
+| created_by  | User       |
+| created_at  | Time       |
+
+---
+
+# 14. CẤU TRÚC TIÊU CHÍ
+
+## evaluation_criteria_results
+
+| Field          | Mô tả       |
+| -------------- | ----------- |
+| criteria_id    | tiêu chí    |
+| status         | PASS/FAIL   |
+| score          | điểm        |
+| severity       | mức độ      |
+| recommendation | remediation |
+
+---
+
+# 15. TÍNH NĂNG NÂNG CAO
+
+## Hệ thống có thể:
+
+* scan realtime
+* scan định kỳ
+* auto alert
+* AI auto review
+* compare report
+* history tracking
+* security trend analyze
+* generate remediation roadmap
