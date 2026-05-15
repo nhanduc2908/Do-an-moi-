@@ -1,0 +1,286 @@
+# HỆ THỐNG 600 TIÊU CHÍ ĐÁNH GIÁ
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. TỔNG QUAN
+
+Hệ thống gồm:
+
+* 26 lĩnh vực đánh giá bảo mật
+* khoảng 20–30 tiêu chí mỗi lĩnh vực
+* tổng cộng:
+
+# 600 TIÊU CHÍ ĐÁNH GIÁ BẢO MẬT
+
+---
+
+# 2. CẤU TRÚC TIÊU CHÍ
+
+## Mỗi tiêu chí gồm:
+
+| Thành phần   | Nội dung                 |
+| ------------ | ------------------------ |
+| ID           | Mã tiêu chí              |
+| Tên tiêu chí | Nội dung đánh giá        |
+| Mức độ       | Low/Medium/High/Critical |
+| Điểm         | 1-10                     |
+| Version      | Ver 1-6                  |
+| Module       | F01-F26                  |
+| Khuyến nghị  | Hướng xử lý              |
+| AI Analyze   | AI phân tích             |
+
+---
+
+# 3. MODULE F01 — IAM SECURITY
+
+## 25 tiêu chí
+
+| ID      | Tiêu chí                    |
+| ------- | --------------------------- |
+| IAM-001 | Hệ thống có MFA             |
+| IAM-002 | Password policy mạnh        |
+| IAM-003 | Session timeout             |
+| IAM-004 | RBAC phân quyền             |
+| IAM-005 | JWT expire                  |
+| IAM-006 | Login rate limit            |
+| IAM-007 | Captcha login               |
+| IAM-008 | Device verification         |
+| IAM-009 | IP whitelist                |
+| IAM-010 | Password history            |
+| IAM-011 | Account lockout             |
+| IAM-012 | Audit login                 |
+| IAM-013 | SSO security                |
+| IAM-014 | OAuth validation            |
+| IAM-015 | Session revoke              |
+| IAM-016 | API auth verify             |
+| IAM-017 | Refresh token               |
+| IAM-018 | Token encryption            |
+| IAM-019 | Secure cookie               |
+| IAM-020 | CSRF protection             |
+| IAM-021 | Admin login alert           |
+| IAM-022 | Force logout                |
+| IAM-023 | Role hierarchy              |
+| IAM-024 | Privilege escalation detect |
+| IAM-025 | Account recovery security   |
+
+---
+
+# 4. MODULE F02 — DATA ENCRYPTION
+
+## 25 tiêu chí
+
+| ID      | Tiêu chí                 |
+| ------- | ------------------------ |
+| ENC-001 | AES-256 encryption       |
+| ENC-002 | Database encryption      |
+| ENC-003 | File encryption          |
+| ENC-004 | Backup encryption        |
+| ENC-005 | Key rotation             |
+| ENC-006 | Secret manager           |
+| ENC-007 | Encrypted API            |
+| ENC-008 | SSL/TLS                  |
+| ENC-009 | HSTS enabled             |
+| ENC-010 | Secure storage           |
+| ENC-011 | Encrypted logs           |
+| ENC-012 | Password hashing         |
+| ENC-013 | Secure key storage       |
+| ENC-014 | Private key protection   |
+| ENC-015 | HTTPS only               |
+| ENC-016 | Secure websocket         |
+| ENC-017 | Secure mobile storage    |
+| ENC-018 | Data masking             |
+| ENC-019 | Hash verification        |
+| ENC-020 | Token encryption         |
+| ENC-021 | Cloud encryption         |
+| ENC-022 | Secure certificate       |
+| ENC-023 | PII encryption           |
+| ENC-024 | Memory protection        |
+| ENC-025 | Secure export encryption |
+
+---
+
+# 5. MODULE F03 — WEB SECURITY
+
+## 25 tiêu chí
+
+| ID      | Tiêu chí                   |
+| ------- | -------------------------- |
+| WEB-001 | SQL Injection protection   |
+| WEB-002 | XSS protection             |
+| WEB-003 | CSRF protection            |
+| WEB-004 | SSRF protection            |
+| WEB-005 | RCE protection             |
+| WEB-006 | LFI/RFI protection         |
+| WEB-007 | Secure headers             |
+| WEB-008 | CSP policy                 |
+| WEB-009 | Rate limiting              |
+| WEB-010 | Upload validation          |
+| WEB-011 | Input validation           |
+| WEB-012 | Output encoding            |
+| WEB-013 | WAF enabled                |
+| WEB-014 | Secure session             |
+| WEB-015 | Hidden admin path          |
+| WEB-016 | Anti brute force           |
+| WEB-017 | Secure cookies             |
+| WEB-018 | HTTPOnly cookie            |
+| WEB-019 | SameSite cookie            |
+| WEB-020 | Directory listing disabled |
+| WEB-021 | Secure error handling      |
+| WEB-022 | HTTPS redirect             |
+| WEB-023 | Admin panel protection     |
+| WEB-024 | Secure framework config    |
+| WEB-025 | Webshell detection         |
+
+---
+
+# 6. MODULE F04 — PASSWORD SECURITY
+
+## 20 tiêu chí
+
+| ID       | Tiêu chí                   |
+| -------- | -------------------------- |
+| PASS-001 | Password length >= 12      |
+| PASS-002 | Complexity enabled         |
+| PASS-003 | Password expiration        |
+| PASS-004 | Password history           |
+| PASS-005 | Leak password detect       |
+| PASS-006 | Dictionary password detect |
+| PASS-007 | Common password block      |
+| PASS-008 | Password hash secure       |
+| PASS-009 | Brute force protection     |
+| PASS-010 | Captcha login              |
+| PASS-011 | MFA support                |
+| PASS-012 | Password reset secure      |
+| PASS-013 | Secure recovery email      |
+| PASS-014 | OTP verification           |
+| PASS-015 | Password storage encrypted |
+| PASS-016 | Session revoke after reset |
+| PASS-017 | Login anomaly detect       |
+| PASS-018 | Weak password alert        |
+| PASS-019 | Password reuse detect      |
+| PASS-020 | Password policy audit      |
+
+---
+
+# 7. MODULE F05 — URL SECURITY
+
+## 20 tiêu chí
+
+| ID      | Tiêu chí                   |
+| ------- | -------------------------- |
+| URL-001 | Phishing URL detect        |
+| URL-002 | Malware URL detect         |
+| URL-003 | Blacklist checking         |
+| URL-004 | SSL verify                 |
+| URL-005 | Domain age verify          |
+| URL-006 | Suspicious redirect detect |
+| URL-007 | URL reputation             |
+| URL-008 | Typosquatting detect       |
+| URL-009 | Homograph attack detect    |
+| URL-010 | Unsafe download detect     |
+| URL-011 | URL shortening detect      |
+| URL-012 | IP URL detect              |
+| URL-013 | Suspicious query string    |
+| URL-014 | DNS verify                 |
+| URL-015 | Threat intelligence match  |
+| URL-016 | URL sandbox scan           |
+| URL-017 | URL redirect chain         |
+| URL-018 | Unsafe content detect      |
+| URL-019 | HTTPS validation           |
+| URL-020 | URL risk score             |
+
+---
+
+# 8. MODULE F06 — API SECURITY
+
+## 25 tiêu chí
+
+| ID      | Tiêu chí                      |
+| ------- | ----------------------------- |
+| API-001 | JWT validation                |
+| API-002 | API rate limit                |
+| API-003 | API authentication            |
+| API-004 | API authorization             |
+| API-005 | Secure API key                |
+| API-006 | Token expiration              |
+| API-007 | API logging                   |
+| API-008 | API encryption                |
+| API-009 | CORS security                 |
+| API-010 | API brute force detect        |
+| API-011 | Request validation            |
+| API-012 | Response filtering            |
+| API-013 | Secure headers                |
+| API-014 | OAuth security                |
+| API-015 | Refresh token security        |
+| API-016 | API gateway security          |
+| API-017 | Input sanitization            |
+| API-018 | API abuse detect              |
+| API-019 | Webhook security              |
+| API-020 | API monitoring                |
+| API-021 | API anomaly detect            |
+| API-022 | GraphQL security              |
+| API-023 | API version control           |
+| API-024 | Sensitive data exposure check |
+| API-025 | API audit logging             |
+
+---
+
+# 9. MODULES CÒN LẠI
+
+| Module                       | Số tiêu chí |
+| ---------------------------- | ----------- |
+| F07 Source Code Security     | 25          |
+| F08 Database Security        | 25          |
+| F09 Network Security         | 25          |
+| F10 Endpoint Security        | 20          |
+| F11 Cloud Security           | 25          |
+| F12 Container Security       | 25          |
+| F13 Logging & Monitoring     | 20          |
+| F14 Incident Response        | 20          |
+| F15 Risk Assessment          | 20          |
+| F16 Compliance               | 20          |
+| F17 Physical Security        | 20          |
+| F18 Human Security           | 20          |
+| F19 Mobile Security          | 25          |
+| F20 IoT Security             | 20          |
+| F21 Vulnerability Management | 25          |
+| F22 Email Security           | 20          |
+| F23 Backup & Recovery        | 20          |
+| F24 DevSecOps                | 25          |
+| F25 Penetration Testing      | 25          |
+| F26 Malware & AV Scanner     | 25          |
+
+---
+
+# 10. HỆ THỐNG CHẤM ĐIỂM
+
+## Công thức:
+
+Security\ Score = \frac{\sum Score\ Achieved}{\sum Max\ Score} \times 100
+
+---
+
+# 11. PHÂN LOẠI ĐIỂM
+
+| Điểm   | Đánh giá  |
+| ------ | --------- |
+| 90-100 | Excellent |
+| 75-89  | Good      |
+| 60-74  | Medium    |
+| 40-59  | Weak      |
+| 0-39   | Critical  |
+
+---
+
+# 12. AI SECURITY ANALYZE
+
+AI hỗ trợ:
+
+* phân tích tiêu chí
+* tính risk score
+* phát hiện bất thường
+* gợi ý remediation
+* tạo security report
+* dự đoán nguy cơ tương lai
