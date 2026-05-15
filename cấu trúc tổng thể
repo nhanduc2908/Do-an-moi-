@@ -1,0 +1,13 @@
+security_evaluation_system/
+│
+├── 📁 backend_laravel/                 # Laravel 11 Backend (PHP 8.2)
+├── 📁 mobile_flutter/                  # Flutter Mobile (Dart 3.x)
+├── 📁 web_admin/                       # Admin Web (HTML/CSS/JS/PHP)
+├── 📁 firebase_functions/              # Firebase Cloud Functions (Node.js 20)
+├── 📁 ai_engine/                       # AI Security Engine (Python 3.11)
+├── 📁 test_system/                     # Hệ thống kiểm thử
+├── 📁 mobile_api/                      # Mobile API endpoints
+├── 📁 database/                        # Database scripts
+├── 📁 docker/                          # Docker configuration
+├── 📁 docs/                            # Documentation
+└── 📁 scripts/                         # Utility scripts
