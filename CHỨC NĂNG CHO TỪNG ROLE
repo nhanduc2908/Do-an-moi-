@@ -1,0 +1,282 @@
+# CHỨC NĂNG CHO TỪNG ROLE
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. ROLE R01 — VIEWER
+
+## Vai trò:
+
+Người dùng thường chỉ xem thông tin hệ thống.
+
+## Chức năng:
+
+| Chức năng               | Quyền |
+| ----------------------- | ----- |
+| Xem Dashboard Tổng Quan | ✅     |
+| Xem báo cáo đã duyệt    | ✅     |
+| Xem trạng thái bảo mật  | ✅     |
+| Xem Notification        | ✅     |
+| Tìm kiếm báo cáo        | ✅     |
+| Xem lịch sử cá nhân     | ✅     |
+| Xem 26 module           | ✅     |
+| Xem 600 tiêu chí        | ❌     |
+| Scan bảo mật            | ❌     |
+| Export PDF/Excel        | ❌     |
+| AI Analyze              | ❌     |
+| User Manager            | ❌     |
+
+---
+
+# 2. ROLE R02 — STAFF
+
+## Vai trò:
+
+Nhân viên đánh giá cơ bản.
+
+## Chức năng:
+
+| Chức năng            | Quyền |
+| -------------------- | ----- |
+| URL Security Scan    | ✅     |
+| Password Security    | ✅     |
+| IAM Security cơ bản  | ✅     |
+| Web Security cơ bản  | ✅     |
+| Xem tiêu chí Ver 1-2 | ✅     |
+| Tạo đánh giá cơ bản  | ✅     |
+| Realtime Scan Status | ✅     |
+| Export Report        | ❌     |
+| API Security         | ❌     |
+| AI Analyze           | ❌     |
+| User Manager         | ❌     |
+
+---
+
+# 3. ROLE R03 — SECURITY OPERATOR
+
+## Vai trò:
+
+Vận hành hệ thống bảo mật.
+
+## Chức năng:
+
+| Chức năng                | Quyền |
+| ------------------------ | ----- |
+| Web Security Scanner     | ✅     |
+| API Security             | ✅     |
+| Database Security        | ✅     |
+| Vulnerability Management | ✅     |
+| Realtime Monitoring      | ✅     |
+| Threat Detection         | ✅     |
+| Export PDF/Excel cơ bản  | ✅     |
+| Scan Logs                | ✅     |
+| URL Security             | ✅     |
+| Password Security        | ✅     |
+| AI Analyze               | ❌     |
+| User Manager             | ❌     |
+
+---
+
+# 4. ROLE R04 — SECURITY ANALYST
+
+## Vai trò:
+
+Phân tích lỗ hổng và rủi ro bảo mật.
+
+## Chức năng:
+
+| Chức năng             | Quyền |
+| --------------------- | ----- |
+| Vulnerability Analyze | ✅     |
+| Threat Intelligence   | ✅     |
+| CVSS Scoring          | ✅     |
+| Risk Assessment       | ✅     |
+| SIEM & Logging        | ✅     |
+| Source Code Security  | ✅     |
+| Network Security      | ✅     |
+| Endpoint Security     | ✅     |
+| Compliance Review     | ✅     |
+| Export PDF/Excel      | ✅     |
+| AI Analyze            | ❌     |
+| User Manager          | ❌     |
+
+---
+
+# 5. ROLE R05 — SENIOR SECURITY ANALYST
+
+## Vai trò:
+
+Chuyên gia bảo mật nâng cao.
+
+## Chức năng:
+
+| Chức năng            | Quyền       |
+| -------------------- | ----------- |
+| AI Security Analyze  | ✅           |
+| Malware Scanner      | ✅           |
+| Deep Security Scan   | ✅           |
+| Incident Analyze     | ✅           |
+| AI Threat Prediction | ✅           |
+| Cloud Security       | ✅           |
+| Container Security   | ✅           |
+| DevSecOps Dashboard  | ✅           |
+| Threat Correlation   | ✅           |
+| Enterprise Security  | ✅ (cần key) |
+| Tạo user             | ❌           |
+
+---
+
+# 6. ROLE R06 — SECURITY MANAGER
+
+## Vai trò:
+
+Quản lý đội bảo mật.
+
+## Chức năng:
+
+| Chức năng         | Quyền       |
+| ----------------- | ----------- |
+| User Manager      | ✅           |
+| Tạo user R01-R05  | ✅           |
+| Team Management   | ✅           |
+| Session Manager   | ✅           |
+| Force Logout      | ✅           |
+| Company Logs      | ✅           |
+| Report Approval   | ✅           |
+| Compliance Center | ✅           |
+| Backup & Recovery | ✅           |
+| Key Management    | ✅           |
+| Ver 5-6 Security  | ✅ (cần key) |
+
+---
+
+# 7. ROLE R07 — COMPANY ROOT ADMIN
+
+## Vai trò:
+
+Quản trị cao nhất của công ty.
+
+## Chức năng:
+
+| Chức năng                | Quyền |
+| ------------------------ | ----- |
+| Full Company Access      | ✅     |
+| Company User Manager     | ✅     |
+| Tạo user R01-R06         | ✅     |
+| Company Dashboard        | ✅     |
+| Document Lock Center     | ✅     |
+| Encryption Center        | ✅     |
+| API Key Management       | ✅     |
+| Export Company Data      | ✅     |
+| Company Realtime Monitor | ✅     |
+| Backup & Recovery        | ✅     |
+| Không cần Security Key   | ✅     |
+
+---
+
+# 8. ROLE R08 — SYSTEM AUDITOR
+
+## Vai trò:
+
+Kiểm toán hệ thống bảo mật.
+
+## Chức năng:
+
+| Chức năng              | Quyền |
+| ---------------------- | ----- |
+| Audit Dashboard        | ✅     |
+| Compliance Center      | ✅     |
+| Audit Logs             | ✅     |
+| Admin Activity Monitor | ✅     |
+| Security Review        | ✅     |
+| Threat History         | ✅     |
+| Realtime Audit Monitor | ✅     |
+| Compliance Reports     | ✅     |
+| Xem toàn bộ logs       | ✅     |
+| Chỉnh sửa dữ liệu      | ❌     |
+
+---
+
+# 9. ROLE R09 — SUPER SECURITY ADMIN
+
+## Vai trò:
+
+Quản trị an ninh toàn hệ thống.
+
+## Chức năng:
+
+| Chức năng                  | Quyền |
+| -------------------------- | ----- |
+| Global Dashboard           | ✅     |
+| Global Company Manager     | ✅     |
+| Tạo company                | ✅     |
+| Global Threat Intelligence | ✅     |
+| SOC Control Center         | ✅     |
+| AI Global Analyze          | ✅     |
+| Global Security Logs       | ✅     |
+| Encryption System Manager  | ✅     |
+| Global Realtime Monitor    | ✅     |
+| System Threat Control      | ✅     |
+
+---
+
+# 10. ROLE R10 — SYSTEM OWNER
+
+## Vai trò:
+
+Chủ hệ thống.
+
+## Chức năng:
+
+| Chức năng             | Quyền |
+| --------------------- | ----- |
+| Full System Control   | ✅     |
+| Security Key Center   | ✅     |
+| Cấp Security Key      | ✅     |
+| Master Decrypt        | ✅     |
+| Emergency Shutdown    | ✅     |
+| Restore System        | ✅     |
+| Full Database Control | ✅     |
+| Global Backup Manager | ✅     |
+| AI Master Control     | ✅     |
+| Root Server Monitor   | ✅     |
+| Toàn quyền hệ thống   | ✅     |
+
+---
+
+# 11. PHÂN QUYỀN TẠO TÀI KHOẢN
+
+| Role    | Có thể tạo         |
+| ------- | ------------------ |
+| R01-R05 | Không được tạo     |
+| R06     | Tạo R01-R05        |
+| R07     | Tạo R01-R06        |
+| R08     | Không tạo user     |
+| R09     | Tạo company + user |
+| R10     | Tạo mọi role       |
+
+---
+
+# 12. PHÂN QUYỀN XEM DỮ LIỆU
+
+| Role    | Phạm vi dữ liệu     |
+| ------- | ------------------- |
+| R01-R06 | Trong company       |
+| R07     | Toàn bộ company     |
+| R08     | Audit toàn hệ thống |
+| R09     | Toàn hệ thống       |
+| R10     | Full root system    |
+
+---
+
+# 13. PHÂN QUYỀN VERSION
+
+| Role    | Version |
+| ------- | ------- |
+| R01     | Ver 1   |
+| R02     | Ver 1-2 |
+| R03     | Ver 1-3 |
+| R04     | Ver 1-4 |
+| R05     | Ver 1-5 |
+| R06-R10 | Ver 1-6 |
