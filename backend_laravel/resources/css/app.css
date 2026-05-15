@@ -1,0 +1,46 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Security Platform Styles */
+:root {
+    --security-primary: #1a56db;
+    --security-danger: #e02424;
+    --security-warning: #f59e0b;
+    --security-success: #10b981;
+    --security-dark: #111827;
+    --security-light: #f3f4f6;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.security-score-card {
+    background: linear-gradient(135deg, var(--security-primary), #1e429f);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    color: white;
+}
+
+.risk-critical { background-color: var(--security-danger); }
+.risk-high { background-color: var(--security-warning); }
+.risk-medium { background-color: #3b82f6; }
+.risk-low { background-color: var(--security-success); }
+
+.alert-security {
+    border-left: 4px solid var(--security-primary);
+    background-color: #eff6ff;
+}
+
+.dashboard-widget {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1.25rem;
+    transition: transform 0.2s;
+}
+
+.dashboard-widget:hover {
+    transform: translateY(-2px);
+}

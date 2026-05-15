@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total_items": 600,
+    "generated_date": "2025-01-01",
+    "domains": ["Access Control", "Cryptography", "Physical Security", "Network Security", "Application Security", "Incident Response", "Compliance", "Risk Management"]
+  },
+  "criteria": [
+    {
+      "id": "AC-001",
+      "domain": "Access Control",
+      "name": "User Registration and De-provisioning",
+      "description": "Formal user registration and de-provisioning process shall be implemented.",
+      "weight": 3,
+      "max_score": 5,
+      "passing_score": 3
+    },
+    {
+      "id": "AC-002",
+      "domain": "Access Control",
+      "name": "Unique User Identification",
+      "description": "All users shall have a unique identifier for access control purposes.",
+      "weight": 5,
+      "max_score": 5,
+      "passing_score": 4
+    },
+    {
+      "id": "CR-001",
+      "domain": "Cryptography",
+      "name": "Encryption of Data at Rest",
+      "description": "All sensitive data stored shall be encrypted using approved algorithms.",
+      "weight": 5,
+      "max_score": 5,
+      "passing_score": 5
+    },
+    {
+      "id": "NS-001",
+      "domain": "Network Security",
+      "name": "Firewall Configuration",
+      "description": "Firewalls shall be properly configured and regularly reviewed.",
+      "weight": 4,
+      "max_score": 5,
+      "passing_score": 4
+    }
+  ]
+}

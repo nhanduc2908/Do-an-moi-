@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'super_admin' => 'Super Administrator',
+    'admin' => 'Administrator',
+    'security_manager' => 'Security Manager',
+    'security_analyst' => 'Security Analyst',
+    'compliance_officer' => 'Compliance Officer',
+    'auditor' => 'Auditor',
+    'viewer' => 'Viewer',
+    'permissions' => [
+        'user.view' => 'View Users',
+        'user.create' => 'Create Users',
+        'user.edit' => 'Edit Users',
+        'user.delete' => 'Delete Users',
+        'user.manage' => 'Manage Users',
+        'assessment.view' => 'View Assessments',
+        'assessment.create' => 'Create Assessments',
+        'assessment.review' => 'Review Assessments',
+        'assessment.export' => 'Export Assessments',
+        'report.view' => 'View Reports',
+        'report.generate' => 'Generate Reports',
+        'report.export' => 'Export Reports',
+        'incident.view' => 'View Incidents',
+        'incident.manage' => 'Manage Incidents',
+        'compliance.view' => 'View Compliance',
+        'compliance.check' => 'Run Compliance Checks',
+        'system.config' => 'Configure System',
+        'system.audit' => 'View Audit Logs',
+        'dashboard.view' => 'View Dashboard',
+    ],
+];

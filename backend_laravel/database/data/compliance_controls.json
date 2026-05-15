@@ -1,0 +1,25 @@
+{
+  "iso27001": {
+    "A.5": "Information security policies",
+    "A.6": "Organization of information security",
+    "A.7": "Human resource security",
+    "A.8": "Asset management",
+    "A.9": "Access control",
+    "A.10": "Cryptography",
+    "A.11": "Physical and environmental security",
+    "A.12": "Operations security",
+    "A.13": "Communications security",
+    "A.14": "System acquisition, development and maintenance",
+    "A.15": "Supplier relationships",
+    "A.16": "Information security incident management",
+    "A.17": "Business continuity management",
+    "A.18": "Compliance"
+  },
+  "nist_csf": {
+    "IDENTIFY": "Asset Management, Risk Assessment, Governance",
+    "PROTECT": "Access Control, Data Security, Protective Technology",
+    "DETECT": "Anomalies and Events, Continuous Monitoring",
+    "RESPOND": "Response Planning, Communications, Analysis",
+    "RECOVER": "Recovery Planning, Improvements"
+  }
+}

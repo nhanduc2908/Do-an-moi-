@@ -1,0 +1,31 @@
+{
+  "scenarios": [
+    {
+      "id": "RS-001",
+      "name": "Data Breach via Unauthorized Access",
+      "category": "Confidentiality",
+      "likelihood": 3,
+      "impact": 5,
+      "risk_score": 15,
+      "mitigation": "Implement MFA and regular access reviews"
+    },
+    {
+      "id": "RS-002",
+      "name": "Ransomware Attack",
+      "category": "Availability",
+      "likelihood": 4,
+      "impact": 5,
+      "risk_score": 20,
+      "mitigation": "Regular backups and endpoint protection"
+    },
+    {
+      "id": "RS-003",
+      "name": "Phishing Campaign Success",
+      "category": "Confidentiality",
+      "likelihood": 5,
+      "impact": 4,
+      "risk_score": 20,
+      "mitigation": "Security awareness training and email filtering"
+    }
+  ]
+}

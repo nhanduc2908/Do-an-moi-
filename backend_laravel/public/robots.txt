@@ -1,0 +1,27 @@
+# Security Platform - Robots.txt
+# Allow all crawlers but restrict sensitive paths
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password/reset
+Disallow: /storage/private/
+Disallow: /vendor/
+
+# Crawl delay to prevent overload
+Crawl-delay: 5
+
+# Sitemap location
+Sitemap: https://security-platform.com/sitemap.xml
+
+# Block AI training bots from sensitive areas
+User-agent: GPTBot
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /api/
+Disallow: /admin/

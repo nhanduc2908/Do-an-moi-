@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'super_admin' => 'Đại siêu quản trị',
+    'admin' => 'Quản trị viên',
+    'security_manager' => 'Quản lý An ninh',
+    'security_analyst' => 'Chuyên viên Phân tích An ninh',
+    'compliance_officer' => 'Cán bộ Tuân thủ',
+    'auditor' => 'Kiểm toán viên',
+    'viewer' => 'Người xem',
+    'permissions' => [
+        'user.view' => 'Xem Người dùng',
+        'user.create' => 'Tạo Người dùng',
+        'user.edit' => 'Sửa Người dùng',
+        'user.delete' => 'Xóa Người dùng',
+        'user.manage' => 'Quản lý Người dùng',
+        'assessment.view' => 'Xem Đánh giá',
+        'assessment.create' => 'Tạo Đánh giá',
+        'assessment.review' => 'Duyệt Đánh giá',
+        'assessment.export' => 'Xuất Đánh giá',
+        'report.view' => 'Xem Báo cáo',
+        'report.generate' => 'Tạo Báo cáo',
+        'report.export' => 'Xuất Báo cáo',
+        'incident.view' => 'Xem Sự cố',
+        'incident.manage' => 'Quản lý Sự cố',
+        'compliance.view' => 'Xem Tuân thủ',
+        'compliance.check' => 'Kiểm tra Tuân thủ',
+        'system.config' => 'Cấu hình Hệ thống',
+        'system.audit' => 'Xem Nhật ký Kiểm toán',
+        'dashboard.view' => 'Xem Bảng điều khiển',
+    ],
+];
