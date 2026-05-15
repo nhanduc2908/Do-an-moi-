@@ -1,0 +1,301 @@
+# HỆ THỐNG TẠO FILE ĐÁNH GIÁ TỰ ĐỘNG + AI HỖ TRỢ ĐÁNH GIÁ FILE
+
+# SECURITY EVALUATION SYSTEM
+
+---
+
+# 1. TỔNG QUAN CHỨC NĂNG
+
+Hệ thống hỗ trợ:
+
+* tự động tạo file đánh giá bảo mật
+* AI phân tích hệ thống
+* AI đọc file upload
+* AI đánh giá tiêu chí
+* AI tạo remediation
+* AI tạo báo cáo PDF/Excel
+* AI tính Security Score
+
+---
+
+# 2. CÁC LOẠI FILE HỖ TRỢ ĐÁNH GIÁ
+
+| File            | Hỗ trợ |
+| --------------- | ------ |
+| PDF             | ✅      |
+| DOCX            | ✅      |
+| XLSX            | ✅      |
+| CSV             | ✅      |
+| JSON            | ✅      |
+| XML             | ✅      |
+| LOG             | ✅      |
+| TXT             | ✅      |
+| ZIP Scan Result | ✅      |
+| Security Report | ✅      |
+
+---
+
+# 3. QUY TRÌNH ĐÁNH GIÁ FILE
+
+## Bước 1 — Upload File
+
+Người dùng upload:
+
+```txt id="lmhajz"
+security_report.pdf
+scan_result.json
+server_logs.zip
+```
+
+---
+
+## Bước 2 — AI Parse File
+
+AI tự động:
+
+* đọc nội dung
+* phân tích cấu trúc
+* trích xuất vulnerability
+* phát hiện risk
+* detect malware
+* tìm sensitive data
+
+---
+
+## Bước 3 — Mapping 600 Tiêu Chí
+
+AI:
+
+* đối chiếu dữ liệu
+* map vào 600 tiêu chí
+* tự động chấm điểm
+
+---
+
+## Bước 4 — Generate Security Report
+
+Hệ thống tạo:
+
+* PDF
+* Excel
+* Dashboard chart
+* AI summary
+
+---
+
+# 4. CÁC FILE TỰ ĐỘNG TẠO
+
+## Report Output
+
+```txt id="2mlye8"
+reports/
+│
+├── security_report.pdf
+├── security_report.xlsx
+├── ai_analysis.json
+├── risk_chart.png
+├── vulnerability_list.csv
+└── remediation_plan.pdf
+```
+
+---
+
+# 5. AI HỖ TRỢ ĐÁNH GIÁ
+
+## AI thực hiện:
+
+| AI Feature              | Mô tả               |
+| ----------------------- | ------------------- |
+| Vulnerability Detection | phát hiện lỗ hổng   |
+| Malware Detection       | phát hiện malware   |
+| AI Risk Score           | tính điểm           |
+| AI Threat Analyze       | phân tích nguy cơ   |
+| Remediation Suggestion  | hướng xử lý         |
+| Security Summary        | tóm tắt             |
+| Compliance Analyze      | ISO/GDPR            |
+| Threat Classification   | phân loại nguy hiểm |
+
+---
+
+# 6. AI SECURITY SCORE
+
+## Công thức:
+
+AI\ Security\ Score = \frac{\sum Passed\ Criteria}{600} \times 100
+
+---
+
+# 7. AI PHÂN LOẠI RỦI RO
+
+| Score  | Mức độ    |
+| ------ | --------- |
+| 90-100 | Excellent |
+| 75-89  | Good      |
+| 60-74  | Medium    |
+| 40-59  | Weak      |
+| 0-39   | Critical  |
+
+---
+
+# 8. HỆ THỐNG TỰ ĐỘNG ĐÁNH GIÁ
+
+## AI có thể phát hiện:
+
+| Lỗi                 | AI Detect |
+| ------------------- | --------- |
+| SQL Injection       | ✅         |
+| XSS                 | ✅         |
+| CSRF                | ✅         |
+| SSRF                | ✅         |
+| Malware             | ✅         |
+| Webshell            | ✅         |
+| Weak Password       | ✅         |
+| Exposed API         | ✅         |
+| Open Port           | ✅         |
+| Sensitive Data Leak | ✅         |
+
+---
+
+# 9. AI ĐÁNH GIÁ LOG FILE
+
+## AI đọc:
+
+* server logs
+* firewall logs
+* SIEM logs
+* access logs
+* auth logs
+
+## AI phát hiện:
+
+* brute force
+* suspicious IP
+* failed login
+* attack pattern
+* privilege escalation
+
+---
+
+# 10. AI ĐÁNH GIÁ SOURCE CODE
+
+## AI Scan:
+
+* PHP
+* Laravel
+* JavaScript
+* Flutter
+* Dart
+* Python
+
+## AI Detect:
+
+* hardcode secret
+* insecure API
+* SQLi
+* XSS
+* auth bypass
+* unsafe upload
+
+---
+
+# 11. AI ĐÁNH GIÁ FILE PDF/DOCX
+
+## AI:
+
+* đọc nội dung report
+* tìm vulnerability
+* detect sensitive data
+* compliance analyze
+* tạo remediation
+
+---
+
+# 12. AI REMEDIATION
+
+## AI tạo:
+
+* hướng xử lý
+* checklist fix lỗi
+* roadmap security
+* priority remediation
+
+---
+
+# 13. DASHBOARD AI
+
+## Dashboard hiển thị:
+
+| Dashboard               | Nội dung    |
+| ----------------------- | ----------- |
+| AI Threat Graph         | biểu đồ AI  |
+| Risk Timeline           | timeline    |
+| Security Score          | điểm        |
+| PASS/FAIL Ratio         | tỷ lệ       |
+| Vulnerability Pie Chart | biểu đồ lỗi |
+| Realtime Threat         | realtime    |
+
+---
+
+# 14. DATABASE CHO AI
+
+## ai_analysis_reports
+
+| Field           | Nội dung      |
+| --------------- | ------------- |
+| file_name       | file upload   |
+| ai_score        | điểm          |
+| threat_level    | risk          |
+| ai_summary      | tóm tắt       |
+| vulnerabilities | danh sách lỗi |
+| remediation     | hướng xử lý   |
+| created_at      | thời gian     |
+
+---
+
+# 15. ROLE ĐƯỢC DÙNG AI
+
+| Role | AI Access |
+| ---- | --------- |
+| R01  | ❌         |
+| R02  | ❌         |
+| R03  | ❌         |
+| R04  | Giới hạn  |
+| R05  | ✅         |
+| R06  | ✅         |
+| R07  | ✅         |
+| R08  | ✅         |
+| R09  | ✅         |
+| R10  | ✅         |
+
+---
+
+# 16. FILE ĐÁNH GIÁ TỰ ĐỘNG GỒM
+
+## Security Report:
+
+* Executive Summary
+* Security Score
+* Threat Analyze
+* Vulnerability List
+* AI Summary
+* Risk Level
+* Compliance Result
+* Remediation Plan
+* Dashboard Charts
+* Audit Logs
+
+---
+
+# 17. CHỨC NĂNG NÂNG CAO
+
+## Hệ thống hỗ trợ:
+
+* AI realtime analyze
+* AI compare report
+* AI trend prediction
+* AI auto remediation
+* AI alert system
+* scheduled auto scan
+* auto PDF generation
+* encrypted report
+* digital signature report
