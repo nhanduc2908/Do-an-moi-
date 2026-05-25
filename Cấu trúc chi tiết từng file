@@ -1328,446 +1328,511 @@ assets/
 ```
 lib/
 │
-├── 📄 main.dart
+├── main.dart
 │
-├── 📁 core/
-│   ├── 📁 constants/
-│   │   ├── 📄 api_constants.dart
-│   │   ├── 📄 app_constants.dart
-│   │   ├── 📄 role_constants.dart
-│   │   ├── 📄 version_config.dart
-│   │   ├── 📄 sync_constants.dart
-│   │   └── 📄 storage_keys.dart
+├── core/
+│   ├── constants/
+│   │   ├── api_constants.dart
+│   │   ├── app_constants.dart
+│   │   ├── role_constants.dart
+│   │   ├── version_config.dart
+│   │   ├── sync_constants.dart
+│   │   └── storage_keys.dart
 │   │
-│   ├── 📁 role/
-│   │   ├── 📄 role_permissions.dart
-│   │   ├── 📄 role_checker.dart
-│   │   └── 📄 role_guard.dart
+│   ├── role/
+│   │   ├── role_permissions.dart
+│   │   ├── role_checker.dart
+│   │   └── role_guard.dart
 │   │
-│   ├── 📁 utils/
-│   │   ├── 📄 secure_storage.dart
-│   │   ├── 📄 logger.dart
-│   │   ├── 📄 validators.dart
-│   │   ├── 📄 network_checker.dart
-│   │   ├── 📄 encryption_helper.dart
-│   │   ├── 📄 biometric_helper.dart
-│   │   ├── 📄 date_helper.dart
-│   │   ├── 📄 permission_helper.dart
-│   │   ├── 📄 file_helper.dart
-│   │   ├── 📄 share_helper.dart
-│   │   └── 📄 image_picker_helper.dart
+│   ├── utils/
+│   │   ├── secure_storage.dart
+│   │   ├── logger.dart
+│   │   ├── validators.dart
+│   │   ├── network_checker.dart
+│   │   ├── encryption_helper.dart
+│   │   ├── biometric_helper.dart
+│   │   ├── date_helper.dart
+│   │   ├── permission_helper.dart
+│   │   ├── file_helper.dart
+│   │   ├── share_helper.dart
+│   │   └── image_picker_helper.dart
 │   │
-│   ├── 📁 themes/
-│   │   ├── 📄 app_theme.dart
-│   │   ├── 📄 dark_theme.dart
-│   │   ├── 📄 light_theme.dart
-│   │   ├── 📄 color_palette.dart
-│   │   └── 📄 text_styles.dart
+│   ├── themes/
+│   │   ├── app_theme.dart
+│   │   ├── dark_theme.dart
+│   │   ├── light_theme.dart
+│   │   ├── color_palette.dart
+│   │   └── text_styles.dart
 │   │
-│   ├── 📁 routes/
-│   │   ├── 📄 app_routes.dart
-│   │   ├── 📄 route_names.dart
-│   │   └── 📄 route_generator.dart
+│   ├── routes/
+│   │   ├── app_routes.dart
+│   │   ├── route_names.dart
+│   │   ├── route_generator.dart
+│   │   └── role_routes.dart
 │   │
-│   └── 📁 extensions/
-│       ├── 📄 string_extension.dart
-│       ├── 📄 date_extension.dart
-│       ├── 📄 context_extension.dart
-│       ├── 📄 widget_extension.dart
-│       ├── 📄 list_extension.dart
-│       └── 📄 double_extension.dart
+│   └── extensions/
+│       ├── string_extension.dart
+│       ├── date_extension.dart
+│       ├── context_extension.dart
+│       ├── widget_extension.dart
+│       ├── list_extension.dart
+│       └── double_extension.dart
 │
-├── 📁 data/
-│   ├── 📁 models/
-│   │   ├── 📄 user_model.dart
-│   │   ├── 📄 role_model.dart
-│   │   ├── 📄 permission_model.dart
-│   │   ├── 📄 domain_model.dart
-│   │   ├── 📄 criteria_model.dart
-│   │   ├── 📄 assessment_model.dart
-│   │   ├── 📄 assessment_detail_model.dart
-│   │   ├── 📄 key_model.dart
-│   │   ├── 📄 report_model.dart
-│   │   ├── 📄 incident_model.dart
-│   │   ├── 📄 vulnerability_model.dart
-│   │   ├── 📄 compliance_model.dart
-│   │   ├── 📄 sync_queue_model.dart
-│   │   ├── 📄 sync_metadata_model.dart
-│   │   ├── 📄 notification_model.dart
-│   │   ├── 📄 device_model.dart
-│   │   ├── 📄 session_model.dart
-│   │   ├── 📄 log_model.dart
-│   │   ├── 📄 setting_model.dart
-│   │   ├── 📄 api_response_model.dart
-│   │   └── 📄 error_model.dart
+├── data/
+│   ├── models/
+│   │   ├── user_model.dart
+│   │   ├── role_model.dart
+│   │   ├── permission_model.dart
+│   │   ├── domain_model.dart
+│   │   ├── criteria_model.dart
+│   │   ├── assessment_model.dart
+│   │   ├── assessment_detail_model.dart
+│   │   ├── key_model.dart
+│   │   ├── report_model.dart
+│   │   ├── incident_model.dart
+│   │   ├── vulnerability_model.dart
+│   │   ├── compliance_model.dart
+│   │   ├── sync_queue_model.dart
+│   │   ├── sync_metadata_model.dart
+│   │   ├── notification_model.dart
+│   │   ├── device_model.dart
+│   │   ├── session_model.dart
+│   │   ├── log_model.dart
+│   │   ├── setting_model.dart
+│   │   ├── api_response_model.dart
+│   │   └── error_model.dart
 │   │
-│   ├── 📁 repositories/
-│   │   ├── 📄 auth_repository.dart
-│   │   ├── 📄 assessment_repository.dart
-│   │   ├── 📄 key_repository.dart
-│   │   ├── 📄 report_repository.dart
-│   │   ├── 📄 sync_repository.dart
-│   │   ├── 📄 notification_repository.dart
-│   │   ├── 📄 user_repository.dart
-│   │   ├── 📄 setting_repository.dart
-│   │   ├── 📄 incident_repository.dart
-│   │   ├── 📄 vulnerability_repository.dart
-│   │   └── 📄 compliance_repository.dart
+│   ├── repositories/
+│   │   ├── auth_repository.dart
+│   │   ├── assessment_repository.dart
+│   │   ├── key_repository.dart
+│   │   ├── report_repository.dart
+│   │   ├── sync_repository.dart
+│   │   ├── notification_repository.dart
+│   │   ├── user_repository.dart
+│   │   ├── setting_repository.dart
+│   │   ├── incident_repository.dart
+│   │   ├── vulnerability_repository.dart
+│   │   └── compliance_repository.dart
 │   │
-│   └── 📁 datasources/
-│       ├── 📁 remote/
-│       │   ├── 📄 api_service.dart
-│       │   ├── 📄 api_client.dart
-│       │   ├── 📄 sync_api.dart
-│       │   ├── 📄 web_socket_service.dart
-│       │   ├── 📄 auth_api.dart
-│       │   ├── 📄 assessment_api.dart
-│       │   ├── 📄 key_api.dart
-│       │   ├── 📄 report_api.dart
+│   └── datasources/
+│       ├── remote/
+│       │   ├── api_service.dart
+│       │   ├── api_client.dart
+│       │   ├── sync_api.dart
+│       │   ├── web_socket_service.dart
+│       │   ├── auth_api.dart
+│       │   ├── assessment_api.dart
+│       │   ├── key_api.dart
+│       │   ├── report_api.dart
 │       │   │
-│       │   └── 📁 interceptors/
-│       │       ├── 📄 auth_interceptor.dart
-│       │       ├── 📄 retry_interceptor.dart
-│       │       ├── 📄 logging_interceptor.dart
-│       │       ├── 📄 cache_interceptor.dart
-│       │       ├── 📄 offline_interceptor.dart
-│       │       ├── 📄 timeout_interceptor.dart
-│       │       ├── 📄 language_interceptor.dart
-│       │       └── 📄 compress_interceptor.dart
+│       │   └── interceptors/
+│       │       ├── auth_interceptor.dart
+│       │       ├── retry_interceptor.dart
+│       │       ├── logging_interceptor.dart
+│       │       ├── cache_interceptor.dart
+│       │       ├── offline_interceptor.dart
+│       │       ├── timeout_interceptor.dart
+│       │       ├── language_interceptor.dart
+│       │       └── compress_interceptor.dart
 │       │
-│       └── 📁 local/
-│           ├── 📄 local_storage.dart
-│           ├── 📄 sync_database.dart
-│           ├── 📄 offline_queue.dart
-│           ├── 📄 hive_service.dart
-│           ├── 📄 hive_adapters.dart
-│           ├── 📄 sync_metadata_store.dart
-│           ├── 📄 cache_manager.dart
-│           ├── 📄 migration_helper.dart
-│           ├── 📄 database_helper.dart
-│           ├── 📄 shared_prefs_helper.dart
-│           └── 📄 file_storage_helper.dart
+│       └── local/
+│           ├── local_storage.dart
+│           ├── sync_database.dart
+│           ├── offline_queue.dart
+│           ├── hive_service.dart
+│           ├── hive_adapters.dart
+│           ├── sync_metadata_store.dart
+│           ├── cache_manager.dart
+│           ├── migration_helper.dart
+│           ├── database_helper.dart
+│           ├── shared_prefs_helper.dart
+│           └── file_storage_helper.dart
 │
-├── 📁 services/
-│   ├── 📁 sync/
-│   │   ├── 📄 sync_engine.dart
-│   │   ├── 📄 sync_scheduler.dart
-│   │   ├── 📄 sync_monitor.dart
-│   │   ├── 📄 background_sync.dart
-│   │   ├── 📄 realtime_sync.dart
-│   │   ├── 📄 batch_sync.dart
-│   │   ├── 📄 incremental_sync.dart
-│   │   ├── 📄 conflict_resolver.dart
-│   │   ├── 📄 sync_health_check.dart
-│   │   ├── 📄 sync_strategy.dart
-│   │   └── 📄 sync_queue_processor.dart
+├── services/
+│   ├── sync/
+│   │   ├── sync_engine.dart
+│   │   ├── sync_scheduler.dart
+│   │   ├── sync_monitor.dart
+│   │   ├── background_sync.dart
+│   │   ├── realtime_sync.dart
+│   │   ├── batch_sync.dart
+│   │   ├── incremental_sync.dart
+│   │   ├── conflict_resolver.dart
+│   │   ├── sync_health_check.dart
+│   │   ├── sync_strategy.dart
+│   │   └── sync_queue_processor.dart
 │   │
-│   ├── 📁 offline/
-│   │   ├── 📄 offline_queue_manager.dart
-│   │   ├── 📄 offline_cache.dart
-│   │   ├── 📄 offline_sync_trigger.dart
-│   │   ├── 📄 offline_data_validator.dart
-│   │   ├── 📄 offline_storage_manager.dart
-│   │   └── 📄 offline_request_builder.dart
+│   ├── offline/
+│   │   ├── offline_queue_manager.dart
+│   │   ├── offline_cache.dart
+│   │   ├── offline_sync_trigger.dart
+│   │   ├── offline_data_validator.dart
+│   │   ├── offline_storage_manager.dart
+│   │   └── offline_request_builder.dart
 │   │
-│   ├── 📁 api/
-│   │   ├── 📄 api_endpoints.dart
-│   │   ├── 📄 api_response.dart
-│   │   ├── 📄 api_error_handler.dart
-│   │   ├── 📄 api_version_manager.dart
-│   │   ├── 📄 api_response_parser.dart
-│   │   └── 📄 api_request_builder.dart
+│   ├── api/
+│   │   ├── api_endpoints.dart
+│   │   ├── api_response.dart
+│   │   ├── api_error_handler.dart
+│   │   ├── api_version_manager.dart
+│   │   ├── api_response_parser.dart
+│   │   └── api_request_builder.dart
 │   │
-│   └── 📁 auth/
-│       ├── 📄 token_manager.dart
-│       ├── 📄 session_manager.dart
-│       ├── 📄 mfa_service.dart
-│       ├── 📄 biometric_auth.dart
-│       ├── 📄 token_refresher.dart
-│       └── 📄 auth_state_manager.dart
+│   └── auth/
+│       ├── token_manager.dart
+│       ├── session_manager.dart
+│       ├── mfa_service.dart
+│       ├── biometric_auth.dart
+│       ├── token_refresher.dart
+│       └── auth_state_manager.dart
 │
-├── 📁 presentation/
-│   ├── 📁 providers/
-│   │   ├── 📄 auth_provider.dart
-│   │   ├── 📄 assessment_provider.dart
-│   │   ├── 📄 key_provider.dart
-│   │   ├── 📄 report_provider.dart
-│   │   ├── 📄 sync_provider.dart
-│   │   ├── 📄 notification_provider.dart
-│   │   ├── 📄 theme_provider.dart
-│   │   ├── 📄 language_provider.dart
-│   │   ├── 📄 user_provider.dart
-│   │   ├── 📄 incident_provider.dart
-│   │   ├── 📄 vulnerability_provider.dart
-│   │   ├── 📄 compliance_provider.dart
-│   │   ├── 📄 setting_provider.dart
-│   │   └── 📄 network_provider.dart
+├── presentation/
+│   ├── providers/
+│   │   ├── auth_provider.dart
+│   │   ├── assessment_provider.dart
+│   │   ├── key_provider.dart
+│   │   ├── report_provider.dart
+│   │   ├── sync_provider.dart
+│   │   ├── notification_provider.dart
+│   │   ├── theme_provider.dart
+│   │   ├── language_provider.dart
+│   │   ├── user_provider.dart
+│   │   ├── incident_provider.dart
+│   │   ├── vulnerability_provider.dart
+│   │   ├── compliance_provider.dart
+│   │   ├── setting_provider.dart
+│   │   ├── role_provider.dart
+│   │   └── network_provider.dart
 │   │
-│   ├── 📁 screens/
-│   │   ├── 📄 splash_screen.dart
+│   ├── screens/
+│   │   ├── splash_screen.dart
+│   │   ├── unauthorized_screen.dart
 │   │   │
-│   │   ├── 📁 auth/
-│   │   │   ├── 📄 login_screen.dart
-│   │   │   ├── 📄 register_screen.dart
-│   │   │   ├── 📄 two_factor_screen.dart
-│   │   │   ├── 📄 forgot_password_screen.dart
-│   │   │   ├── 📄 biometric_login_screen.dart
-│   │   │   ├── 📄 otp_verification_screen.dart
-│   │   │   └── 📄 change_password_screen.dart
+│   │   ├── auth/
+│   │   │   ├── login_screen.dart
+│   │   │   ├── register_screen.dart
+│   │   │   ├── two_factor_screen.dart
+│   │   │   ├── forgot_password_screen.dart
+│   │   │   ├── biometric_login_screen.dart
+│   │   │   ├── otp_verification_screen.dart
+│   │   │   ├── change_password_screen.dart
+│   │   │   └── role_selection_screen.dart
 │   │   │
-│   │   ├── 📁 home/
-│   │   │   ├── 📄 home_screen.dart
-│   │   │   ├── 📄 dashboard_screen.dart
-│   │   │   ├── 📄 security_score_screen.dart
-│   │   │   ├── 📄 domain_list_screen.dart
-│   │   │   ├── 📄 criteria_list_screen.dart
-│   │   │   └── 📄 quick_scan_screen.dart
+│   │   ├── role_based/
+│   │   │   ├── super_admin/
+│   │   │   │   ├── super_admin_dashboard.dart
+│   │   │   │   ├── system_monitor_screen.dart
+│   │   │   │   ├── audit_trail_screen.dart
+│   │   │   │   ├── master_control_screen.dart
+│   │   │   │   └── backup_management_screen.dart
+│   │   │   │
+│   │   │   ├── admin/
+│   │   │   │   ├── admin_dashboard.dart
+│   │   │   │   ├── user_management_screen.dart
+│   │   │   │   ├── role_management_screen.dart
+│   │   │   │   ├── system_settings_screen.dart
+│   │   │   │   └── audit_logs_screen.dart
+│   │   │   │
+│   │   │   ├── security_manager/
+│   │   │   │   ├── security_manager_dashboard.dart
+│   │   │   │   ├── incident_management_screen.dart
+│   │   │   │   ├── team_management_screen.dart
+│   │   │   │   ├── security_policies_screen.dart
+│   │   │   │   └── incident_response_screen.dart
+│   │   │   │
+│   │   │   ├── compliance_officer/
+│   │   │   │   ├── compliance_officer_dashboard.dart
+│   │   │   │   ├── audit_schedule_screen.dart
+│   │   │   │   ├── evidence_collection_screen.dart
+│   │   │   │   ├── compliance_reports_screen.dart
+│   │   │   │   └── compliance_checklist_screen.dart
+│   │   │   │
+│   │   │   ├── risk_manager/
+│   │   │   │   ├── risk_manager_dashboard.dart
+│   │   │   │   ├── risk_register_screen.dart
+│   │   │   │   ├── risk_assessment_screen.dart
+│   │   │   │   ├── risk_treatment_screen.dart
+│   │   │   │   └── risk_matrix_screen.dart
+│   │   │   │
+│   │   │   ├── security_analyst/
+│   │   │   │   ├── security_analyst_dashboard.dart
+│   │   │   │   ├── threat_hunting_screen.dart
+│   │   │   │   ├── siem_dashboard_screen.dart
+│   │   │   │   ├── ioc_management_screen.dart
+│   │   │   │   └── threat_intelligence_screen.dart
+│   │   │   │
+│   │   │   ├── incident_responder/
+│   │   │   │   ├── incident_responder_dashboard.dart
+│   │   │   │   ├── runbook_executor_screen.dart
+│   │   │   │   ├── forensic_tools_screen.dart
+│   │   │   │   ├── containment_actions_screen.dart
+│   │   │   │   └── incident_timeline_screen.dart
+│   │   │   │
+│   │   │   ├── vulnerability_scanner/
+│   │   │   │   ├── vulnerability_scanner_dashboard.dart
+│   │   │   │   ├── scan_scheduler_screen.dart
+│   │   │   │   ├── vulnerability_db_screen.dart
+│   │   │   │   ├── patch_validator_screen.dart
+│   │   │   │   └── scan_result_screen.dart
+│   │   │   │
+│   │   │   ├── auditor/
+│   │   │   │   ├── auditor_dashboard.dart
+│   │   │   │   ├── log_reviewer_screen.dart
+│   │   │   │   ├── access_reports_screen.dart
+│   │   │   │   ├── compliance_checker_screen.dart
+│   │   │   │   └── audit_report_screen.dart
+│   │   │   │
+│   │   │   └── viewer/
+│   │   │       ├── viewer_dashboard.dart
+│   │   │       ├── security_dashboard_screen.dart
+│   │   │       ├── report_viewer_screen.dart
+│   │   │       └── alert_viewer_screen.dart
 │   │   │
-│   │   ├── 📁 assessment/
-│   │   │   ├── 📄 assessment_screen.dart
-│   │   │   ├── 📄 assessment_history.dart
-│   │   │   ├── 📄 assessment_detail.dart
-│   │   │   ├── 📄 submit_assessment_screen.dart
-│   │   │   ├── 📄 assessment_review_screen.dart
-│   │   │   ├── 📄 assessment_progress_screen.dart
-│   │   │   └── 📄 assessment_result_screen.dart
+│   │   ├── home/
+│   │   │   ├── home_screen.dart
+│   │   │   ├── dashboard_screen.dart
+│   │   │   ├── security_score_screen.dart
+│   │   │   ├── domain_list_screen.dart
+│   │   │   ├── criteria_list_screen.dart
+│   │   │   └── quick_scan_screen.dart
 │   │   │
-│   │   ├── 📁 key/
-│   │   │   ├── 📄 key_verification_screen.dart
-│   │   │   ├── 📄 key_request_screen.dart
-│   │   │   ├── 📄 key_list_screen.dart
-│   │   │   └── 📄 key_detail_screen.dart
+│   │   ├── assessment/
+│   │   │   ├── assessment_screen.dart
+│   │   │   ├── assessment_history.dart
+│   │   │   ├── assessment_detail.dart
+│   │   │   ├── submit_assessment_screen.dart
+│   │   │   ├── assessment_review_screen.dart
+│   │   │   ├── assessment_progress_screen.dart
+│   │   │   └── assessment_result_screen.dart
 │   │   │
-│   │   ├── 📁 incident/
-│   │   │   ├── 📄 incident_list_screen.dart
-│   │   │   ├── 📄 incident_detail_screen.dart
-│   │   │   ├── 📄 report_incident_screen.dart
-│   │   │   ├── 📄 incident_response_screen.dart
-│   │   │   ├── 📄 incident_timeline_screen.dart
-│   │   │   └── 📄 incident_closed_screen.dart
+│   │   ├── key/
+│   │   │   ├── key_verification_screen.dart
+│   │   │   ├── key_request_screen.dart
+│   │   │   ├── key_list_screen.dart
+│   │   │   └── key_detail_screen.dart
 │   │   │
-│   │   ├── 📁 vulnerability/
-│   │   │   ├── 📄 vulnerability_list_screen.dart
-│   │   │   ├── 📄 vulnerability_detail_screen.dart
-│   │   │   ├── 📄 scan_vulnerability_screen.dart
-│   │   │   ├── 📄 remediation_screen.dart
-│   │   │   ├── 📄 vulnerability_tracker_screen.dart
-│   │   │   └── 📄 patch_management_screen.dart
+│   │   ├── incident/
+│   │   │   ├── incident_list_screen.dart
+│   │   │   ├── incident_detail_screen.dart
+│   │   │   ├── report_incident_screen.dart
+│   │   │   └── incident_closed_screen.dart
 │   │   │
-│   │   ├── 📁 compliance/
-│   │   │   ├── 📄 compliance_dashboard_screen.dart
-│   │   │   ├── 📄 iso27001_screen.dart
-│   │   │   ├── 📄 gdpr_screen.dart
-│   │   │   ├── 📄 pci_dss_screen.dart
-│   │   │   ├── 📄 hipaa_screen.dart
-│   │   │   ├── 📄 nist_screen.dart
-│   │   │   ├── 📄 audit_evidence_screen.dart
-│   │   │   └── 📄 compliance_report_screen.dart
+│   │   ├── vulnerability/
+│   │   │   ├── vulnerability_list_screen.dart
+│   │   │   ├── vulnerability_detail_screen.dart
+│   │   │   ├── scan_vulnerability_screen.dart
+│   │   │   ├── remediation_screen.dart
+│   │   │   ├── vulnerability_tracker_screen.dart
+│   │   │   └── patch_management_screen.dart
 │   │   │
-│   │   ├── 📁 report/
-│   │   │   ├── 📄 report_list_screen.dart
-│   │   │   ├── 📄 report_detail_screen.dart
-│   │   │   ├── 📄 generate_report_screen.dart
-│   │   │   ├── 📄 executive_report_screen.dart
-│   │   │   ├── 📄 export_report_screen.dart
-│   │   │   ├── 📄 schedule_report_screen.dart
-│   │   │   └── 📄 share_report_screen.dart
+│   │   ├── compliance/
+│   │   │   ├── compliance_dashboard_screen.dart
+│   │   │   ├── iso27001_screen.dart
+│   │   │   ├── gdpr_screen.dart
+│   │   │   ├── pci_dss_screen.dart
+│   │   │   ├── hipaa_screen.dart
+│   │   │   ├── nist_screen.dart
+│   │   │   ├── audit_evidence_screen.dart
+│   │   │   └── compliance_report_screen.dart
 │   │   │
-│   │   ├── 📁 ai/
-│   │   │   ├── 📄 ai_dashboard_screen.dart
-│   │   │   ├── 📄 threat_detection_screen.dart
-│   │   │   ├── 📄 anomaly_detection_screen.dart
-│   │   │   ├── 📄 ai_chatbot_screen.dart
-│   │   │   ├── 📄 suggest_criteria_screen.dart
-│   │   │   ├── 📄 auto_evaluate_screen.dart
-│   │   │   ├── 📄 risk_prediction_screen.dart
-│   │   │   ├── 📄 malware_analysis_screen.dart
-│   │   │   └── 📄 ai_recommendation_screen.dart
+│   │   ├── report/
+│   │   │   ├── report_list_screen.dart
+│   │   │   ├── report_detail_screen.dart
+│   │   │   ├── generate_report_screen.dart
+│   │   │   ├── executive_report_screen.dart
+│   │   │   ├── export_report_screen.dart
+│   │   │   ├── schedule_report_screen.dart
+│   │   │   └── share_report_screen.dart
 │   │   │
-│   │   ├── 📁 security/
-│   │   │   ├── 📄 web_security_screen.dart
-│   │   │   ├── 📄 network_security_screen.dart
-│   │   │   ├── 📄 database_security_screen.dart
-│   │   │   ├── 📄 cloud_security_screen.dart
-│   │   │   ├── 📄 container_security_screen.dart
-│   │   │   ├── 📄 mobile_security_screen.dart
-│   │   │   ├── 📄 iot_security_screen.dart
-│   │   │   ├── 📄 api_security_screen.dart
-│   │   │   └── 📄 source_code_security_screen.dart
+│   │   ├── ai/
+│   │   │   ├── ai_dashboard_screen.dart
+│   │   │   ├── threat_detection_screen.dart
+│   │   │   ├── anomaly_detection_screen.dart
+│   │   │   ├── ai_chatbot_screen.dart
+│   │   │   ├── suggest_criteria_screen.dart
+│   │   │   ├── auto_evaluate_screen.dart
+│   │   │   ├── risk_prediction_screen.dart
+│   │   │   ├── malware_analysis_screen.dart
+│   │   │   └── ai_recommendation_screen.dart
 │   │   │
-│   │   ├── 📁 admin/
-│   │   │   ├── 📄 user_management_screen.dart
-│   │   │   ├── 📄 role_management_screen.dart
-│   │   │   ├── 📄 key_management_screen.dart
-│   │   │   ├── 📄 system_logs_screen.dart
-│   │   │   ├── 📄 backup_restore_screen.dart
-│   │   │   ├── 📄 system_settings_screen.dart
-│   │   │   ├── 📄 audit_log_screen.dart
-│   │   │   ├── 📄 compliance_management_screen.dart
-│   │   │   ├── 📄 incident_management_screen.dart
-│   │   │   └── 📄 vulnerability_management_screen.dart
+│   │   ├── security/
+│   │   │   ├── web_security_screen.dart
+│   │   │   ├── network_security_screen.dart
+│   │   │   ├── database_security_screen.dart
+│   │   │   ├── cloud_security_screen.dart
+│   │   │   ├── container_security_screen.dart
+│   │   │   ├── mobile_security_screen.dart
+│   │   │   ├── iot_security_screen.dart
+│   │   │   ├── api_security_screen.dart
+│   │   │   └── source_code_security_screen.dart
 │   │   │
-│   │   ├── 📁 profile/
-│   │   │   ├── 📄 profile_screen.dart
-│   │   │   ├── 📄 edit_profile_screen.dart
-│   │   │   ├── 📄 change_password_screen.dart
-│   │   │   ├── 📄 two_factor_setup_screen.dart
-│   │   │   ├── 📄 devices_screen.dart
-│   │   │   ├── 📄 activity_log_screen.dart
-│   │   │   ├── 📄 notification_settings_screen.dart
-│   │   │   └── 📄 language_settings_screen.dart
+│   │   ├── profile/
+│   │   │   ├── profile_screen.dart
+│   │   │   ├── edit_profile_screen.dart
+│   │   │   ├── change_password_screen.dart
+│   │   │   ├── two_factor_setup_screen.dart
+│   │   │   ├── devices_screen.dart
+│   │   │   ├── activity_log_screen.dart
+│   │   │   ├── notification_settings_screen.dart
+│   │   │   └── language_settings_screen.dart
 │   │   │
-│   │   ├── 📁 notification/
-│   │   │   ├── 📄 notification_list_screen.dart
-│   │   │   └── 📄 notification_detail_screen.dart
+│   │   ├── notification/
+│   │   │   ├── notification_list_screen.dart
+│   │   │   └── notification_detail_screen.dart
 │   │   │
-│   │   ├── 📁 scan/
-│   │   │   ├── 📄 web_scan_screen.dart
-│   │   │   ├── 📄 url_scan_screen.dart
-│   │   │   ├── 📄 password_scan_screen.dart
-│   │   │   ├── 📄 network_scan_screen.dart
-│   │   │   ├── 📄 vulnerability_scan_screen.dart
-│   │   │   └── 📄 scan_result_screen.dart
+│   │   ├── scan/
+│   │   │   ├── web_scan_screen.dart
+│   │   │   ├── url_scan_screen.dart
+│   │   │   ├── password_scan_screen.dart
+│   │   │   ├── network_scan_screen.dart
+│   │   │   ├── vulnerability_scan_screen.dart
+│   │   │   └── scan_result_screen.dart
 │   │   │
-│   │   └── 📁 onboarding/
-│   │       ├── 📄 onboarding_screen.dart
-│   │       ├── 📄 welcome_screen.dart
-│   │       └── 📄 permission_request_screen.dart
+│   │   └── onboarding/
+│   │       ├── onboarding_screen.dart
+│   │       ├── welcome_screen.dart
+│   │       └── permission_request_screen.dart
 │   │
-│   └── 📁 widgets/
-│       ├── 📁 common/
-│       │   ├── 📄 custom_button.dart
-│       │   ├── 📄 custom_textfield.dart
-│       │   ├── 📄 loading_widget.dart
-│       │   ├── 📄 error_widget.dart
-│       │   ├── 📄 empty_state_widget.dart
-│       │   ├── 📄 security_badge.dart
-│       │   ├── 📄 custom_appbar.dart
-│       │   ├── 📄 custom_bottom_navbar.dart
-│       │   ├── 📄 custom_drawer.dart
-│       │   ├── 📄 search_bar.dart
-│       │   ├── 📄 filter_chip.dart
-│       │   ├── 📄 pagination_widget.dart
-│       │   ├── 📄 confirmation_dialog.dart
-│       │   ├── 📄 snackbar_widget.dart
-│       │   ├── 📄 shimmer_loading.dart
-│       │   ├── 📄 skeleton_loading.dart
-│       │   ├── 📄 custom_tab_bar.dart
-│       │   ├── 📄 custom_dropdown.dart
-│       │   ├── 📄 custom_date_picker.dart
-│       │   ├── 📄 custom_time_picker.dart
-│       │   ├── 📄 rating_bar.dart
-│       │   └── 📄 progress_indicator.dart
+│   └── widgets/
+│       ├── common/
+│       │   ├── custom_button.dart
+│       │   ├── custom_textfield.dart
+│       │   ├── loading_widget.dart
+│       │   ├── error_widget.dart
+│       │   ├── empty_state_widget.dart
+│       │   ├── security_badge.dart
+│       │   ├── custom_appbar.dart
+│       │   ├── custom_bottom_navbar.dart
+│       │   ├── custom_drawer.dart
+│       │   ├── search_bar.dart
+│       │   ├── filter_chip.dart
+│       │   ├── pagination_widget.dart
+│       │   ├── confirmation_dialog.dart
+│       │   ├── snackbar_widget.dart
+│       │   ├── shimmer_loading.dart
+│       │   ├── skeleton_loading.dart
+│       │   ├── custom_tab_bar.dart
+│       │   ├── custom_dropdown.dart
+│       │   ├── custom_date_picker.dart
+│       │   ├── custom_time_picker.dart
+│       │   ├── rating_bar.dart
+│       │   └── progress_indicator.dart
 │       │
-│       ├── 📁 assessment/
-│       │   ├── 📄 criteria_card.dart
-│       │   ├── 📄 version_badge.dart
-│       │   ├── 📄 key_unlock_dialog.dart
-│       │   ├── 📄 assessment_progress.dart
-│       │   ├── 📄 score_gauge.dart
-│       │   ├── 📄 assessment_timeline.dart
-│       │   ├── 📄 criteria_answer_selector.dart
-│       │   ├── 📄 evidence_uploader.dart
-│       │   ├── 📄 assessment_summary_card.dart
-│       │   ├── 📄 criteria_group.dart
-│       │   └── 📄 assessment_comment.dart
+│       ├── assessment/
+│       │   ├── criteria_card.dart
+│       │   ├── version_badge.dart
+│       │   ├── key_unlock_dialog.dart
+│       │   ├── assessment_progress.dart
+│       │   ├── score_gauge.dart
+│       │   ├── assessment_timeline.dart
+│       │   ├── criteria_answer_selector.dart
+│       │   ├── evidence_uploader.dart
+│       │   ├── assessment_summary_card.dart
+│       │   ├── criteria_group.dart
+│       │   └── assessment_comment.dart
 │       │
-│       ├── 📁 dashboard/
-│       │   ├── 📄 security_score_card.dart
-│       │   ├── 📄 risk_heatmap.dart
-│       │   ├── 📄 compliance_chart.dart
-│       │   ├── 📄 incident_timeline.dart
-│       │   ├── 📄 vulnerability_chart.dart
-│       │   ├── 📄 threat_map.dart
-│       │   ├── 📄 domain_progress_card.dart
-│       │   ├── 📄 recent_activity_card.dart
-│       │   ├── 📄 quick_action_card.dart
-│       │   ├── 📄 statistic_card.dart
-│       │   ├── 📄 trend_chart.dart
-│       │   └── 📄 kpi_card.dart
+│       ├── dashboard/
+│       │   ├── security_score_card.dart
+│       │   ├── risk_heatmap.dart
+│       │   ├── compliance_chart.dart
+│       │   ├── incident_timeline.dart
+│       │   ├── vulnerability_chart.dart
+│       │   ├── threat_map.dart
+│       │   ├── domain_progress_card.dart
+│       │   ├── recent_activity_card.dart
+│       │   ├── quick_action_card.dart
+│       │   ├── statistic_card.dart
+│       │   ├── trend_chart.dart
+│       │   └── kpi_card.dart
 │       │
-│       ├── 📁 incident/
-│       │   ├── 📄 incident_card.dart
-│       │   ├── 📄 severity_indicator.dart
-│       │   ├── 📄 status_badge.dart
-│       │   ├── 📄 incident_timeline_item.dart
-│       │   ├── 📄 incident_comment_item.dart
-│       │   ├── 📄 incident_attachment_item.dart
-│       │   ├── 📄 incident_filter.dart
-│       │   └── 📄 incident_stats.dart
+│       ├── incident/
+│       │   ├── incident_card.dart
+│       │   ├── severity_indicator.dart
+│       │   ├── status_badge.dart
+│       │   ├── incident_timeline_item.dart
+│       │   ├── incident_comment_item.dart
+│       │   ├── incident_attachment_item.dart
+│       │   ├── incident_filter.dart
+│       │   └── incident_stats.dart
 │       │
-│       ├── 📁 report/
-│       │   ├── 📄 report_chart.dart
-│       │   ├── 📄 report_filter.dart
-│       │   ├── 📄 report_share_button.dart
-│       │   ├── 📄 report_export_button.dart
-│       │   ├── 📄 report_preview.dart
-│       │   ├── 📄 report_schedule_picker.dart
-│       │   └── 📄 report_template.dart
+│       ├── report/
+│       │   ├── report_chart.dart
+│       │   ├── report_filter.dart
+│       │   ├── report_share_button.dart
+│       │   ├── report_export_button.dart
+│       │   ├── report_preview.dart
+│       │   ├── report_schedule_picker.dart
+│       │   └── report_template.dart
 │       │
-│       ├── 📁 ai/
-│       │   ├── 📄 ai_chat_bubble.dart
-│       │   ├── 📄 ai_threat_card.dart
-│       │   ├── 📄 ai_prediction_card.dart
-│       │   ├── 📄 ai_suggestion_card.dart
-│       │   ├── 📄 ai_loading_animation.dart
-│       │   ├── 📄 ai_result_chart.dart
-│       │   ├── 📄 ai_recommendation_list.dart
-│       │   └── 📄 ai_confidence_indicator.dart
+│       ├── ai/
+│       │   ├── ai_chat_bubble.dart
+│       │   ├── ai_threat_card.dart
+│       │   ├── ai_prediction_card.dart
+│       │   ├── ai_suggestion_card.dart
+│       │   ├── ai_loading_animation.dart
+│       │   ├── ai_result_chart.dart
+│       │   ├── ai_recommendation_list.dart
+│       │   └── ai_confidence_indicator.dart
 │       │
-│       ├── 📁 security/
-│       │   ├── 📄 security_scan_card.dart
-│       │   ├── 📄 security_score_indicator.dart
-│       │   ├── 📄 security_header_card.dart
-│       │   ├── 📄 security_tip_card.dart
-│       │   ├── 📄 vulnerability_score_badge.dart
-│       │   └── 📄 compliance_status_indicator.dart
+│       ├── security/
+│       │   ├── security_scan_card.dart
+│       │   ├── security_score_indicator.dart
+│       │   ├── security_header_card.dart
+│       │   ├── security_tip_card.dart
+│       │   ├── vulnerability_score_badge.dart
+│       │   └── compliance_status_indicator.dart
 │       │
-│       └── 📁 sync/
-│           ├── 📄 sync_status_widget.dart
-│           ├── 📄 offline_banner.dart
-│           ├── 📄 last_sync_time.dart
-│           ├── 📄 sync_progress_indicator.dart
-│           ├── 📄 sync_queue_badge.dart
-│           └── 📄 offline_indicator.dart
+│       ├── sync/
+│       │   ├── sync_status_widget.dart
+│       │   ├── offline_banner.dart
+│       │   ├── last_sync_time.dart
+│       │   ├── sync_progress_indicator.dart
+│       │   ├── sync_queue_badge.dart
+│       │   └── offline_indicator.dart
+│       │
+│       └── role_based/
+│           ├── role_navigation_drawer.dart
+│           ├── role_bottom_nav_bar.dart
+│           └── role_avatar.dart
 │
-├── 📁 firebase/
-│   ├── 📄 firebase_options.dart
-│   ├── 📄 firebase_auth_service.dart
-│   ├── 📄 firebase_messaging.dart
-│   ├── 📄 firestore_sync.dart
-│   ├── 📄 realtime_database.dart
-│   ├── 📄 notification_handler.dart
-│   ├── 📄 dynamic_links.dart
-│   ├── 📄 remote_config.dart
-│   ├── 📄 crashlytics_service.dart
-│   └── 📄 analytics_service.dart
+├── firebase/
+│   ├── firebase_options.dart
+│   ├── firebase_auth_service.dart
+│   ├── firebase_messaging.dart
+│   ├── firestore_sync.dart
+│   ├── realtime_database.dart
+│   ├── notification_handler.dart
+│   ├── dynamic_links.dart
+│   ├── remote_config.dart
+│   ├── crashlytics_service.dart
+│   └── analytics_service.dart
 │
-├── 📁 localization/
-│   ├── 📄 app_localizations.dart
-│   ├── 📄 app_localizations_en.dart
-│   ├── 📄 app_localizations_vi.dart
-│   ├── 📄 app_localizations_ja.dart
-│   ├── 📄 app_localizations_ko.dart
-│   ├── 📄 app_localizations_zh.dart
-│   ├── 📄 app_localizations_fr.dart
-│   ├── 📄 app_localizations_de.dart
-│   ├── 📄 app_localizations_es.dart
-│   └── 📄 app_localizations_ru.dart
+├── localization/
+│   ├── app_localizations.dart
+│   ├── app_localizations_en.dart
+│   ├── app_localizations_vi.dart
+│   ├── app_localizations_ja.dart
+│   ├── app_localizations_ko.dart
+│   ├── app_localizations_zh.dart
+│   ├── app_localizations_fr.dart
+│   ├── app_localizations_de.dart
+│   ├── app_localizations_es.dart
+│   └── app_localizations_ru.dart
 │
-└── 📁 utils/
-    ├── 📄 app_version.dart
-    ├── 📄 device_info.dart
-    ├── 📄 package_info.dart
-    ├── 📄 url_launcher_helper.dart
-    ├── 📄 file_download_helper.dart
-    ├── 📄 biometric_helper.dart
-    ├── 📄 permission_handler.dart
-    ├── 📄 image_compressor.dart
-    ├── 📄 audio_recorder.dart
-    ├── 📄 video_recorder.dart
-    ├── 📄 location_helper.dart
-    └── 📄 qr_code_scanner.dart
+└── utils/
+    ├── app_version.dart
+    ├── device_info.dart
+    ├── package_info.dart
+    ├── url_launcher_helper.dart
+    ├── file_download_helper.dart
+    ├── biometric_helper.dart
+    ├── permission_handler.dart
+    ├── image_compressor.dart
+    ├── audio_recorder.dart
+    ├── video_recorder.dart
+    ├── location_helper.dart
+    └── qr_code_scanner.dart
 ```
 
 ---
