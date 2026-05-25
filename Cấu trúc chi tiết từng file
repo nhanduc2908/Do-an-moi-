@@ -1839,10 +1839,14 @@ lib/
 
 ## 📁 5. THƯ MỤC TEST
 
-```
-test/
+mobile_flutter/test/
 │
 ├── 📄 widget_test.dart
+│
+├── 📁 helpers/
+│   ├── 📄 test_helpers.dart
+│   ├── 📄 test_data.dart
+│   └── 📄 mock_factories.dart
 │
 ├── 📁 unit/
 │   ├── 📄 auth_test.dart
@@ -1855,7 +1859,18 @@ test/
 │   ├── 📄 sync_engine_test.dart
 │   ├── 📄 offline_queue_test.dart
 │   ├── 📄 token_manager_test.dart
-│   └── 📄 api_client_test.dart
+│   ├── 📄 api_client_test.dart
+│   ├── 📄 role_permissions_test.dart
+│   ├── 📄 date_helper_test.dart
+│   └── 📄 network_checker_test.dart
+│
+├── 📁 widget/
+│   ├── 📄 custom_button_test.dart
+│   ├── 📄 custom_textfield_test.dart
+│   ├── 📄 security_badge_test.dart
+│   ├── 📄 loading_widget_test.dart
+│   ├── 📄 error_widget_test.dart
+│   └── 📄 empty_state_widget_test.dart
 │
 ├── 📁 integration/
 │   ├── 📄 app_test.dart
@@ -1864,17 +1879,34 @@ test/
 │   ├── 📄 navigation_test.dart
 │   ├── 📄 assessment_flow_test.dart
 │   ├── 📄 key_verification_flow_test.dart
-│   └── 📄 offline_sync_test.dart
+│   ├── 📄 offline_sync_test.dart
+│   ├── 📄 login_flow_test.dart
+│   ├── 📄 report_generation_test.dart
+│   └── 📄 incident_reporting_test.dart
+│
+├── 📁 screens/
+│   ├── 📄 login_screen_test.dart
+│   ├── 📄 dashboard_screen_test.dart
+│   ├── 📄 assessment_screen_test.dart
+│   ├── 📄 incident_list_screen_test.dart
+│   └── 📄 profile_screen_test.dart
+│
+├── 📁 providers/
+│   ├── 📄 auth_provider_test.dart
+│   ├── 📄 assessment_provider_test.dart
+│   ├── 📄 incident_provider_test.dart
+│   ├── 📄 vulnerability_provider_test.dart
+│   ├── 📄 theme_provider_test.dart
+│   └── 📄 language_provider_test.dart
 │
 └── 📁 mocks/
     ├── 📄 mock_api_service.dart
     ├── 📄 mock_repository.dart
     ├── 📄 mock_provider.dart
     ├── 📄 mock_database.dart
-    └── 📄 mock_secure_storage.dart
-```
-
----
+    ├── 📄 mock_secure_storage.dart
+    ├── 📄 mock_network_info.dart
+    └── 📄 mock_firebase.dart
 
 ## 📄 6. FILE PUBSPEC.YAML
 
