@@ -1,0 +1,108 @@
+/* Dark Mode Styles */
+
+body.dark-mode {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+body.dark-mode .card,
+body.dark-mode .widget,
+body.dark-mode .stat-card,
+body.dark-mode .kpi-card,
+body.dark-mode .modal-content {
+    background-color: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .card-header,
+body.dark-mode .widget-header,
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: #334155;
+}
+
+body.dark-mode .data-table th {
+    background-color: #334155;
+}
+
+body.dark-mode .data-table td {
+    border-color: #334155;
+}
+
+body.dark-mode .data-table tr:hover {
+    background-color: #334155;
+}
+
+body.dark-mode .form-control {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode .form-control:focus {
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .alert-success {
+    background-color: #064e3b;
+    color: #d1fae5;
+}
+
+body.dark-mode .alert-danger {
+    background-color: #7f1d1d;
+    color: #fee2e2;
+}
+
+body.dark-mode .alert-warning {
+    background-color: #78350f;
+    color: #fed7aa;
+}
+
+body.dark-mode .alert-info {
+    background-color: #1e3a8a;
+    color: #dbeafe;
+}
+
+body.dark-mode .top-bar {
+    background-color: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .filter-bar {
+    background-color: #1e293b;
+}
+
+body.dark-mode .pagination-item {
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode .pagination-item.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .auth-card {
+    background-color: #1e293b;
+}
+
+body.dark-mode .auth-divider span {
+    background-color: #1e293b;
+}
+
+body.dark-mode .backup-codes {
+    background-color: #0f172a;
+}
+
+body.dark-mode .timeline-item::after {
+    background-color: #334155;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 8px;
+}

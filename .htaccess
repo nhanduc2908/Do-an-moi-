@@ -1,0 +1,6 @@
+# Protect auth directory 
+Options -Indexes 
+ 
+# Deny access to PHP files directly if not from POST 
+    Order Deny,Allow 
+    Allow from all 

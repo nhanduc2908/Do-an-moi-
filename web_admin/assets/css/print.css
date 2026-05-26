@@ -1,0 +1,105 @@
+/* Print Styles */
+
+@media print {
+    /* Hide non-printable elements */
+    .no-print,
+    .sidebar,
+    .top-bar,
+    .btn,
+    .action-buttons,
+    .filter-bar,
+    .pagination,
+    .modal,
+    .toast-container,
+    .dropdown-menu {
+        display: none !important;
+    }
+    
+    /* Adjust layout for print */
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+    }
+    
+    .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        break-inside: avoid;
+    }
+    
+    .card-header {
+        background: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    /* Table styles for print */
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .data-table th,
+    .data-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    .data-table th {
+        background: #f8f9fa;
+        font-weight: bold;
+    }
+    
+    /* Chart styles for print */
+    .chart-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    /* Logo for print */
+    .print-logo {
+        display: block !important;
+        margin-bottom: 20px;
+    }
+    
+    /* Page breaks */
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .avoid-break {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    /* Links */
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    /* Print header */
+    .print-header {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #000;
+    }
+    
+    .print-footer {
+        display: block !important;
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
+        font-size: 10pt;
+    }
+}

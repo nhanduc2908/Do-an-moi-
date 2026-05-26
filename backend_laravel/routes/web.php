@@ -205,7 +205,79 @@ Route::middleware(['auth', 'mfa'])->group(function () {
         Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
         Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
     });
+    / Role-based dashboard routes
+Route::middleware(['auth', RoleMiddleware::class])->group(function () {
     
+    // Super Admin only
+    Route::middleware(['role:super_admin'])->prefix('admin')->group(function () {
+        Route::get('/super-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'superAdmin'])
+            ->name('admin.roles.super-admin');
+    });
+    
+    // Admin only
+    Route::middleware(['role:admin'])->prefix('admin')->group(function () {
+        Route::get('/admin-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'admin'])
+            ->name('admin.roles.admin');
+    });
+    
+    // Security Manager
+    Route::middleware(['role:security_manager'])->prefix('admin')->group(function () {
+        Route::get('/security-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'securityManager'])
+            ->name('admin.roles.security-manager');
+    });
+    
+    // Compliance Officer
+    Route::middleware(['role:compliance_officer'])->prefix('admin')->group(function () {
+        Route::get('/compliance-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'complianceOfficer'])
+            ->name('admin.roles.compliance-officer');
+    });
+    
+    // Risk Manager
+    Route::middleware(['role:risk_manager'])->prefix('admin')->group(function () {
+        Route::get('/risk-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'riskManager'])
+            ->name('admin.roles.risk-manager');
+    });
+    
+    // Security Analyst
+    Route::middleware(['role:security_analyst'])->prefix('admin')->group(function () {
+        Route::get('/analyst-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'securityAnalyst'])
+            ->name('admin.roles.security-analyst');
+    });
+    
+    // Incident Responder
+    Route::middleware(['role:incident_responder'])->prefix('admin')->group(function () {
+        Route::get('/incident-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'incidentResponder'])
+            ->name('admin.roles.incident-responder');
+    });
+    
+    // Vulnerability Scanner
+    Route::middleware(['role:vulnerability_scanner'])->prefix('admin')->group(function () {
+        Route::get('/scanner-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'vulnerabilityScanner'])
+            ->name('admin.roles.vulnerability-scanner');
+    });
+    
+    // Auditor
+    Route::middleware(['role:auditor'])->prefix('admin')->group(function () {
+        Route::get('/auditor-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'auditor'])
+            ->name('admin.roles.auditor');
+    });
+    
+    // Viewer
+    Route::middleware(['role:viewer'])->prefix('admin')->group(function () {
+        Route::get('/viewer-dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'viewer'])
+            ->name('admin.roles.viewer');
+    });
+});
+
+// Redirect to role-specific dashboard after login
+Route::get('/dashboard', [App\Http\Controllers\Web\AdminDashboardController::class, 'redirectToRoleDashboard'])
+    ->middleware(['auth', 'mfa'])
+    ->name('admin.dashboard');
+    
+    // ==================== DEMO ROUTES ====================
+Route::get('/demo', [DemoLoginController::class, 'showDemoAccounts'])->name('demo.accounts');
+Route::post('/demo/login', [DemoLoginController::class, 'demoLogin'])->name('demo.login');
+Route::get('/demo/login/{role}', [DemoLoginController::class, 'quickLogin'])->name('demo.quick-login');
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

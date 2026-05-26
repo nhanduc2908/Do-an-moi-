@@ -1,0 +1,17 @@
+/node_modules
+/vendor
+/.idea
+/.vscode
+.DS_Store
+.env
+.env.backup
+*.log
+*.sql
+*.sql.gz
+*.cache
+*.tmp
+composer.lock
+package-lock.json
+yarn.lock
+.phpunit.result.cache
+.htaccess
